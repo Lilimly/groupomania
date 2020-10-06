@@ -11,8 +11,9 @@ export default class User extends Component {
     }
 
     render () {
-        return <div className="clock">
-            {this.state.date.toLocaleString()}
+        return <div className="welcome">
+            <h1>Bienvenue sur le Groupomania Social Network !</h1>
+            
         </div>
     }
 }

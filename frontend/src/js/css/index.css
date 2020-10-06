@@ -15,20 +15,37 @@ code {
 
 /* Propriétés des header des pages */
 .header {
-  background-color: beige;
+  background-color: #fa760a;
+  height: auto;
+  display: flex;
 }
 
-.header h1{
-  margin: auto;
-  padding: 10px;
+.logo-groupomania{
+  padding: 15px;
+  display: flex;
+  justify-content: left;
+}
+
+.connect {
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
 }
 
 /* Propriétés des footer des pages */
 .footer {
-  background-color: tomato;
+  background-color: #fa760a;
+  height: 4em;
 }
 
 .footer h2{
   margin: auto;
-  padding: 10px;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.footer p {
+  font-size: 0.8em;
 }

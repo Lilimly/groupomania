@@ -1,6 +1,12 @@
 /* Propriétés du composant User */
-.clock {
-    background-color: aqua;
+.welcome {
+    background-color: rgb(209, 209, 209);
     margin: auto;
     padding: 30px;
+}
+
+.welcome h1 {
+    font-size: 1.1em;
+    margin: auto;
+    text-align: center;
 }
