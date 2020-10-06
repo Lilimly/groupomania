@@ -6,10 +6,10 @@ require('dotenv').config({ path: process.cwd() + '/.env' });
 
 // Connexion à la base de données avec mongoose
 const connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'lilimly',
-    password : 'Yipi2616!',
-    database : 'groupomania'
+    host     : process.env.DB_HOST,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME
   });
   
   connection.connect();
