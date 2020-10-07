@@ -16,10 +16,6 @@ module.exports = {
           key: 'id'
         }
       },
-      postTime: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       title: {
         allowNull: false,
         type: Sequelize.STRING
@@ -34,14 +30,6 @@ module.exports = {
       },
       imageUrl: {
         allowNull: true,
-        type: Sequelize.STRING
-      },
-      likes: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      usersLiked: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

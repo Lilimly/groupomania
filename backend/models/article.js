@@ -19,13 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   };
   Article.init({
     userId: DataTypes.INTEGER,
-    postTime: DataTypes.DATE,
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     articleUrl: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
-    likes: DataTypes.INTEGER,
-    usersLiked: DataTypes.STRING
+    imageUrl: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Article',
