@@ -1,27 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const path = require('path');
+//const mysql = require('mysql');
+//const path = require('path');
 require('dotenv').config({ path: process.cwd() + '/.env' });
 
-// Connexion à la base de données avec mongoose
-const connection = mysql.createConnection({
-    host     : process.env.DB_HOST,
-    user     : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    database : process.env.DB_NAME
-  });
-  
-  connection.connect();
-  
-  connection.query('SELECT * FROM User', function(err, rows, fields) {
-    if (err) throw err;
-    console.log(rows);
-  });
-  
-  connection.end();
-
-  const app = express();
+const app = express();
 
   // Définition de cheaders pour éviters les erreurs de CORS
   app.use((req, res, next) => {
@@ -34,3 +17,20 @@ const connection = mysql.createConnection({
   app.use(bodyParser.json());
 
 module.exports = app;
+
+// Connexion à la base de données (exemple) mysql
+//const connection = mysql.createConnection({
+//    host     : process.env.DB_HOST,
+//    user     : process.env.DB_USER,
+//    password : process.env.DB_PASSWORD,
+//    database : process.env.DB_NAME
+//  });
+  
+//  connection.connect();
+  
+//  connection.query('SELECT * FROM User', function(err, rows, fields) {
+//    if (err) throw err;
+//    console.log(rows);
+//  });
+  
+//  connection.end();
