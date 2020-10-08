@@ -4,30 +4,32 @@ const path = require('path');
 
 require('dotenv').config({ path: process.cwd() + '/.env' });
 const mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
 
-// Récupération de mes fichiers routes
+/* Récupération de mes fichiers routes
 const userRoutes = require('./routes/user');
 const articleRoutes = require('./routes/article');
 const likeRoutes = require('./routes/like');
+*/
 
-// connexion DB mySQL
-const connection = mysql.createConnection({
-    host     : process.env.DB_HOST,
-    port     : '3306',
-    user     : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    database : process.env.DB_NAME,
-    charset  : 'UTF8_general_ci'
+// connexion à DB mySQL avec l'ORM sequelize
+const sequelize = new Sequelize(
+  process.env.DB_NAME, 
+  process.env.DB_USER, 
+  process.env.DB_PASSWORD, { 
+    dialect: "mysql",  
+    host: process.env.DB_HOST 
   });
 
-connection.connect();
-
-// test de requète 
-connection.query('SELECT * FROM User', function(err, rows, fields) {
-  if (err) throw err;
-  console.log(rows);
-});
-connection.end();
+try {
+  sequelize.authenticate();
+  console.log('Connecté à la base de données MySQL!');
+  sequelize.query('SELECT * FROM Users').then(([results, metadata]) => {
+    console.log(results);
+  })
+} catch (error) {
+  console.error('Impossible de se connecter, erreur suivante :', error);
+}
 
 // lancement de l'application express
 const app = express();
@@ -43,23 +45,12 @@ const app = express();
 // On parse les requètes du body en json
 app.use(bodyParser.json());
 
-// routes
+/* routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('./api/auth', userRoutes);
 app.use('./api/article', articleRoutes);
 app.use('./api/like', likeRoutes);
+*/
 
 // export de notre app
 module.exports = app;
-
-/* création d'un pool de connexion (10 requètes en parrallèle)
-const pool = mysql.createPool({
-  host     : process.env.DB_HOST,
-  user     : process.env.DB_USER,
-  password : process.env.DB_PASSWORD,
-  database : process.env.DB_NAME,
-  charset  : 'UTF8_general_ci',
-  waitForConnections : true,
-  connectionLimit : 10,
-  queueLimit : 0
-})*/
