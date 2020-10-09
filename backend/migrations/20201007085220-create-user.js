@@ -12,7 +12,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      username: {
+      firstname: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      lastname: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -29,11 +33,11 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

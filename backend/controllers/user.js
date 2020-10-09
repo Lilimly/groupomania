@@ -1,10 +1,32 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const User = require('../models/user');
+//const User = require('../models/user');
+const db = require("../models");
+const User = db.users;
+
+
+exports.findAll = (req, res) => {
+
+    User.findAll()
+    .then(users => {
+        console.log(users);
+        res.status(200).json({
+          data: users
+        });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
+  
+};
+
 
 // Logiques métiers pour les utilisateurs
-// Création de nouveaux utilisateurs (Post signup)
+/* Création de nouveaux utilisateurs (Post signup)
 exports.signup = (req, res, next) => {
     // Hash du mot de passe avec bcrypt
     bcrypt.hash(req.body.password, 10)
@@ -58,4 +80,10 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
-};
+}; 
+
+exports.getAllUsers = (req, res, next) => {
+    User.findAll()
+      .then(users => res.status(200).json(users))
+      .catch(error => res.status(400).json({ error }));
+  };*/
