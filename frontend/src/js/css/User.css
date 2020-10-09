@@ -1,12 +1,20 @@
 /* Propriétés du composant User */
 .welcome {
-    background-color: rgb(209, 209, 209);
+    background-color: rgb(235, 230, 230);
     margin: auto;
     padding: 30px;
 }
 
 .welcome h1 {
-    font-size: 1.1em;
-    margin: auto;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome h2 {
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }

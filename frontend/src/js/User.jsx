@@ -33,22 +33,21 @@ export default function User() {
     return <div>Chargement...</div>;
   } else {
     return (
-      <>
+      <main className="welcome">
         {data.map(data => (
-          <h1 className="welcome">
+          <h1>
             Bienvenue sur le Groupomania Social Network 
             <br /> 
             {data.firstname} {data.lastname} !
           </h1>
         ))}
-        <ul>
-          {data.map(data => (
-            <li key={data.id}>
-              {data.firstname} : {data.bio}
-            </li>
+        {data.map(data => (
+          <h2 key={data.id}>
+            Biographie de {data.firstname} : <br/> 
+            {data.bio}
+          </h2>
           ))}
-        </ul>
-      </>
+      </main>
     );
   }
 }

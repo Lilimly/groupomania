@@ -15,7 +15,7 @@ code {
 
 /* Propriétés des header des pages */
 .header {
-  background-color: #fa760a;
+  background-color: #f85fb8;
   height: auto;
   display: flex;
 }
@@ -35,7 +35,7 @@ code {
 
 /* Propriétés des footer des pages */
 .footer {
-  background-color: #fa760a;
+  background-color: #f85fb8;
   height: 4em;
 }
 
