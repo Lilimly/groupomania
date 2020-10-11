@@ -3,11 +3,12 @@ const router = express.Router();
 
 const userCtrl = require('../controllers/user');
 
-router.get('/', userCtrl.findAll);
+// const auth = require('../middleware/auth');
+const multer = require('../middleware/multer-config');
 
-/* Routes login
-router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
-*/
+router.get('/', userCtrl.findAllUsers);
+router.get('/:id', userCtrl.findOneUser);
+router.put('/:id', multer, userCtrl.modifyUser);
+router.delete('/:id', userCtrl.deleteUser);
 
 module.exports = router;

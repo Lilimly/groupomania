@@ -7,6 +7,7 @@ const path = require('path');
 // import des routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const articleRoutes = require('./routes/article');
 
 // lancement de l'application express
 const app = express();
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 // enregistrement des routeurs
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/articles', articleRoutes);
 
 // export de notre app
 module.exports = app;
