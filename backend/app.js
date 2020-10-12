@@ -39,6 +39,8 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/articles', articleRoutes);
+//app.use('/api/likes', likeRoutes);
+//app.use('/api/comments', commentRoutes);
 
 // export de notre app
 module.exports = app;
