@@ -1,3 +1,7 @@
+// imports
+const db = require("../models");
+const User = db.users;
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -16,8 +20,7 @@ exports.signup = (req, res, next) => {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: emailInbase64,
-            password: hash,
-            createdAt: Date.now()
+            password: hash
         })
         // Sauvegarde dans la base de données
         user.save()
@@ -34,7 +37,7 @@ exports.login = (req, res, next) => {
     let emailInbase64 = buff.toString('base64');
 
     // Recherche d'un utilisateur dans la base de données
-    User.findOne({ email: emailInbase64 })
+    User.findOne({where: { email: emailInbase64 }})
     .then(user => {
         // Si on ne trouve pas l'utilisateur
         if(!user) {
@@ -47,10 +50,10 @@ exports.login = (req, res, next) => {
                 return res.status(401).json({ error: 'Mot de passe incorrect !'})
             }
             res.status(200).json({
-                userId: user._id,
+                userId: user.id,
                 // Création d'un token pour sécuriser le compte de l'utilisateur
                 token: jwt.sign(
-                    { userId: user._id },
+                    { userId: user.id },
                     'RANDOM_TOKEN_SECRET',
                     { expiresIn: '24h' }
                 )
