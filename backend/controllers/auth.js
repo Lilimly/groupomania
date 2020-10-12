@@ -16,7 +16,8 @@ exports.signup = (req, res, next) => {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: emailInbase64,
-            password: hash
+            password: hash,
+            createdAt: Date.now()
         })
         // Sauvegarde dans la base de données
         user.save()

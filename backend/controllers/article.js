@@ -16,7 +16,7 @@ exports.findAllArticles = (req, res, next) => {
 
 // logique métier : lire un article par son id
 exports.findOneArticle = (req, res, next) => {
-  Article.findOne({ _id: req.params.id })
+  Article.findOne({ where: {id: req.params.id} })
   .then(article => {
     console.log(article);
     res.status(200).json(article)
@@ -26,46 +26,50 @@ exports.findOneArticle = (req, res, next) => {
 
 // logique métier : créer un article
 exports.createArticle = (req, res, next) => {
-  const articleObject = JSON.parse(req.body.article);
+  const articleObject = req.body;
 
   // Création d'un nouvel objet article
   const article = new Article({
     ...articleObject,
+    // Création lien articles ...
+
     // Création de l'URL de l'image : http://localhost:8080/images/nomdufichier 
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    //imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   // Enregistrement de l'objet article dans la base de données
   article.save()
-    .then(() => res.status(201).json({ message: 'Article enregistré !'}))
+    .then(() => res.status(201).json({ message: 'Article créé !'}))
     .catch(error => res.status(400).json({ error }));
 }
 
 // logique métier : modifier un article
 exports.modifyArticle = (req, res, next) => {
-  const articleObject = req.file ?
-    // Si il existe une image
+  const articleObject = req.body
+    /* Si il existe une image
     {
-      ...JSON.parse(req.body.article),
+      ...req.body,
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : { ...req.body }; 
+    } : { ...req.body }; */
     // Si il n'existe pas d'image
-    Article.update({ _id: req.params.id }, { ...articleObject, _id: req.params.id })
+    Article.update({ ...articleObject }, { where: {id: req.params.id} })
       .then(() => res.status(200).json({ message: 'Article modifié !'}))
       .catch(error => res.status(400).json({ error }));
 };
 
 // Logique métier : supprimer un article
 exports.deleteArticle = (req, res, next) => {
-  Article.findOne({_id: req.params.id})
+  Article.destroy({ where: {id: req.params.id} })
+        .then(() => res.status(200).json({ message: 'Article supprimé !'}))
+        .catch(error => res.status(400).json({ error }));
+};
+  /*Article.findOne({ where: {id: req.params.id} })
     .then(article => {
       // Récupération du nom du fichier
       const filename = article.imageUrl.split('/images/')[1];
       // On efface le fichier (unlink)
       fs.unlink(`images/${filename}`, () => {
-        Article.destroy({ _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Article supprimé !'}))
-        .catch(error => res.status(400).json({ error }));
+
       });
-    })
+    }
     .catch(error => res.status(500).json({ error }));
-};
+};*/
