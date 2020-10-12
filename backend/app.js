@@ -1,13 +1,14 @@
 // imports
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require("cors");
 const path = require('path');
 
 // import des routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const articleRoutes = require('./routes/article');
+const likeRoutes = require('./routes/like');
+const commentRoutes = require('./routes/comment');
 
 // lancement de l'application express
 const app = express();
@@ -39,8 +40,8 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/articles', articleRoutes);
-//app.use('/api/likes', likeRoutes);
-//app.use('/api/comments', commentRoutes);
+app.use('/api/likes', likeRoutes);
+app.use('/api/comments', commentRoutes);
 
 // export de notre app
 module.exports = app;
