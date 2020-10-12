@@ -44,16 +44,17 @@ exports.createArticle = (req, res, next) => {
 
 // logique métier : modifier un article
 exports.modifyArticle = (req, res, next) => {
-  const articleObject = req.body
+  const articleObject = req.body;
+
+  Article.update({ ...articleObject }, { where: {id: req.params.id} })
+  .then(() => res.status(200).json({ message: 'Article modifié !'}))
+  .catch(error => res.status(400).json({ error }));
     /* Si il existe une image
     {
       ...req.body,
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : { ...req.body }; */
     // Si il n'existe pas d'image
-    Article.update({ ...articleObject }, { where: {id: req.params.id} })
-      .then(() => res.status(200).json({ message: 'Article modifié !'}))
-      .catch(error => res.status(400).json({ error }));
 };
 
 // Logique métier : supprimer un article
