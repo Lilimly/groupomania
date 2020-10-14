@@ -31,12 +31,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./models");
 db.sequelize.sync();
 
-// TEST route a supprimer
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome lilimly's application." });
-});
-
 // enregistrement des routeurs
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/articles', articleRoutes);

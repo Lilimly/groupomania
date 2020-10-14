@@ -26,17 +26,16 @@ exports.findOneUser = (req, res, next) => {
 
 // logique métier : modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
-  const userObject = req.body;
+  // gestion d'ajout/modification image de profil
+  const userObject = req.body.imageUrl ?
+    {
+      ...req.body.user,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.body.imageUrl}`
+    } : { ... req.body};
 
-  User.update({ ...userObject }, { where: {id: req.params.id} })
+  User.update({ ...userObject, id:  req.params.id}, { where: {id: req.params.id} })
   .then(() => res.status(200).json({ message: 'Utilisateur modifié !'}))
   .catch(error => res.status(400).json({ error }));
-    /* Si il existe déjà une image
-    {
-      ...JSON.parse(req.body.user),
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : { ...req.body }; 
-    // Si il n'existe pas d'image*/
 };
 
 // logique métier : supprimer un utilisateur
@@ -44,13 +43,4 @@ exports.deleteUser = (req, res, next) => {
   User.destroy({ where: {id: req.params.id} })
         .then(() => res.status(200).json({ message: 'Utilisateur supprimé !'}))
         .catch(error => res.status(400).json({ error }));
-  /*User.findOne({ where: {id: req.params.id} })
-    .then(user => {
-      // Récupération du nom du fichier
-      const filename = user.imageUrl.split('/images/')[1];
-      // On efface le fichier (unlink)
-      fs.unlink(`images/${filename}`, () => {
-      });
-    })
-    .catch(error => res.status(500).json({ error }));*/
 };
