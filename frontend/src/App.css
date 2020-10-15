@@ -1,27 +1,56 @@
-.container {
-  width: 80%;
-  border: 1px solid black;
-  margin: 1em auto;
-  padding: 2em;
+#root {
+  width: 100%;
+  border: 1px solid red;
 }
 
-.container nav {
+/*Paramètres de la barre de navigation*/
+#root nav {
   display: flex;
   justify-content: space-between;
   background-color: indianred;
   padding: 1em;
+  border: 1px solid green;
 }
 
-.container nav > a.logo {
+#root nav > a.logo {
   text-decoration: none;
   color: black;
   font-weight: bold;
   font-size: 1em;
 }
 
+#root .links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#root .links a {
+  margin: auto 2em;
+  font-size: 0.9em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/*Paramètres du contenu de la page*/
+.container {
+  width: 90%;
+  border: 1px solid black;
+  margin: 1em auto;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .container h1 {
   text-align: center;
   font-size: 1.2em;
+}
+
+.container h2 {
+  font-size: 0.9em;
+  text-align: center;
 }
 
 .container p {
@@ -31,18 +60,5 @@
 
 .container p a {
   color: indianred;
-  font-weight: bold;
-}
-
-.container .links {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.container .links a {
-  margin: auto 2em;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: black;
   font-weight: bold;
 }

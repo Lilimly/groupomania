@@ -14,14 +14,14 @@ import './App.css';
 // definition composant App
 function App() {
   return (
-    <div className="container">
+    <>
       <Router>
         <Route path="/" exact component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/articles" component={Articles} />
       </Router>
-    </div>
+    </>
   );
 }
 

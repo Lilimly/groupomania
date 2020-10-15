@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar1 from './NavBar1';
 
-export default function Articles() {
+const Articles = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [articles, setArticles] = useState([]);
@@ -28,13 +28,17 @@ export default function Articles() {
         return <div>Chargement...</div>;
     } else {
         return (
-            <div>
+            <>
                 <NavBar1 />
-                <h1>Voici tous les articles !</h1>
-                {articles.map((article) => (
-                    <h4 key={article.id}>{article.title}</h4>
-                ))}
-            </div>
+                <div className="container">
+                    <h1>Voici tous les articles !</h1>
+                    {articles.map((article) => (
+                        <h2 key={article.id}>{article.title}</h2>
+                    ))}
+                </div>
+            </>
         );
     } 
 };
+
+export default Articles;
