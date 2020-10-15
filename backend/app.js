@@ -2,6 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const auth = require('./middleware/auth');
+const multer = require('./middleware/multer-config');
 
 // import des routes
 const authRoutes = require('./routes/auth');
@@ -34,10 +36,10 @@ db.sequelize.sync();
 // enregistrement des routeurs
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/articles', articleRoutes);
-app.use('/api/likes', likeRoutes);
-app.use('/api/comments', commentRoutes);
+app.use('/api/users', multer, userRoutes);
+app.use('/api/articles', multer, articleRoutes);
+app.use('/api/likes', auth, likeRoutes);
+app.use('/api/comments', auth, commentRoutes);
 
 // export de notre app
 module.exports = app;

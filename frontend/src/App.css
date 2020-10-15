@@ -1,0 +1,48 @@
+.container {
+  width: 80%;
+  border: 1px solid black;
+  margin: 1em auto;
+  padding: 2em;
+}
+
+.container nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: indianred;
+  padding: 1em;
+}
+
+.container nav > a.logo {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.container p {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.container p a {
+  color: indianred;
+  font-weight: bold;
+}
+
+.container .links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.container .links a {
+  margin: auto 2em;
+  font-size: 0.9em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
