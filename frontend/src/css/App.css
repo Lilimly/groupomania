@@ -1,0 +1,166 @@
+@charset "UTF-8";
+/* backgrounds colors */
+/*Paramètres de la barre de navigation*/
+#root nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: indianred;
+  padding: 1em;
+}
+
+#root nav > a.logo {
+  font-size: 1em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+#root nav > a.logo:hover {
+  color: whitesmoke;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#root .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+#root .links a {
+  margin: auto 2em;
+  font-size: 0.9em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+#root .links a:hover {
+  color: whitesmoke;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+/*Paramètres du contenu de la page*/
+.container {
+  width: 80%;
+  -webkit-box-shadow: 0 0 20px #bababa;
+          box-shadow: 0 0 20px #bababa;
+  margin: 2em auto;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container h1 {
+  text-align: center;
+  font-size: 1.2em;
+  color: #454545;
+}
+
+.container h2 {
+  font-size: 0.9em;
+  text-align: center;
+  color: #454545;
+}
+
+.container p {
+  font-size: 0.9em;
+  text-align: center;
+  color: #454545;
+}
+
+.container p a {
+  color: indianred;
+  font-weight: bold;
+}
+
+.container p a:hover {
+  color: #6e1313;
+}
+
+.article-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.article-card img {
+  width: 5%;
+  height: 5%;
+  margin: 1em;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.article-card .show-article {
+  margin: 0.2em;
+}
+
+.article-card .show-article h2 {
+  text-align: left;
+  color: black;
+}
+
+.article-card .show-article h3 {
+  font-size: 0.9em;
+  color: #454545;
+  text-align: left;
+}
+
+.article-card .show-article p {
+  text-align: left;
+}
+
+@media only screen and (max-width: 360px) {
+  #root nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 760px) and (min-width: 360px) {
+  #root nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 760px) {
+  #root nav {
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) {
+  #root nav {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=App.css.map */

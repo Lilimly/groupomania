@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar1 from './NavBar1';
+import img from '../img/icon.png';
 
 const Articles = () => {
     const [error, setError] = useState(null);
@@ -33,7 +34,14 @@ const Articles = () => {
                 <div className="container">
                     <h1>Voici tous les articles !</h1>
                     {articles.map((article) => (
-                        <h2 key={article.id}>{article.title}</h2>
+                        <div className="article-card">
+                            <img src={img} alt="user" />
+                            <div className= "show-article">
+                                <h2>Nom de l'utilisateur</h2>
+                                <h3>{article.title}</h3>
+                                <p>{article.content}</p>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </>

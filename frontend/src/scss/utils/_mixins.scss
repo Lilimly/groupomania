@@ -1,0 +1,60 @@
+// Paramètres flexbox
+@mixin flex_column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@mixin flex_center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex_space_between {
+    display: flex;
+	justify-content: space-between;
+}
+
+@mixin flex_space_evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+// paramètres liens effet zoom
+@mixin nav_link {
+    text-decoration: none;
+    color:$main_color;
+    font-weight: bold;
+    transform: scale(0.9);
+    transition: transform 300ms ease-in-out;
+    &:hover {
+        color: $body_color;
+        transform: scale(1);
+    }
+}
+
+@mixin text_link {
+    font-weight: bold;
+    &:hover {
+      color: $text_link_color;
+    }
+}
+
+// paramètres boutons validation animation zoom
+@mixin submit {
+    width: auto;
+    border-radius: 10px;
+    margin: 20px auto 30px auto;
+    background-color: $primary_color;
+    color: $main_color;
+    font-weight: 500;
+    font-size: 0.8em;
+    padding: 8px;
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+    &:hover {
+        background-color: $primary_color;
+        transform: scale(1.1);
+        color: $hover_color_link;
+    }
+}
