@@ -1,12 +1,8 @@
 import React from 'react';
 import NavBar1 from './NavBar1';
+import Field from './Field';
 
-const Field = ({name, value, onChange, children}) => {
-    return <div className="form-group">
-        <label htmlFor={name}>{children}</label>
-        <input type="text" value={value} onChange={onChange} id={name} name={name} className="form-control"/>
-    </div>
-}
+
 
 class Signup extends React.Component {
 
