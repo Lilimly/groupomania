@@ -5,13 +5,19 @@
 /*Paramètres de la barre de navigation*/
 #root {
   nav{
-    width: 100%;
     @include flex_space_between;
     background-color: $primary_color;
+    height: auto;
     padding: 1em;
     > a.logo {
-      font-size: 1em;
-      @include nav_link;
+      width: auto;
+    }
+    img {
+      width: 50px;
+      margin-left: 0.7em;
+      border-radius: 50%;
+      border: 1px solid $main_color;
+      @include logo_link;
     }
   }
   .links {

@@ -33,6 +33,17 @@
     }
 }
 
+@mixin logo_link {
+    text-decoration: none;
+    transform: scale(0.8);
+    opacity: 0.9;
+    transition: transform 300ms ease-in-out;
+    &:hover {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @mixin text_link {
     font-weight: bold;
     &:hover {

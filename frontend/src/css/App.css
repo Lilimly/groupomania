@@ -2,7 +2,6 @@
 /* backgrounds colors */
 /*Paramètres de la barre de navigation*/
 #root nav {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,26 +9,33 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: indianred;
+  height: auto;
   padding: 1em;
 }
 
 #root nav > a.logo {
-  font-size: 1em;
+  width: auto;
+}
+
+#root nav img {
+  width: 50px;
+  margin-left: 0.7em;
+  border-radius: 50%;
+  border: 1px solid black;
   text-decoration: none;
-  color: black;
-  font-weight: bold;
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  opacity: 0.9;
   -webkit-transition: -webkit-transform 300ms ease-in-out;
   transition: -webkit-transform 300ms ease-in-out;
   transition: transform 300ms ease-in-out;
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-#root nav > a.logo:hover {
-  color: whitesmoke;
+#root nav img:hover {
   -webkit-transform: scale(1);
           transform: scale(1);
+  opacity: 1;
 }
 
 #root .links {

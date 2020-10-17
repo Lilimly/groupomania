@@ -1,6 +1,7 @@
 //imports
-const db = require("../models");
-const Article = db.articles;
+const models = require("../models");
+const Article = models.articles;
+const User = models.users
 
 const fs = require('fs');
 
