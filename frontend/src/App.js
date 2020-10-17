@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Articles from './components/Articles';
+import User from './components/User';
 
 //import CSS
 import './css/App.css';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/articles" component={Articles} />
+        <Route name="user" path="/user/:id" component={User} />
       </Router>
     </>
   );

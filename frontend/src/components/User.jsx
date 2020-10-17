@@ -2,18 +2,22 @@ import React, { useState, useEffect } from 'react';
 import NavBar2 from './NavBar2';
 import img from '../img/icon.png';
 
-const Articles = () => {
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const id = urlParams.get('id');
+
+const User = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [articles, setArticles] = useState([]);
+    const [users, setUsers] = useState([]);
   
     useEffect(() => {
-      fetch("http://localhost:8080/api/articles")
+      fetch("http://localhost:8080/api/users/")
         .then(res => res.json())
         .then(
             (result) => {
                 setIsLoaded(true);
-                setArticles(result.data);
+                setUsers(result.data);
                 console.log(result.data);
             },
             (error) => {
@@ -32,14 +36,13 @@ const Articles = () => {
             <>
                 <NavBar2 />
                 <div className="container">
-                    <h1>Voici tous les articles !</h1>
-                    {articles.map((article) => (
+                    <h1>Bienvenue !</h1>
+                    {users.map((user) => (
                         <div className="article-card">
                             <img src={img} alt="user" />
                             <div className= "show-article">
-                                <h2>Nom de l'utilisateur</h2>
-                                <h3>{article.title}</h3>
-                                <p>{article.content}</p>
+                                <h2>{user.firstname}</h2>
+                                <p>{user.bio}</p>
                             </div>
                         </div>
                     ))}
@@ -49,4 +52,4 @@ const Articles = () => {
     } 
 };
 
-export default Articles;
+export default User;

@@ -1,14 +1,11 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import NavBar1 from './NavBar1';
+import Field from './Field';
 
-const Field = ({name, value, onChange, children}) => {
-    return <div className="form-group">
-        <label htmlFor={name}>{children}</label>
-        <input type="text" value={value} onChange={onChange} id={name} name={name} className="form-control"/>
-    </div>
-}
+export default class Login extends React.Component {
 
-class Login extends React.Component {
+    state = { redirection: false }
 
     constructor (props) {
         super(props)
@@ -30,8 +27,27 @@ class Login extends React.Component {
 
     handleSubmit (e) {
         e.preventDefault()
-        const data = JSON.stringify(this.state)
-        console.log(data)
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer token' 
+            },
+            body: JSON.stringify(this.state)
+        };
+
+        fetch('http://localhost:8080/api/auth/login/', requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                this.setState(result);
+                this.setState({ redirection: true })
+            })
+            .catch(error => {
+                this.setState({ Erreur: error.toString() });
+                console.error('There was an error!', error);
+        });
+
         this.setState({
             email: '',
             password: ''
@@ -39,6 +55,13 @@ class Login extends React.Component {
     }
 
     render() {
+        const { redirection } = this.state;
+        const userId = this.state.userId;
+        
+        if (redirection) {
+        return <Redirect to={'/user/' + userId}/>;
+        }
+
         return <>
             <NavBar1 />
             <div className="container">
@@ -47,13 +70,10 @@ class Login extends React.Component {
                     <Field name="email" value={this.state.email} onChange={this.handleChange}>Email</Field>
                     <Field name="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
                     <div className="form-group">
-                        <button className="btn btn-primary">Se connecter</button>
+                    <button className="btn btn-primary" onClick={this.handleSubmit}>Se connecter !</button>
                     </div>
-                    {JSON.stringify(this.state)}
                 </form>
             </div>
         </>
     }
 }
-
-export default Login;
