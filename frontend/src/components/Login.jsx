@@ -42,7 +42,7 @@ class Login extends React.Component {
         return <>
             <NavBar1 />
             <div className="container">
-                <h1>Inscrivez au réseau social de votre entreprise !</h1>
+                <h1>Connectez-vous à votre compte</h1>
                 <form>
                     <Field name="email" value={this.state.email} onChange={this.handleChange}>Email</Field>
                     <Field name="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
