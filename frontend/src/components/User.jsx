@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
+
 import NavBar2 from './NavBar2';
 import img from '../img/icon.png';
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id');
-
-const User = () => {
+const User = ({ match }) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [users, setUsers] = useState([]);
-  
+    const [user, setUser] = useState([]);
+    let userId = match.params.id
+
+    console.log("id=" + userId)
+
     useEffect(() => {
-      fetch("http://localhost:8080/api/users/")
+      fetch("http://localhost:8080/api/users/" + userId)
         .then(res => res.json())
         .then(
             (result) => {
                 setIsLoaded(true);
-                setUsers(result.data);
-                console.log(result.data);
+                setUser(result);
+                console.log(result.firstname)
             },
             (error) => {
                 setIsLoaded(true);
@@ -36,16 +37,15 @@ const User = () => {
             <>
                 <NavBar2 />
                 <div className="container">
-                    <h1>Bienvenue !</h1>
-                    {users.map((user) => (
-                        <div className="article-card">
-                            <img src={img} alt="user" />
-                            <div className= "show-article">
-                                <h2>{user.firstname}</h2>
-                                <p>{user.bio}</p>
-                            </div>
+                    <h1>Bienvenue {user.firstname} !</h1>
+                    <div className="article-card">
+                        <img src={img} alt="user" />
+                        <div className= "show-article">
+                            <h2>{user.firstname} {user.lastname}</h2>
+                            <p>{user.bio}</p>
                         </div>
-                    ))}
+                    </div>
+                    <button className="btn btn-primary">Modifier mon compte</button>
                 </div>
             </>
         );
