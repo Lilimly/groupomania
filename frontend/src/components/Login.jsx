@@ -71,8 +71,8 @@ export default class Login extends React.Component {
                 <form>
                     <Field name="email" value={this.state.email} onChange={this.handleChange}>Email</Field>
                     <Field name="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
-                    <div className="form-group">
-                    <button className="btn btn-primary" onClick={this.handleSubmit}>Se connecter !</button>
+                    <div className="form-submit">
+                    <button className="btn btn-primary" onClick={this.handleSubmit}>Me connecter !</button>
                     </div>
                 </form>
             </div>

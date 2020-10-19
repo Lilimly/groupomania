@@ -139,8 +139,17 @@
   text-align: left;
 }
 
-.btn-primary {
-  width: auto;
+.form-submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-submit .btn-primary {
+  width: 40%;
   margin: 0.5em;
 }
 

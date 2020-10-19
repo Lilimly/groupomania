@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import NavBar2 from './NavBar2';
 import Field from './Field';
@@ -11,17 +11,15 @@ class UpdateAccount extends React.Component {
     constructor (props) {
         super(props)
         const userAccount = JSON.parse(localStorage.getItem('userAccount'));
-        console.log(userAccount.email)
 
         this.state = {
             firstname: userAccount.firstname,
             lastname: userAccount.lastname,
             bio: userAccount.bio,
-            imageUrl: userAccount.imageurl,
+            imageUrl: userAccount.imageUrl
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.fileInput = React.createRef();
     }
 
     handleChange (e) {
@@ -72,8 +70,8 @@ class UpdateAccount extends React.Component {
                     <Field name="firstname" value={this.state.firstname} onChange={this.handleChange}>Prénom</Field>
                     <Field name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
                     <Field name="bio" value={this.state.bio} onChange={this.handleChange}>Rédigez une bio</Field>
-                    <InputFile name="imageUrl" value={this.state.imageURL} ref={this.fileInput} onChange={this.handleChange}>Modifiez votre photo de profil</InputFile>
-                    <div className="form-group">
+                    <InputFile></InputFile>
+                    <div className="form-submit">
                         <button className="btn btn-primary" onClick={this.handleSubmit}>Enregistrer les modifications</button>
                         <Link to={'/user/' + userId} className="btn btn-primary">retour à mon compte</Link>
                     </div>

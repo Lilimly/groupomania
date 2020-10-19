@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Articles from './components/Articles';
 import User from './components/User';
 import UpdateAccount from './components/UpdateAccount';
+import DeleteAccount from './components/DeleteAccount';
 
 //import CSS
 import './css/App.css';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/articles" component={Articles} />
         <Route path="/user/:id" component={User} />
         <Route path="/userupdate/:id" component={UpdateAccount} />
+        <Route path="/userdelete/:id" component={DeleteAccount} />
       </Router>
     </>
   );

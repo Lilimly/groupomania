@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const InputFile = ({name, value, onChange, children, ref}) => {
-    return <div className="form-group">
-        <label htmlFor={name}>{children}
-            <input type="file" value={value} onChange={onChange} ref={ref} id={name} name={name} className="form-control"/>
-        </label>
-    </div>
-}
+const noop = () => {};
+
+const InputFile = ({ onChange = noop}) => (
+  <div>
+    <label>
+      Selectionnez votre photo
+      <input className="form-control" type="file" name="file"
+        onChange={e => { onChange([e.target.file]);}}/>
+    </label>
+  </div>
+);
 
 export default InputFile;

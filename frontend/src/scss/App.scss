@@ -84,10 +84,14 @@
 }
 
 // paramètres boutons et formulaire
-.btn-primary {
-  width: auto;
-  margin: 0.5em;
+.form-submit{
+  @include flex_center;
+  .btn-primary {
+    width: 40%;
+    margin: 0.5em;
+  }
 }
+
 
 // responsive
 // écrans moins de 360px
