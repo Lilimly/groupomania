@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import NavBar2 from './NavBar2';
 import img from '../img/icon.png';
 
@@ -6,6 +7,7 @@ const Articles = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [articles, setArticles] = useState([]);
+    const history = useHistory();
   
     useEffect(() => {
       fetch("http://localhost:8080/api/articles")
@@ -33,6 +35,9 @@ const Articles = () => {
                 <NavBar2 />
                 <div className="container">
                     <h1>Voici tous les articles !</h1>
+                    <div className="form-submit">
+                        <button className="btn btn-primary" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
+                    </div>
                     {articles.map((article) => (
                         <div className="article-card">
                             <img src={img} alt="user" />
@@ -40,6 +45,8 @@ const Articles = () => {
                                 <h2>Nom de l'utilisateur</h2>
                                 <h3>{article.title}</h3>
                                 <p>{article.content}</p>
+                                <p>{article.articleUrl}</p>
+                                <p>{article.imageUrl}</p>
                             </div>
                         </div>
                     ))}
