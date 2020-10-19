@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import NavBar1 from './NavBar1';
 import Field from './Field';
 
@@ -9,13 +9,14 @@ class UpdateAccount extends React.Component {
 
     constructor (props) {
         super(props)
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        console.log(userAccount.email)
+
         this.state = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            bio: this.state.bio,
-            imageUrl: this.state.imageUrl,
-            email: this.state.email,
-            password: this.state.password
+            firstname: userAccount.firstname,
+            lastname: userAccount.lastname,
+            bio: userAccount.bio,
+            imageUrl: userAccount.imageurl,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,10 +71,9 @@ class UpdateAccount extends React.Component {
                     <Field name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
                     <Field name="bio" value={this.state.bio} onChange={this.handleChange}>Rédigez une bio</Field>
                     <Field name="imageUrl" value={this.state.imageURL} onChange={this.handleChange}>Modifier votre photo</Field>
-                    <Field name="email" value={this.state.email} onChange={this.handleChange}>Email</Field>
-                    <Field name="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
                     <div className="form-group">
                         <button className="btn btn-primary" onClick={this.handleSubmit}>Enregistrer les modifications</button>
+                        <Link to={'/user/' + userId} className="btn btn-primary">retour à mon compte</Link>
                     </div>
                     {JSON.stringify(this.state)}
                 </form>
@@ -83,12 +83,3 @@ class UpdateAccount extends React.Component {
 };
 
 export default UpdateAccount;
-
-/*         let userId = this.props.match.params.id;
-        fetch('http://localhost:8080/api/users/' + userId)
-        .then(response => response.json())
-        .then(result => this.setState(result)
-        .catch(error => {
-            this.setState({ Erreur: error.toString() });
-            console.error('There was an error!', error);
-    }) */

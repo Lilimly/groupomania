@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/articles" component={Articles} />
         <Route path="/user/:id" component={User} />
-        <Route path="/useredit/:id/" component={UpdateAccount} />
+        <Route path="/userupdate/:id" component={UpdateAccount} />
       </Router>
     </>
   );

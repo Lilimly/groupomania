@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import img from '../img/icon.png';
+import img from '../images/icon.png';
 
 const NavBar2 = () => {
     //let userId = match.params.id
