@@ -58,7 +58,7 @@ const User = ({ match }) => {
                 <div className="container">
                     <h1>Bienvenue {user.firstname} !</h1>
                     <div className="article-card">
-                        <img src={"../images/" + user.imageUrl } alt="go" />
+                        <img src={"../images/" + user.imageUrl } alt="user" />
                         <div className= "show-article">
                             <h2>{user.firstname} {user.lastname}</h2>
                             <p>{user.bio}</p>

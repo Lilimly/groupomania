@@ -30,7 +30,7 @@
 
 /*Paramètres du contenu de la page*/
 .container {
-  width: 80%;
+  width: 90%;
   box-shadow: $box_shadow;
   margin: 2em auto;
   padding: 2em;
@@ -81,6 +81,12 @@
       text-align: left;
     }
   }
+}
+
+// paramètres boutons et formulaire
+.btn-primary {
+  width: auto;
+  margin: 0.5em;
 }
 
 // responsive

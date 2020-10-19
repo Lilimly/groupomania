@@ -62,7 +62,7 @@
 
 /*Paramètres du contenu de la page*/
 .container {
-  width: 80%;
+  width: 90%;
   -webkit-box-shadow: 0 0 20px #bababa;
           box-shadow: 0 0 20px #bababa;
   margin: 2em auto;
@@ -137,6 +137,11 @@
 
 .article-card .show-article p {
   text-align: left;
+}
+
+.btn-primary {
+  width: auto;
+  margin: 0.5em;
 }
 
 @media only screen and (max-width: 360px) {
