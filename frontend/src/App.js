@@ -10,7 +10,10 @@ import User from './components/User';
 import UpdateAccount from './components/UpdateAccount';
 import DeleteAccount from './components/DeleteAccount';
 import Articles from './components/Articles';
+import ArticlePage from './components/ArticlePage';
 import CreateArticle from './components/CreateArticle';
+import UpdateArticle from './components/UpdateArticle';
+import DeleteArticle from './components/DeleteArticle';
 
 //import CSS
 import './css/App.css';
@@ -28,7 +31,9 @@ function App() {
         <Route path="/userdelete/:id" component={DeleteAccount} />
         <Route path="/articles" component={Articles} />
         <Route path="/createarticle" component={CreateArticle} />
-
+        <Route path="/article/:id" component={ArticlePage} />
+        <Route path="/articleupdate/:id" component={UpdateArticle} />
+        <Route path="/articledelete/:id" component={DeleteArticle} />
       </Router>
     </>
   );

@@ -113,15 +113,15 @@
 }
 
 .article-card img {
-  width: 5%;
-  height: 5%;
+  width: 7%;
+  height: 7%;
   margin: 1em;
   border-radius: 50%;
   border: 1px solid black;
 }
 
 .article-card .show-article {
-  margin: 0.2em;
+  margin: 0.5em;
 }
 
 .article-card .show-article h2 {
@@ -137,6 +137,15 @@
 
 .article-card .show-article p {
   text-align: left;
+}
+
+.article-card .show-article .nav-link {
+  color: indianred;
+  padding: 0em;
+}
+
+.article-card .show-article .nav-link:hover {
+  color: #6e1313;
 }
 
 .form-submit {

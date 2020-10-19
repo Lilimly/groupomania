@@ -9,7 +9,7 @@ const NavBar2 = () => {
             <Link to="/articles" className="logo"><img src={img} alt="logo" /></Link>
             <div className="links">
                 <Link to="/articles" className="nav-link">Articles</Link>
-                <Link to={"/user/"} className="nav-link">Mon compte</Link>
+                <Link to={"/user"} className="nav-link">Mon compte</Link>
             </div>
         </nav>
     );
