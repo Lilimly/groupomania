@@ -42,8 +42,8 @@ class UpdateArticle extends React.Component {
             body: JSON.stringify(this.state)
         };
 
-        let articleId = this.props.match.params.id;
-
+        let articlePage = JSON.parse(localStorage.getItem('articlePage'));
+        let articleId = articlePage.id
         console.log('id', articleId)
 
         fetch(('http://localhost:8080/api/articles/' + articleId), requestOptions)

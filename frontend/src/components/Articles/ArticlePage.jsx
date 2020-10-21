@@ -8,8 +8,8 @@ const ArticlePage = ({ match }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const history = useHistory();
-
-    const articleId = match.params.id;
+    
+    let articleId = match.params.id;
 
     console.log("id=" + articleId)
 

@@ -22,7 +22,8 @@ class DeleteArticle extends React.Component {
             body: JSON.stringify(this.state)
         };
 
-        let articleId = this.props.match.params.id;
+        let articlePage = JSON.parse(localStorage.getItem('articlePage'));
+        let articleId = articlePage.id
 
         fetch(('http://localhost:8080/api/articles/' + articleId), requestOptions)
                 .then(response => response.json())
@@ -35,7 +36,8 @@ class DeleteArticle extends React.Component {
 
     render () {
         const { redirection } = this.state;
-        let articleId = this.props.match.params.id;
+        let articlePage = JSON.parse(localStorage.getItem('articlePage'));
+        let articleId = articlePage.id
         if (redirection) {
             return <Redirect to='/articles' />;
         }
@@ -45,7 +47,7 @@ class DeleteArticle extends React.Component {
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer cet article ?</h1>
                 <div className="form-submit">
-                    <Link to={'/user/' + articleId} className="btn btn-primary">Non ! Retour aux articles</Link>
+                    <Link to={'/articles/'} className="btn btn-primary">Non ! Retour aux articles</Link>
                     <button className="btn btn-primary" onClick={this.handleSubmit}>Oui ! Supprimer cet article</button>
                 </div>
             </div>
