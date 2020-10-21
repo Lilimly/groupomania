@@ -11,7 +11,7 @@ function FormWithContext ({defaultValue, onSubmit, children}) {
 
     const change = useCallback(function (name, value) {
         setData(d => ({...d, [name]: value}))
-    })
+    }, [])
 
     const value= useMemo(function () {
         return {...data, change}
@@ -33,7 +33,7 @@ function FormField ({name, children}) {
     const data = useContext(FormContext)
     const handleChange = useCallback(function (e) {
         data.change(e.target.name, e.target.value)
-    }, [data.change])
+    }, [data])
 
 
     return <div className="form-group">
@@ -72,7 +72,7 @@ function Login () {
                 setError(error);
             }
         )
-    })
+    }, [Auth])
 
     if (error) {
         return <div>Erreur : {error.message}</div>;

@@ -37,7 +37,7 @@ function DeleteAccount () {
         Cookies.remove("user");
         localStorage.clear();
 
-    })
+    }, [Auth])
 
     if (error) {
         return <div>Erreur : {error.message}</div>;

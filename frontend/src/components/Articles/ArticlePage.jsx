@@ -43,7 +43,7 @@ const ArticlePage = ({ match }) => {
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
-                            <a target="_blank" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
+                            <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
                         </div>
                     </div>
                     <div className="form-submit">
@@ -100,7 +100,7 @@ const ArticlePage = ({ match }) => {
                         <img src={ article.imageUrl } alt="article" />
                         <div className= "show-article">
                             <p>{article.content}</p>
-                            <a target="_blank" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
+                            <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
                         </div>
                     </div>
                     <div className="form-submit">
