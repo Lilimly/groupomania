@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import NavBar2 from './NavBar2';
-import img from '../img/icon.png';
+import NavBar2 from '../NavBar/NavBar2';
+import img from '../../images/icon.png';
 
 const Articles = () => {
     const [error, setError] = useState(null);
@@ -10,6 +10,7 @@ const Articles = () => {
     const history = useHistory();
   
     useEffect(() => {
+
       fetch("http://localhost:8080/api/articles")
         .then(res => res.json())
         .then(
@@ -39,14 +40,13 @@ const Articles = () => {
                         <button className="btn btn-primary" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
                     </div>
                     {articles.map((article) => (
-                        <div className="article-card">
-                            <img src={img} alt="user" />
-                            <div className= "show-article">
-                                <h2>Nom de l'utilisateur</h2>
-                                <Link to={"/article/" + article.id} className="nav-link">{article.title}</Link>
-                                <p>{article.content}</p>
-                                <Link to={article.articleUrl} className="nav-link">{article.articleUrl}</Link>
-                                <p>{article.imageUrl}</p>
+                        <div  className="article-card" key={"articleCard" + article.id}>
+                            <img src={img} alt="user" key={"userImage" + article.id} />
+                            <div className= "show-article" key={"show" + article.id}>
+                                <h2 key={"userName" + article.id}>Nom de l'utilisateur</h2>
+                                <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
+                                <p key={"content" + article.id}>{article.content}</p>
+                                
                             </div>
                         </div>
                     ))}
@@ -57,3 +57,6 @@ const Articles = () => {
 };
 
 export default Articles;
+
+/*<Link to={article.articleUrl} className="nav-link" key={"articleUrl" + article.id}>{article.articleUrl}</Link>
+<p key={"imageUrl" + article.id}>{article.imageUrl}</p> */

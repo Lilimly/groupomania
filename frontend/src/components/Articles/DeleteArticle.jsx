@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import NavBar2 from './NavBar2';
+import NavBar2 from '../NavBar/NavBar2';
 
 class DeleteArticle extends React.Component {
     state = { redirection: false };

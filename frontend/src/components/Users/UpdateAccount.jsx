@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import NavBar2 from './NavBar2';
-import Field from './Field';
-import InputFile from './InputFile';
+import NavBar2 from '../NavBar/NavBar2';
+import Field from '../Form/Field';
+import InputFile from '../Form/InputFile';
 
 class UpdateAccount extends React.Component {
 
@@ -32,7 +32,10 @@ class UpdateAccount extends React.Component {
 
     handleSubmit (e) {
         e.preventDefault()
-      
+        
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        const userId = userAccount.id;
+
         const requestOptions = {
             method: 'put',
             headers: { 
@@ -41,10 +44,6 @@ class UpdateAccount extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
-
-        let userId = this.props.match.params.id;
-
-        console.log('id', userId)
 
         fetch(('http://localhost:8080/api/users/' + userId), requestOptions)
                 .then(response => response.json())
@@ -56,8 +55,11 @@ class UpdateAccount extends React.Component {
     }
 
     render() {
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        const userId = userAccount.id;
+
         const { redirection } = this.state;
-        let userId = this.props.match.params.id;
+
         if (redirection) {
             return <Redirect to={'/user/' + userId}/>;
         }

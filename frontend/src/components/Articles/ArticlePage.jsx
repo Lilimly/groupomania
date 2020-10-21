@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import NavBar2 from './NavBar2';
+import NavBar2 from '../NavBar/NavBar2';
 
 const ArticlePage = ({ match }) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const history = useHistory();
-    let articleId = match.params.id
+
+    const articleId = match.params.id;
 
     console.log("id=" + articleId)
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import NavBar2 from './NavBar2';
-import Field from './Field';
-import InputFile from './InputFile';
+import NavBar2 from '../NavBar/NavBar2';
+import Field from '../Form/Field';
+import InputFile from '../Form/InputFile';
 
 class CreateArticle extends React.Component {
 

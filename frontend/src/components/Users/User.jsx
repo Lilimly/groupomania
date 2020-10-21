@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import AuthApi from '../AuthApi';
+import Cookies from 'js-cookie';
+import NavBar2 from '../NavBar/NavBar2';
+import img from '../../images/icon.png';
 
-import NavBar2 from './NavBar2';
-import img from '../images/icon.png';
-
-const User = ({ match }) => {
+const User = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const history = useHistory();
-    let userId = match.params.id
-
-    console.log("id=" + userId)
+    const userLog = JSON.parse(localStorage.getItem('userConnect'));
+    const userId = userLog.userId;
 
     useEffect(() => {
       fetch("http://localhost:8080/api/users/" + userId)
@@ -29,6 +29,14 @@ const User = ({ match }) => {
             }
         )
     }, [userId])
+
+    const Auth = React.useContext(AuthApi);
+
+    const handleOnclick = () => {
+        Auth.setAuth(false);
+        Cookies.remove("user");
+        localStorage.clear();
+    }
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -50,6 +58,7 @@ const User = ({ match }) => {
                     <div className="form-submit">
                         <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
                         <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+                        <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
                     </div>
                 </div>
             </>
@@ -70,6 +79,7 @@ const User = ({ match }) => {
                     <div className="form-submit">
                         <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
                         <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+                        <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
                     </div>
                 </div>
             </>

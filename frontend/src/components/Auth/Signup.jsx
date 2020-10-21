@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import NavBar1 from './NavBar1';
-import Field from './Field';
+import NavBar1 from '../NavBar/NavBar1';
+import Field from '../Form/Field';
 
 class Signup extends React.Component {
 
