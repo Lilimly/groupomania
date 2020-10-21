@@ -52,9 +52,6 @@ function Login () {
 
     const handleSubmit = useCallback(function (value) {
 
-        Auth.setAuth(true)
-        Cookies.set("user", "loginTrue")
-
         fetch("http://localhost:8080/api/auth/login/", {
             method: "post",
             headers: { "Content-type" : 'application/json'},
@@ -67,6 +64,8 @@ function Login () {
         .then(
             (result) => {
                 localStorage.setItem('userConnect', JSON.stringify(result));
+                Auth.setAuth(true)
+                Cookies.set("user", "loginTrue")
             },
             (error) => {
                 setError(error);
@@ -78,7 +77,7 @@ function Login () {
         return <div>Erreur : {error.message}</div>;
     } else {
         return (
-            <>
+            <React.Fragment>
                 <NavBar1 />
                 <div className="container">
                     <h1>Connectez-vous à votre compte</h1>
@@ -88,7 +87,7 @@ function Login () {
                         <PrimaryButton>Me connecter</PrimaryButton>
                     </FormWithContext>
                 </div>
-            </>
+            </React.Fragment>
         );
     } 
 }
