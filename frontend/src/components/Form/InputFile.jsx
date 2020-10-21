@@ -5,7 +5,7 @@ const noop = () => {};
 const InputFile = ({ onChange = noop}) => (
   <div>
     <label>
-      Selectionnez votre photo
+      Selectionnez une photo
       <input className="form-control" type="file" name="file"
         onChange={e => { onChange([e.target.file]);}}/>
     </label>

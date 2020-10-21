@@ -64,7 +64,7 @@ class CreateArticle extends React.Component {
                 <form>
                     <Field name="title" value={this.state.title} onChange={this.handleChange}>Titre</Field>
                     <Field name="content" value={this.state.content} onChange={this.handleChange}>Contenu de l'article</Field>
-                    <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>Partagez l'Url d'n article</Field>
+                    <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>URL d'un article</Field>
                     <InputFile></InputFile>
                     <div className="form-submit">
                         <button className="btn btn-primary" onClick={this.handleSubmit}>Publiez l'article</button>

@@ -80,6 +80,11 @@
     }
     p {
       text-align: left;
+      color: $main_color;
+    }
+    #created-at {
+      font-size: 0.8em;
+      color: $second_color;
     }
     .nav-link{
       color: $primary_color;

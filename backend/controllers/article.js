@@ -7,7 +7,9 @@ const fs = require('fs');
 
 // logique métier : lire tous articles
 exports.findAllArticles = (req, res, next) => {
-  Article.findAll()
+  Article.findAll({order: [
+    ['createdAt', 'DESC'],
+]})
   .then(articles => {
       console.log(articles);
       res.status(200).json({data: articles});

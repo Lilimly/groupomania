@@ -40,6 +40,7 @@ const ArticlePage = ({ match }) => {
                 <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
+                    <p id="created-at">Publié le : {article.createdAt}</p>
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
@@ -59,6 +60,7 @@ const ArticlePage = ({ match }) => {
                 <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
+                    <p id="created-at">Publié le : {article.createdAt}</p>
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
@@ -78,6 +80,7 @@ const ArticlePage = ({ match }) => {
                 <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
+                    <p id="created-at">Publié le : {article.createdAt}</p>
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
@@ -96,11 +99,12 @@ const ArticlePage = ({ match }) => {
                 <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
+                    <p id="created-at">Publié le : {article.createdAt}</p>
                     <div className="article-card">
-                        <img src={ article.imageUrl } alt="article" />
                         <div className= "show-article">
                             <p>{article.content}</p>
                             <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
+                            <img src={ article.imageUrl } alt="article" />
                         </div>
                     </div>
                     <div className="form-submit">

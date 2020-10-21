@@ -137,6 +137,12 @@
 
 .article-card .show-article p {
   text-align: left;
+  color: black;
+}
+
+.article-card .show-article #created-at {
+  font-size: 0.8em;
+  color: #454545;
 }
 
 .article-card .show-article .nav-link {
