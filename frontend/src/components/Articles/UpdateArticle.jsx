@@ -58,7 +58,7 @@ class UpdateArticle extends React.Component {
     render() {
         const { redirection } = this.state;
         if (redirection) {
-            return <Redirect to='/articles'/>;
+            return <Redirect to='/articles/'/>;
         }
 
         return <>
@@ -72,7 +72,7 @@ class UpdateArticle extends React.Component {
                     <InputFile></InputFile>
                     <div className="form-submit">
                         <button className="btn btn-primary" onClick={this.handleSubmit}>Enregistrer les modifications</button>
-                        <Link to='/articles/' className="btn btn-primary">retour aux articles</Link>
+                        <Link to='/articles/' className="btn btn-primary">Retour aux articles</Link>
                     </div>
                     {JSON.stringify(this.state)}
                 </form>

@@ -16,8 +16,6 @@ import CreateArticle from './Articles/CreateArticle';
 import UpdateArticle from './Articles/UpdateArticle';
 import DeleteArticle from './Articles/DeleteArticle';
 
-
-import Test from './test';
 const Routes = () => {
     
     const Auth = React.useContext(AuthApi)
@@ -32,7 +30,7 @@ const Routes = () => {
             <ProtectedRoute path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
             <ProtectedRoute path="/createarticle" auth={Auth.auth} component={CreateArticle} />
-            <Route path="/article/:id" component={ArticlePage} />
+            <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
             <ProtectedRoute path="/articleupdate/:id" auth={Auth.auth} component={UpdateArticle} />
             <ProtectedRoute path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
         </Switch>

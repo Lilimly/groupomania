@@ -36,8 +36,6 @@ class DeleteArticle extends React.Component {
 
     render () {
         const { redirection } = this.state;
-        let articlePage = JSON.parse(localStorage.getItem('articlePage'));
-        let articleId = articlePage.id
         if (redirection) {
             return <Redirect to='/articles' />;
         }

@@ -57,6 +57,3 @@ const Articles = () => {
 };
 
 export default Articles;
-
-/*<Link to={article.articleUrl} className="nav-link" key={"articleUrl" + article.id}>{article.articleUrl}</Link>
-<p key={"imageUrl" + article.id}>{article.imageUrl}</p> */

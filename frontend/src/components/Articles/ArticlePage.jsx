@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import NavBar2 from '../NavBar/NavBar2';
 
@@ -43,7 +43,7 @@ const ArticlePage = ({ match }) => {
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
-                            <Link to={article.articleUrl} className="nav-link">{article.articleUrl}</Link>
+                            <a target="_blank" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
                         </div>
                     </div>
                     <div className="form-submit">
@@ -53,8 +53,44 @@ const ArticlePage = ({ match }) => {
                 </div>
             </>
         );
-    }
-    else {
+    } else if (!article.articleUrl) {
+        return (
+            <>
+                <NavBar2 />
+                <div className="container">
+                    <h1>{article.title} </h1>
+                    <div className="article-card">
+                        <div className= "show-article">
+                            <p>{article.content}</p>
+                            <img src={ article.imageUrl } alt="article" />
+                        </div>
+                    </div>
+                    <div className="form-submit">
+                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+                    </div>
+                </div>
+            </>
+        );
+    } else if (!article.articleUrl && !article.imageUrl) {
+        return (
+            <>
+                <NavBar2 />
+                <div className="container">
+                    <h1>{article.title} </h1>
+                    <div className="article-card">
+                        <div className= "show-article">
+                            <p>{article.content}</p>
+                        </div>
+                    </div>
+                    <div className="form-submit">
+                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+                    </div>
+                </div>
+            </>
+        );
+    } else {
         return (
             <>
                 <NavBar2 />
@@ -64,7 +100,7 @@ const ArticlePage = ({ match }) => {
                         <img src={ article.imageUrl } alt="article" />
                         <div className= "show-article">
                             <p>{article.content}</p>
-                            <Link to={article.articleUrl} className="nav-link">{article.articleUrl}</Link>
+                            <a target="_blank" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
                         </div>
                     </div>
                     <div className="form-submit">
