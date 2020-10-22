@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import NavBar2 from '../NavBar/NavBar2';
 import Field from '../Form/Field';
 import InputFile from '../Form/InputFile';
 
@@ -65,7 +64,6 @@ class UpdateAccount extends React.Component {
         }
 
         return <>
-            <NavBar2 />
             <div className="container">
                 <h1>Modifiez votre profil</h1>
                 <form>

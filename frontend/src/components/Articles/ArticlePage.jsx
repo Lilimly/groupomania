@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import NavBar2 from '../NavBar/NavBar2';
-
 const ArticlePage = ({ match }) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -37,7 +35,6 @@ const ArticlePage = ({ match }) => {
     } else if (!article.imageUrl) {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
                     <p id="created-at">Publié le : {article.createdAt}</p>
@@ -57,7 +54,6 @@ const ArticlePage = ({ match }) => {
     } else if (!article.articleUrl) {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
                     <p id="created-at">Publié le : {article.createdAt}</p>
@@ -77,7 +73,6 @@ const ArticlePage = ({ match }) => {
     } else if (!article.articleUrl && !article.imageUrl) {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
                     <p id="created-at">Publié le : {article.createdAt}</p>
@@ -96,7 +91,6 @@ const ArticlePage = ({ match }) => {
     } else {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>{article.title} </h1>
                     <p id="created-at">Publié le : {article.createdAt}</p>

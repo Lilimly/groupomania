@@ -1,6 +1,5 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import NavBar1 from '../NavBar/NavBar1';
 import Field from '../Form/Field';
 
 class Signup extends React.Component {
@@ -63,8 +62,7 @@ class Signup extends React.Component {
             return <Redirect to='/login'/>;
         }
 
-        return <>
-            <NavBar1 />
+        return <React.Fragment>
             <div className="container">
                 <h1>Inscrivez au réseau social de votre entreprise !</h1>
                 <form>
@@ -77,7 +75,7 @@ class Signup extends React.Component {
                     </div>
                 </form>
             </div>
-        </>
+        </React.Fragment>
     };
 };
 

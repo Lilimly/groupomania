@@ -1,5 +1,4 @@
 import React, {useState, useCallback, useContext, useMemo, createContext} from 'react';
-import NavBar1 from '../NavBar/NavBar1';
 import AuthApi from '../AuthApi';
 import Cookies from 'js-cookie';
 
@@ -34,7 +33,6 @@ function FormField ({name, children}) {
     const handleChange = useCallback(function (e) {
         data.change(e.target.name, e.target.value)
     }, [data])
-
 
     return <div className="form-group">
         <label htmlFor={name}>{children}</label>
@@ -78,7 +76,6 @@ function Login () {
     } else {
         return (
             <React.Fragment>
-                <NavBar1 />
                 <div className="container">
                     <h1>Connectez-vous à votre compte</h1>
                     <FormWithContext onSubmit={handleSubmit}>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import NavBar2 from '../NavBar/NavBar2';
 import img from '../../images/icon.png';
 
 const Articles = () => {
@@ -32,8 +31,7 @@ const Articles = () => {
         return <div>Chargement...</div>;
     } else {
         return (
-            <>
-                <NavBar2 />
+            <>   
                 <div className="container">
                     <h1>Voici tous les articles !</h1>
                     <div className="form-submit">

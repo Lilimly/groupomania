@@ -22,8 +22,8 @@ const Routes = () => {
 
     return (
         <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/signup" component={Signup} />
+            <ProtectedLogin path="/" exact component={Home} />
+            <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
             <ProtectedRoute path="/userupdate/:id" auth={Auth.auth} component={UpdateAccount} />
@@ -42,7 +42,9 @@ const ProtectedRoute = ({auth, component: Component, ...rest}) => {
         <Route 
         {...rest}
         render = {() => auth? (
-            <Component />
+            <>
+                <Component />
+            </>
         ) :
             (
                 <Redirect to="/login" />
@@ -57,7 +59,9 @@ const ProtectedLogin = ({auth, component: Component, ...rest}) => {
         <Route 
         {...rest}
         render = {() => !auth? (
-            <Component />
+            <>
+                <Component />
+            </>
         ) :
             (
                 <Redirect to="/articles" />

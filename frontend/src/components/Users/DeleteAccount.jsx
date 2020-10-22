@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
 import { Link } from 'react-router-dom';
-import NavBar2 from '../NavBar/NavBar2';
 import AuthApi from '../AuthApi';
 import Cookies from 'js-cookie';
 
@@ -43,7 +42,6 @@ function DeleteAccount () {
         return <div>Erreur : {error.message}</div>;
     } else {
         return (<>
-            <NavBar2 />
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer votre compte ?</h1>
                 <div className="form-submit">

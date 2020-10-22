@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
-import NavBar2 from '../NavBar/NavBar2';
 
 class DeleteArticle extends React.Component {
     state = { redirection: false };
@@ -41,7 +40,6 @@ class DeleteArticle extends React.Component {
         }
 
         return <>
-            <NavBar2 />
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer cet article ?</h1>
                 <div className="form-submit">

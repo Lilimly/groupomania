@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthApi from '../AuthApi';
 import Cookies from 'js-cookie';
-import NavBar2 from '../NavBar/NavBar2';
 import img from '../../images/icon.png';
 
 const User = () => {
@@ -45,7 +44,6 @@ const User = () => {
     } else if (!user.imageUrl) {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>Bienvenue {user.firstname} !</h1>
                     <div className="article-card">
@@ -66,7 +64,6 @@ const User = () => {
     } else {
         return (
             <>
-                <NavBar2 />
                 <div className="container">
                     <h1>Bienvenue {user.firstname} !</h1>
                     <div className="article-card">
