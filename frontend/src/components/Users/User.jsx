@@ -42,51 +42,36 @@ const User = () => {
         localStorage.clear();
     }
 
+    let imgUser;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else if (!user.imageUrl) {
-        return (
-            <>
-                <div className="container">
-                    <h1>Bienvenue {user.firstname} !</h1>
-                    <div className="article-card">
-                        <img src={img} alt="img" />
-                        <div className= "show-article">
-                            <h2>{user.firstname} {user.lastname}</h2>
-                            <p>{user.bio}</p>
-                        </div>
-                    </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-                        <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
-                    </div>
-                </div>
-            </>
-        );
+        imgUser = <img src={img} alt="img" />
     } else {
-        return (
-            <>
-                <div className="container">
-                    <h1>Bienvenue {user.firstname} !</h1>
-                    <div className="article-card">
-                        <img src={ user.imageUrl } alt="user" />
-                        <div className= "show-article">
-                            <h2>{user.firstname} {user.lastname}</h2>
-                            <p>{user.bio}</p>
-                        </div>
-                    </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-                        <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
+        imgUser = <img src={ user.imageUrl } alt="user" />;
+    } 
+
+    return (
+        <>
+            <div className="container">
+                <h1>Bienvenue {user.firstname} !</h1>
+                <div className="article-card">
+                    {imgUser}
+                    <div className= "show-article">
+                        <h2>{user.firstname} {user.lastname}</h2>
+                        <p>{user.bio}</p>
                     </div>
                 </div>
-            </>
-        );
-    } 
+                <div className="form-submit">
+                    <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
+                    <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+                    <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default User;

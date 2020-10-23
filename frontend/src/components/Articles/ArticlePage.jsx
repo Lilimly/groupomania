@@ -34,87 +34,41 @@ const ArticlePage = ({ match }) => {
         )
     }, [articleId, token])
 
+    
+
+    let imgArticle;
+    let urlArticle;
+
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (!article.imageUrl) {
-        return (
-            <>
-                <div className="container">
-                    <h1>{article.title} </h1>
-                    <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
-                    <div className="article-card">
-                        <div className= "show-article">
-                            <p>{article.content}</p>
-                            <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
-                        </div>
+    } else if (article.imageUrl) {
+        imgArticle = <img src={ article.imageUrl } alt="article" />
+    } else if (article.articleUrl) {
+        urlArticle = <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
+    }
+        
+    return (
+        <>
+            <div className="container">
+                <h1>{article.title} </h1>
+                <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
+                <div className="article-card">
+                    <div className= "show-article">
+                        <p>{article.content}</p>
+                        {urlArticle}
+                        {imgArticle}
                     </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-                    </div>
+
                 </div>
-            </>
-        );
-    } else if (!article.articleUrl) {
-        return (
-            <>
-                <div className="container">
-                    <h1>{article.title} </h1>
-                    <p id="created-at">Publié le : {article.createdAt}</p>
-                    <div className="article-card">
-                        <div className= "show-article">
-                            <p>{article.content}</p>
-                            <img src={ article.imageUrl } alt="article" />
-                        </div>
-                    </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-                    </div>
+                <div className="form-submit">
+                    <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+                    <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
                 </div>
-            </>
-        );
-    } else if (!article.articleUrl && !article.imageUrl) {
-        return (
-            <>
-                <div className="container">
-                    <h1>{article.title} </h1>
-                    <p id="created-at">Publié le : {article.createdAt}</p>
-                    <div className="article-card">
-                        <div className= "show-article">
-                            <p>{article.content}</p>
-                        </div>
-                    </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-                    </div>
-                </div>
-            </>
-        );
-    } else {
-        return (
-            <>
-                <div className="container">
-                    <h1>{article.title} </h1>
-                    <p id="created-at">Publié le : {article.createdAt}</p>
-                    <div className="article-card">
-                        <div className= "show-article">
-                            <p>{article.content}</p>
-                            <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
-                            <img src={ article.imageUrl } alt="article" />
-                        </div>
-                    </div>
-                    <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                        <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-                    </div>
-                </div>
-            </>
-        );
-    } 
+            </div>
+        </>
+    );
 };
 
 export default ArticlePage;
