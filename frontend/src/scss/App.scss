@@ -4,11 +4,7 @@
 
 /*Paramètres de la barre de navigation*/
 #root {
-  nav{
-    @include flex_space_between;
-    height: 4.5em;
-    background-color: $primary_color;
-    
+  a{
     img {
       width: 50px;
       margin: 0.6em;
@@ -17,13 +13,10 @@
       @include logo_link;
     }
   }
-  .links {
-      display: flex;
-      margin: auto;
+  .mr-auto {
     a {
-      margin: auto 2em;
-      font-size: 0.9em;
-      @include nav_link;
+      font-weight: bold;
+      margin-left: 3em;
     }
   }
 }

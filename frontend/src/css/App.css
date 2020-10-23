@@ -1,18 +1,7 @@
 @charset "UTF-8";
 /* backgrounds colors */
 /*Paramètres de la barre de navigation*/
-#root nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 4.5em;
-  background-color: indianred;
-}
-
-#root nav img {
+#root a img {
   width: 50px;
   margin: 0.6em;
   border-radius: 50%;
@@ -27,37 +16,15 @@
   transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 }
 
-#root nav img:hover {
+#root a img:hover {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;
 }
 
-#root .links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: auto;
-}
-
-#root .links a {
-  margin: auto 2em;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: black;
+#root .mr-auto a {
   font-weight: bold;
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-  -webkit-transition: -webkit-transform 300ms ease-in-out;
-  transition: -webkit-transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
-}
-
-#root .links a:hover {
-  color: whitesmoke;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  margin-left: 3em;
 }
 
 /*Paramètres du contenu de la page*/

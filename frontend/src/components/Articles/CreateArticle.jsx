@@ -10,8 +10,12 @@ class CreateArticle extends React.Component {
     constructor (props) {
         super(props)
 
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
+        const userId = userConnect.userId;
+        console.log(userId);
+
         this.state = {
-            userId: 10,
+            userId: userId,
             title: this.state.title,
             content: this.state.content,
             articleUrl: this.state.articleUrl,

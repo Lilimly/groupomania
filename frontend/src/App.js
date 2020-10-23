@@ -5,7 +5,6 @@ import Cookies from 'js-cookie';
 import Routes from './components/Routes';
 import AuthApi from './components/AuthApi';
 import img from './images/icon.png';
-//import NavBar1 from './components/NavBar/NavBar1';
 
 //import CSS & bootsrapreact
 import Navbar from 'react-bootstrap/Navbar';
@@ -33,7 +32,7 @@ function App() {
     readCookie();
   }, [])
 
-  // gestion de la NavBar
+  // Gestion de la NavBar
   let navLink;
   if (navState) {
       const userLog = JSON.parse(localStorage.getItem('userConnect'));
