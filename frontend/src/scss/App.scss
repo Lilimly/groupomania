@@ -97,6 +97,27 @@
   }
 }
 
+.user-page{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+  img {
+    width: 7%;
+    height: 7%;
+    border-radius: 50%;
+    border: 1px solid $main_color;
+  }
+  .user-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+      .btn {
+        margin: 0.5em;
+    }
+  }
+}
+
+
 // responsive
 // écrans moins de 360px
 @media #{$x_small_screen}

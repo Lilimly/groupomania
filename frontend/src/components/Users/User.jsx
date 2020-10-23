@@ -42,40 +42,41 @@ const User = () => {
         localStorage.clear();
     }
 
-    let imgUser;
     let idUser;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else if (user.id === userId) {
-        idUser = <div className="form-submit">
-            <button className="btn btn-info" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-            <button className="btn btn-danger" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-            <button className="btn btn-dark" onClick={handleOnclick}>Me déconnecter</button>
+        idUser = <div className="user-button">
+            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={handleOnclick}>Me déconnecter</button>  
         </div>
     }
-     else if (!user.imageUrl) {
-        imgUser = <img src={img} alt="img" />
-    } else {
-        imgUser = <img src={ user.imageUrl } alt="user" />;
-    } 
 
     return (
         <>
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
-                <div className="article-card">
-                    {imgUser}
+                <div className="user-page">
+                    <img src={img} alt="user" key={"userImage" + user.id} />
                     <div className= "show-article">
                         <h2>{user.firstname} {user.lastname}</h2>
                         <p>{user.bio}</p>
                     </div>
+                    {idUser}
                 </div>
-                {idUser}
             </div>
         </>
     );
 };
 
 export default User;
+
+/*     let imgUser;
+    else if (!user.imageUrl) {
+        imgUser = <img src={img} alt="img" />
+    } else {
+        imgUser = <img src={ user.imageUrl } alt="user" />;
+    }  */

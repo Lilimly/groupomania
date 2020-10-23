@@ -48,8 +48,8 @@ class DeleteArticle extends React.Component {
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer cet article ?</h1>
                 <div className="form-submit">
-                    <Link to={'/articles/'} className="btn btn-info">Retour aux articles</Link>
-                    <button className="btn btn-danger" onClick={this.handleSubmit}>Supprimer cet article</button>
+                    <Link to={'/articles/'} className="btn btn-outline-info btn-sm">Retour aux articles</Link>
+                    <button className="btn btn-outline-danger btn-sm" onClick={this.handleSubmit}>Supprimer cet article</button>
                 </div>
             </div>
         </>

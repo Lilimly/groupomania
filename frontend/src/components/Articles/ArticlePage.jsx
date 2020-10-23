@@ -31,23 +31,18 @@ const ArticlePage = ({ match }) => {
         )
     }, [articleId, token])
 
-    let imgArticle;
-    let urlArticle;
+    
     let userAuth;
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (article.imageUrl) {
-        imgArticle = <img src={ article.imageUrl } alt="article" />
-    } else if (article.articleUrl) {
-        urlArticle = <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
     } else if (article.userId === storage.userId) {
-        userAuth = <div className="form-submit">
-                <button className="btn btn-info" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                <button className="btn btn-danger" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-            </div>
+        userAuth = <div className="user-button">
+            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+        </div>
     }
         
     return (
@@ -55,14 +50,19 @@ const ArticlePage = ({ match }) => {
             <div className="container">
                 <h1>{article.title} </h1>
                 <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
-                <div className="article-card">
+                <div className="user-page">
                     <div className= "show-article">
                         <p>{article.content}</p>
-                        {urlArticle}
-                        {imgArticle}
+                        
+                        {article.articleUrl
+                        ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <p></p>}
+
+                        {article.imageUrl
+                        ? <img src={ article.imageUrl } alt="article" /> : <p></p>}
                     </div>
+                    {userAuth}
                 </div>
-                {userAuth}
+                
             </div>
         </>
     );

@@ -75,8 +75,8 @@ class CreateArticle extends React.Component {
                     <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>URL d'un article</Field>
                     <InputFile></InputFile>
                     <div className="form-submit">
-                        <button className="btn btn-success" onClick={this.handleSubmit}>Publiez l'article</button>
-                        <Link to='/articles' className="btn btn-info">Retour aux articles</Link>
+                        <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Publiez l'article</button>
+                        <Link to='/articles' className="btn btn-outline-info btn-sm">Retour aux articles</Link>
                     </div>
                     {JSON.stringify(this.state)}
                 </form>

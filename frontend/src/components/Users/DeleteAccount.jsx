@@ -43,8 +43,8 @@ function DeleteAccount () {
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer votre compte ?</h1>
                 <div className="form-submit">
-                    <Link to={'/user/' + userId} className="btn btn-info">Retour à mon compte</Link>
-                    <button className="btn btn-danger" onClick={handleSubmit}>Supprimer mon compte</button>
+                    <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">Retour à mon compte</Link>
+                    <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer mon compte</button>
                 </div>
             </div>
         </>
