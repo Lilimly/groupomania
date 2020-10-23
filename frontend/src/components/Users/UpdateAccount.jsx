@@ -31,15 +31,16 @@ class UpdateAccount extends React.Component {
 
     handleSubmit (e) {
         e.preventDefault()
-        
-        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
-        const userId = userAccount.id;
+
+        const storage = JSON.parse(localStorage.getItem('userConnect'));
+        const userId = storage.userId
+        let token = "Bearer " +  storage.token;
 
         const requestOptions = {
             method: 'put',
             headers: { 
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer token' 
+                'Authorization': token 
             },
             body: JSON.stringify(this.state)
         };

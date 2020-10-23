@@ -31,19 +31,21 @@ class UpdateArticle extends React.Component {
 
     handleSubmit (e) {
         e.preventDefault()
+
+        const storage = JSON.parse(localStorage.getItem('userConnect'));
+        let token = "Bearer " +  storage.token;
       
         const requestOptions = {
             method: 'put',
             headers: { 
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer token' 
+                'Authorization': token 
             },
             body: JSON.stringify(this.state)
         };
 
         let articlePage = JSON.parse(localStorage.getItem('articlePage'));
-        let articleId = articlePage.id
-        console.log('id', articleId)
+        let articleId = articlePage.id;
 
         fetch(('http://localhost:8080/api/articles/' + articleId), requestOptions)
                 .then(response => response.json())

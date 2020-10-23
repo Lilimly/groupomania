@@ -7,36 +7,34 @@ function DeleteAccount () {
     const [error, setError] = useState(null);
     const Auth = React.useContext(AuthApi);
 
-    const userAccount = JSON.parse(localStorage.getItem('userAccount'));
-    const userId = userAccount.id;
+    const storage = JSON.parse(localStorage.getItem('userConnect'));
+    const userId = storage.userId;
+    let token = "Bearer " +  storage.token;
 
     const handleSubmit = useCallback(function (value) {
 
-        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
-        const userId = userAccount.id;
-
         fetch(('http://localhost:8080/api/users/' + userId), {
             method: "delete",
-            headers: { "Content-type" : 'application/json'},
+            headers: 
+                { "Content-type" : 'application/json',
+                'Authorization': token
+                },
             body: JSON.stringify({
                 id: value.id
             })
         })
         .then(res => res.json())
         .then(
-            (result) => {
-                localStorage.setItem('userConnect', JSON.stringify(result));
+            () => {
+                Auth.setAuth(false);
+                Cookies.remove("user");
+                localStorage.clear();
             },
             (error) => {
                 setError(error);
             }
         )
-
-        Auth.setAuth(false);
-        Cookies.remove("user");
-        localStorage.clear();
-
-    }, [Auth])
+    }, [Auth, userId, token])
 
     if (error) {
         return <div>Erreur : {error.message}</div>;

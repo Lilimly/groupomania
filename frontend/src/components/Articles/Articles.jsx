@@ -7,10 +7,16 @@ const Articles = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [articles, setArticles] = useState([]);
     const history = useHistory();
+
+    const storage = JSON.parse(localStorage.getItem('userConnect'));
+    let token = "Bearer " +  storage.token;
   
     useEffect(() => {
 
-      fetch("http://localhost:8080/api/articles")
+      fetch("http://localhost:8080/api/articles", 
+        {headers: 
+            {"Authorization" : token}
+        })
         .then(res => res.json())
         .then(
             (result) => {
@@ -23,7 +29,7 @@ const Articles = () => {
                 setError(error);
             }
         )
-    }, [])
+    }, [token])
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -41,7 +47,7 @@ const Articles = () => {
                         <div  className="article-card" key={"articleCard" + article.id}>
                             <img src={img} alt="user" key={"userImage" + article.id} />
                             <div className= "show-article" key={"show" + article.id}>
-                                <h2 key={"userName" + article.id}>Nom de l'utilisateur</h2>
+                            <h2 key={"userName" + article.id}>{article.userId}</h2>
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
                                 <p key={article.createdAt} id="created-at">Publié le : {article.createdAt}</p>

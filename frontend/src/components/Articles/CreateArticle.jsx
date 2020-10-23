@@ -35,12 +35,15 @@ class CreateArticle extends React.Component {
 
     handleSubmit (e) {
         e.preventDefault()
+
+        const storage = JSON.parse(localStorage.getItem('userConnect'));
+        let token = "Bearer " +  storage.token;
       
         const requestOptions = {
             method: 'post',
             headers: { 
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer token' 
+                'Authorization': token
             },
             body: JSON.stringify(this.state)
         };

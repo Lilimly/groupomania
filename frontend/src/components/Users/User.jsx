@@ -9,11 +9,16 @@ const User = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const history = useHistory();
-    const userLog = JSON.parse(localStorage.getItem('userConnect'));
-    const userId = userLog.userId;
+
+    const storage = JSON.parse(localStorage.getItem('userConnect'));
+    const userId = storage.userId;
+    let token = "Bearer " +  storage.token;
 
     useEffect(() => {
-      fetch("http://localhost:8080/api/users/" + userId)
+      fetch("http://localhost:8080/api/users/" + userId,
+        {headers: 
+            {"Authorization" : token}
+        })
         .then(res => res.json())
         .then(
             (result) => {
@@ -27,7 +32,7 @@ const User = () => {
                 setError(error);
             }
         )
-    }, [userId])
+    }, [userId, token])
 
     const Auth = React.useContext(AuthApi);
 

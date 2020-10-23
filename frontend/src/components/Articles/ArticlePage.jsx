@@ -6,13 +6,19 @@ const ArticlePage = ({ match }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const history = useHistory();
+
+    const storage = JSON.parse(localStorage.getItem('userConnect'));
+    let token = "Bearer " +  storage.token;
     
     let articleId = match.params.id;
 
     console.log("id=" + articleId)
 
     useEffect(() => {
-      fetch("http://localhost:8080/api/articles/" + articleId)
+      fetch("http://localhost:8080/api/articles/" + articleId, 
+        {headers: 
+            {"Authorization" : token}
+        })
         .then(res => res.json())
         .then(
             (result) => {
@@ -26,7 +32,7 @@ const ArticlePage = ({ match }) => {
                 setError(error);
             }
         )
-    }, [articleId])
+    }, [articleId, token])
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -37,7 +43,7 @@ const ArticlePage = ({ match }) => {
             <>
                 <div className="container">
                     <h1>{article.title} </h1>
-                    <p id="created-at">Publié le : {article.createdAt}</p>
+                    <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
                     <div className="article-card">
                         <div className= "show-article">
                             <p>{article.content}</p>
