@@ -117,6 +117,27 @@
   }
 }
 
+.article-page{
+  display: flex;
+  justify-content: space-around;
+  margin: 2em;
+  img {
+    width: 7%;
+    height: 7%;
+    border-radius: 50%;
+    border: 1px solid $main_color;
+  }
+  .article-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-left: 3em;
+      .btn {
+        margin: 0.5em;
+    }
+  }
+}
+
 
 // responsive
 // écrans moins de 360px

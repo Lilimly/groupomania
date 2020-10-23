@@ -39,7 +39,7 @@ const ArticlePage = ({ match }) => {
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else if (article.userId === storage.userId) {
-        userAuth = <div className="user-button">
+        userAuth = <div className="article-button">
             <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
             <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
         </div>
@@ -50,10 +50,10 @@ const ArticlePage = ({ match }) => {
             <div className="container">
                 <h1>{article.title} </h1>
                 <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
-                <div className="user-page">
+                <div className="article-page">
                     <div className= "show-article">
                         <p>{article.content}</p>
-                        
+
                         {article.articleUrl
                         ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <p></p>}
 
