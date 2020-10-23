@@ -28,7 +28,7 @@ function FormWithContext ({defaultValue, onSubmit, children}) {
     </FormContext.Provider>
 }
 
-function FormField ({name, children}) {
+function FormField ({name, type, children}) {
     const data = useContext(FormContext)
     const handleChange = useCallback(function (e) {
         data.change(e.target.name, e.target.value)
@@ -36,7 +36,7 @@ function FormField ({name, children}) {
 
     return <div className="form-group">
         <label htmlFor={name}>{children}</label>
-        <input type="text" name={name} id={name} className="form-control" value={data[name] || ''} onChange={handleChange}/>
+        <input type={type} name={name} id={name} className="form-control" value={data[name] || ''} onChange={handleChange}/>
     </div>
 }
 
@@ -79,8 +79,8 @@ function Login () {
                 <div className="container">
                     <h1>Connectez-vous à votre compte</h1>
                     <FormWithContext onSubmit={handleSubmit}>
-                        <FormField name="email">Email</FormField>
-                        <FormField name="password">Mot de passe</FormField>
+                        <FormField name="email" type="text">Email</FormField>
+                        <FormField name="password" type="password">Mot de passe</FormField>
                         <PrimaryButton>Me connecter</PrimaryButton>
                     </FormWithContext>
                 </div>

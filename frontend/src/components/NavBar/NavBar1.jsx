@@ -6,16 +6,14 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl"; 
 import Button from "react-bootstrap/Button"; 
 import img from '../../images/icon.png';
+import AuthApi from '../AuthApi';
 
 const NavBar1 = () => {
-    const [navState, setNavState] = useState(false);
+    const Auth = React.useContext(AuthApi);
 
-    const navFunction = () => {
-        setNavState(!navState)
-    }
 
     let navDiv;
-    if (navState) {
+    if (Auth) {
         const userLog = JSON.parse(localStorage.getItem('userConnect'));
         const userId = userLog.userId;
 
@@ -45,8 +43,3 @@ const NavBar1 = () => {
 }
 
 export default NavBar1;
-
-/*                 <Form inline>
-                    <FormControl type="text" placeholder="Recherche" className="mr-sm-2" />
-                    <Button variant="outline-info">Rechercher</Button>
-                </Form>*/

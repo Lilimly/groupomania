@@ -1,5 +1,5 @@
 //imports
-import React, {useState} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Routes from './components/Routes';
@@ -17,14 +17,12 @@ import './css/App.css';
 // Composant App
 function App() {
   const [auth, setAuth] = React.useState(false);
-  const [navState, setNavState] = useState(false);
 
   // gestion des cookies
   const readCookie = () => {
     const user = Cookies.get("user");
     if(user) {
       setAuth(true);
-      setNavState(true);
     }
   }
 
@@ -34,7 +32,7 @@ function App() {
 
   // Gestion de la NavBar
   let navLink;
-  if (navState) {
+  if (auth === true) {
       const userLog = JSON.parse(localStorage.getItem('userConnect'));
       const userId = userLog.userId;
 

@@ -66,10 +66,10 @@ class Signup extends React.Component {
             <div className="container">
                 <h1>Inscrivez au réseau social de votre entreprise !</h1>
                 <form>
-                    <Field name="firstname" value={this.state.firstname} onChange={this.handleChange}>Prénom</Field>
-                    <Field name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
-                    <Field name="email" value={this.state.email} onChange={this.handleChange}>Email</Field>
-                    <Field name="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
+                    <Field name="firstname" type="text" value={this.state.firstname} onChange={this.handleChange}>Prénom</Field>
+                    <Field name="lastname" type="text" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
+                    <Field name="email" type="text" value={this.state.email} onChange={this.handleChange}>Email</Field>
+                    <Field name="password" type="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
                     <div className="form-submit">
                         <button className="btn btn-primary" onClick={this.handleSubmit}>Envoyer !</button>
                     </div>

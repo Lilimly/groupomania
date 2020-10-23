@@ -9,10 +9,9 @@ const Articles = () => {
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
-    let token = "Bearer " +  storage.token;
-  
-    useEffect(() => {
+    let token = "Bearer " + storage.token;
 
+    useEffect(() => {
       fetch("http://localhost:8080/api/articles", 
         {headers: 
             {"Authorization" : token}
