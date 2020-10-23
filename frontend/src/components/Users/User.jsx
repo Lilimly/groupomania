@@ -43,11 +43,19 @@ const User = () => {
     }
 
     let imgUser;
+    let idUser;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (!user.imageUrl) {
+    } else if (user.id === userId) {
+        idUser = <div className="form-submit">
+            <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
+            <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+            <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
+        </div>
+    }
+     else if (!user.imageUrl) {
         imgUser = <img src={img} alt="img" />
     } else {
         imgUser = <img src={ user.imageUrl } alt="user" />;
@@ -64,11 +72,7 @@ const User = () => {
                         <p>{user.bio}</p>
                     </div>
                 </div>
-                <div className="form-submit">
-                    <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-                    <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-                    <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
-                </div>
+                {idUser}
             </div>
         </>
     );

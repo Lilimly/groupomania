@@ -64,6 +64,11 @@ function Login () {
                 localStorage.setItem('userConnect', JSON.stringify(result));
                 Auth.setAuth(true)
                 Cookies.set("user", "loginTrue")
+                let storage = JSON.parse(localStorage.getItem('userConnect'));
+                if (storage.token === undefined) {
+                    Auth.setAuth(false)
+                    alert("Utilisateur non identifié. Tentez de vous connecter à nouveau !")
+                }
             },
             (error) => {
                 setError(error);

@@ -12,8 +12,6 @@ const ArticlePage = ({ match }) => {
     
     let articleId = match.params.id;
 
-    console.log("id=" + articleId)
-
     useEffect(() => {
       fetch("http://localhost:8080/api/articles/" + articleId, 
         {headers: 
@@ -25,7 +23,6 @@ const ArticlePage = ({ match }) => {
                 setIsLoaded(true);
                 setArticle(result);
                 localStorage.setItem('articlePage', JSON.stringify(result));
-                console.log(JSON.parse(localStorage.getItem('articlePage')));
             },
             (error) => {
                 setIsLoaded(true);
@@ -34,10 +31,9 @@ const ArticlePage = ({ match }) => {
         )
     }, [articleId, token])
 
-    
-
     let imgArticle;
     let urlArticle;
+    let userAuth;
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -47,6 +43,11 @@ const ArticlePage = ({ match }) => {
         imgArticle = <img src={ article.imageUrl } alt="article" />
     } else if (article.articleUrl) {
         urlArticle = <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
+    } else if (article.userId === storage.userId) {
+        userAuth = <div className="form-submit">
+                <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+                <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+            </div>
     }
         
     return (
@@ -60,12 +61,8 @@ const ArticlePage = ({ match }) => {
                         {urlArticle}
                         {imgArticle}
                     </div>
-
                 </div>
-                <div className="form-submit">
-                    <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                    <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
-                </div>
+                {userAuth}
             </div>
         </>
     );
