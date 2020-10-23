@@ -74,8 +74,8 @@ class UpdateArticle extends React.Component {
                     <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>Partagez un lien d'article</Field>
                     <InputFile></InputFile>
                     <div className="form-submit">
-                        <button className="btn btn-primary" onClick={this.handleSubmit}>Enregistrer les modifications</button>
-                        <Link to='/articles/' className="btn btn-primary">Retour aux articles</Link>
+                        <button className="btn btn-success" onClick={this.handleSubmit}>Enregistrer les modifications</button>
+                        <Link to='/articles/' className="btn btn-info">Retour aux articles</Link>
                     </div>
                     {JSON.stringify(this.state)}
                 </form>

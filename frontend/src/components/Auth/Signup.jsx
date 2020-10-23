@@ -72,7 +72,7 @@ class Signup extends React.Component {
                     <Field name="email" type="text" value={this.state.email} onChange={this.handleChange}>Email</Field>
                     <Field name="password" type="password" value={this.state.password} onChange={this.handleChange}>Mot de passe</Field>
                     <div className="form-submit">
-                        <button className="btn btn-primary" onClick={this.handleSubmit}>Envoyer !</button>
+                        <button className="btn btn-info" onClick={this.handleSubmit}>Envoyer !</button>
                     </div>
                 </form>
             </div>

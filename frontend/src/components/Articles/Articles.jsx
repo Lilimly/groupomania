@@ -40,7 +40,7 @@ const Articles = () => {
                 <div className="container">
                     <h1>Voici tous les articles !</h1>
                     <div className="form-submit">
-                        <button className="btn btn-primary" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
+                        <button className="btn btn-info" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
                     </div>
                     {articles.map((article) => (
                         <div  className="article-card" key={"articleCard" + article.id}>

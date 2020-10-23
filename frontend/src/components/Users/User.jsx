@@ -50,9 +50,9 @@ const User = () => {
         return <div>Chargement...</div>;
     } else if (user.id === userId) {
         idUser = <div className="form-submit">
-            <button className="btn btn-primary" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-            <button className="btn btn-primary" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-            <button className="btn btn-primary" onClick={handleOnclick}>Me déconnecter</button>
+            <button className="btn btn-info" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
+            <button className="btn btn-danger" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
+            <button className="btn btn-dark" onClick={handleOnclick}>Me déconnecter</button>
         </div>
     }
      else if (!user.imageUrl) {

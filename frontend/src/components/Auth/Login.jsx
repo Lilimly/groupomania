@@ -41,7 +41,7 @@ function FormField ({name, type, children}) {
 }
 
 function PrimaryButton ({children}) {
-    return <button className="btn btn-primary">{children}</button>
+    return <button className="btn btn-info">{children}</button>
 }
 
 function Login () {

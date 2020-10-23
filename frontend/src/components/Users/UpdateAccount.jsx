@@ -73,8 +73,8 @@ class UpdateAccount extends React.Component {
                     <Field name="bio" value={this.state.bio} onChange={this.handleChange}>Rédigez une bio</Field>
                     <InputFile></InputFile>
                     <div className="form-submit">
-                        <button className="btn btn-primary" onClick={this.handleSubmit}>Enregistrer les modifications</button>
-                        <Link to={'/user/' + userId} className="btn btn-primary">retour à mon compte</Link>
+                        <button className="btn btn-success" onClick={this.handleSubmit}>Enregistrer les modifications</button>
+                        <Link to={'/user/' + userId} className="btn btn-info">retour à mon compte</Link>
                     </div>
                     {JSON.stringify(this.state)}
                 </form>

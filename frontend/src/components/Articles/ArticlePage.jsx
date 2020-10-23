@@ -45,8 +45,8 @@ const ArticlePage = ({ match }) => {
         urlArticle = <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a>
     } else if (article.userId === storage.userId) {
         userAuth = <div className="form-submit">
-                <button className="btn btn-primary" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-                <button className="btn btn-primary" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+                <button className="btn btn-info" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
+                <button className="btn btn-danger" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
             </div>
     }
         
