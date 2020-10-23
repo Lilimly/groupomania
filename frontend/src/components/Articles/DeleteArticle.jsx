@@ -29,7 +29,9 @@ class DeleteArticle extends React.Component {
 
         fetch(('http://localhost:8080/api/articles/' + articleId), requestOptions)
                 .then(response => response.json())
-                .then(() => this.setState({ redirection: true }))
+                .then(() => 
+                this.setState({ redirection: true }),
+                alert("Votre article à bien été supprimé !"))
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);

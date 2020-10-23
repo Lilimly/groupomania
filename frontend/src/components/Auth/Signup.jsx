@@ -40,7 +40,10 @@ class Signup extends React.Component {
 
         fetch('http://localhost:8080/api/auth/signup/', requestOptions)
                 .then(response => response.json())
-                .then(() => this.setState({ redirection: true }))
+                .then(() => 
+                this.setState({ redirection: true }),
+                alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")
+                )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);
@@ -57,8 +60,6 @@ class Signup extends React.Component {
     render() {
         const { redirection } = this.state;
         if (redirection) {
-            alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")
-
             return <Redirect to='/login'/>;
         }
 
