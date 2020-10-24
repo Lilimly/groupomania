@@ -32,12 +32,12 @@
     text-align: center;
     font-weight: bold;
     font-size: 1.2em;
-    color: $second_color;
+    color: $primary_color;
   }
   h2 {
     font-size: 0.9em;
     text-align: center;
-    color: $second_color;
+    color: $primary_color;
   }
   p {
     font-size: 0.9em;
@@ -61,7 +61,22 @@
     }
     p {
       text-align: left;
-      margin-bottom: 2em;;
+    }
+    .post-comment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 2em;
+      .input-group {
+        margin: auto;
+        width: 40%;
+      }
+    }
+    .post-option {
+      margin-bottom: 2em;
+      button {
+        border: none;
+      }
     }
   }
 }
@@ -159,6 +174,11 @@
         margin: 0.5em;
     }
   }
+}
+
+.comment-div {
+  
+
 }
 
 

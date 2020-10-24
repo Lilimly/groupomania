@@ -44,7 +44,7 @@ function App() {
                   <Link to={"/user/" + userId } className="nav-link">Mon compte</Link>
               </Nav>
               <Form inline>
-                  <FormControl type="text" placeholder="Recherche" className="mr-sm-2" />
+                  <FormControl type="text" placeholder="Recherche" className="mr-sm-2 btn-sm" />
                   <Button variant="outline-info btn-sm">Rechercher</Button>
               </Form>
           </>

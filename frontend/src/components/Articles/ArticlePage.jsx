@@ -36,23 +36,24 @@ const ArticlePage = ({ match }) => {
     }, [articleId, token])
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" , 
-          {headers: 
-              {"Authorization" : token},
-          })
-          .then(res => res.json())
-          .then(
-              (result) => {
-                  setIsLoaded(true);
-                  setComment(result.data);
-                  console.log(result.data)
-              },
-              (error) => {
-                  setIsLoaded(true);
-                  setError(error);
-              }
-          )
-      }, [token])
+        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" ,
+            {headers: 
+                {"Authorization" : token},
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setComment(result.data);
+                    localStorage.setItem('comments', JSON.stringify(result.data));
+                    console.log(JSON.parse(localStorage.getItem('comments')))
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [articleId, token])
 
     let userAuth;
 
@@ -81,8 +82,6 @@ const ArticlePage = ({ match }) => {
 
                         {article.imageUrl
                         ? <img src={ article.imageUrl } alt="article" /> : <p></p>}
-
-                        <Comments />
                     </div>
                     {userAuth}
                 </div>
@@ -90,23 +89,24 @@ const ArticlePage = ({ match }) => {
                     {comments
                     ? <>
                     <h2>Commentaires</h2> 
+                        <Comments />
                         {comments.map((comment) => (
-                        <React.Fragment key={"fragment" + comment.id}>
-                            <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
-                            <p key={"commentp" + comment.id}>{comment.content}</p>
-                            {comment.userId === storage.userId 
-                            ? <div>
-                                <Button variant="outline-info" size="sm">
-                                    Modifier
-                                </Button>{' '}
-                                <Button variant="outline-danger" size="sm">
-                                    Supprimer
-                                </Button>
-                            </div>
-                            : <p></p>
-                            }
-                        </React.Fragment>
-                    ))}
+                            <React.Fragment key={"fragment" + comment.id}>
+                                <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
+                                <p key={"commentp" + comment.id}>{comment.content}</p>
+                                {comment.userId === storage.userId 
+                                ? <div className="post-option">
+                                    <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + comment.id)}}>
+                                        Modifier
+                                    </Button>
+                                    <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + comment.id)}}>
+                                        Supprimer
+                                    </Button>
+                                </div>
+                                : <p></p>
+                                }
+                            </React.Fragment>
+                        ))}
                     </> : <p>Cet article ne posséde pas encore de commentaires ...</p>
                     }
                 </div>

@@ -3,33 +3,30 @@ import {Redirect} from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 
-class Comments extends React.Component {
+class UpdateComment extends React.Component {
     state = { redirection: false };
 
     constructor (props) {
         super(props)
+        const comment = JSON.parse(localStorage.getItem('comments'));
+        console.log(comment)
 
         this.state = {
-            articleId: '',
-            userId: '',
-            content: '',
+            articleId: comment.articleId,
+            userId: comment.userId,
+            content: comment.content,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange (e) {
-        const articlePage = JSON.parse(localStorage.getItem('articlePage'));
-        const articleId = articlePage.id;
-
-        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
-        const userId = userConnect.userId;
-
         const name = e.target.name;
         const value =  e.target.value;
+        const comment = JSON.parse(localStorage.getItem('comments'));
         this.setState({
-            articleId: articleId,
-            userId: userId,
+            articleId: comment.articleId,
+            userId: comment.userId,
             [name]: value
         })
     }
@@ -41,7 +38,7 @@ class Comments extends React.Component {
         let token = "Bearer " +  userConnect.token;
       
         const requestOptions = {
-            method: 'post',
+            method: 'put',
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -49,11 +46,14 @@ class Comments extends React.Component {
             body: JSON.stringify(this.state)
         };
 
-        fetch(('http://localhost:8080/api/comments/'), requestOptions)
+        const comment = JSON.parse(localStorage.getItem('comments'));
+        const commentId = comment.commentId;
+
+        fetch(('http://localhost:8080/api/comments/' + commentId), requestOptions)
                 .then(response => response.json())
                 .then(() => 
                 this.setState({ redirection: true }),
-                alert("Votre commentaire à bien été publié !")
+                alert("Votre commentaire à bien été modifié !")
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
@@ -75,25 +75,30 @@ class Comments extends React.Component {
         if (redirection) {
             return <Redirect to={'/article/' + articleId} />;
         }
-        return (<div className="post-comment">
-                <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="btnGroupAddon">Comment </InputGroup.Text>
-                        </InputGroup.Prepend>
-                    <FormControl
-                    type="text"
-                    name="content"
-                    value={this.state.content}
-                    aria-label="comment"
-                    aria-describedby="btnGroupAddon"
-                    onChange={this.handleChange}
-                    />
-                </InputGroup>
-                <div className="form-submit">
-                        <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
+        return (
+            <div className="container">
+                <h1>Modifiez votre commentaire</h1>
+                <div className="post-comment">
+                    <InputGroup>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text id="btnGroupAddon">Comment </InputGroup.Text>
+                            </InputGroup.Prepend>
+                        <FormControl
+                        type="text"
+                        name="content"
+                        value={this.state.content}
+                        aria-label="comment"
+                        aria-describedby="btnGroupAddon"
+                        onChange={this.handleChange}
+                        />
+                    </InputGroup>
+                    <div className="form-submit">
+                            <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
+                    </div>
                 </div>
-            </div>)
+            </div>
+        )
     };
 };
 
-export default Comments;
+export default UpdateComment;

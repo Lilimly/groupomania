@@ -50,13 +50,13 @@
   text-align: center;
   font-weight: bold;
   font-size: 1.2em;
-  color: #454545;
+  color: indianred;
 }
 
 .container h2 {
   font-size: 0.9em;
   text-align: center;
-  color: #454545;
+  color: indianred;
 }
 
 .container p {
@@ -88,7 +88,33 @@
 
 .container .comment-div p {
   text-align: left;
+}
+
+.container .comment-div .post-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 2em;
+}
+
+.container .comment-div .post-comment .input-group {
+  margin: auto;
+  width: 40%;
+}
+
+.container .comment-div .post-option {
+  margin-bottom: 2em;
+}
+
+.container .comment-div .post-option button {
+  border: none;
 }
 
 .article-card {

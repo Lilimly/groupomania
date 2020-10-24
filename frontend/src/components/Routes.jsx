@@ -15,6 +15,8 @@ import ArticlePage from './Articles/ArticlePage';
 import CreateArticle from './Articles/CreateArticle';
 import UpdateArticle from './Articles/UpdateArticle';
 import DeleteArticle from './Articles/DeleteArticle';
+import UpdateComment from './Articles/UpdateComment';
+import DeleteComment from './Articles/DeleteComment';
 
 const Routes = () => {
     
@@ -33,6 +35,8 @@ const Routes = () => {
             <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
             <ProtectedRoute path="/articleupdate/:id" auth={Auth.auth} component={UpdateArticle} />
             <ProtectedRoute path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
+            <ProtectedRoute path="/updatecomment/:id" auth={Auth.auth} component={UpdateComment} />
+            <ProtectedRoute path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
         </Switch>
     )
 }
