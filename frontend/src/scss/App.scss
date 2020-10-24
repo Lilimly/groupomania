@@ -30,6 +30,7 @@
   @include flex_column;
   h1 {
     text-align: center;
+    font-weight: bold;
     font-size: 1.2em;
     color: $second_color;
   }
@@ -43,8 +44,24 @@
     text-align: center;
     color: $second_color;
     a {
-      color: $primary_color;
+      font-size: 0.8em;
       @include text_link;
+    }
+  }
+  .comment-div {
+    h2 {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 2em;
+    }
+    h3 {
+      font-size: 0.8em;
+      font-weight: bold;
+      color: $primary_color;
+    }
+    p {
+      text-align: left;
+      margin-bottom: 2em;;
     }
   }
 }
@@ -61,7 +78,6 @@
   }
   .show-article {
     margin: 0.5em;
-    
     h2 {
       text-align: left;
       color: $main_color;
@@ -126,6 +142,13 @@
     height: 7%;
     border-radius: 50%;
     border: 1px solid $main_color;
+  }
+  .show-article {
+    a {
+      .nav-link{
+        font-weight: 0.8em; 
+      }
+    }
   }
   .article-button {
     display: flex;

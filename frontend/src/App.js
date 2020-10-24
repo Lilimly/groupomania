@@ -45,7 +45,7 @@ function App() {
               </Nav>
               <Form inline>
                   <FormControl type="text" placeholder="Recherche" className="mr-sm-2" />
-                  <Button variant="outline-info">Rechercher</Button>
+                  <Button variant="outline-info btn-sm">Rechercher</Button>
               </Form>
           </>
   } else {

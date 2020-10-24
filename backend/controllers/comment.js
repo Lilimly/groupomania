@@ -1,9 +1,10 @@
 const db = require("../models");
+const comment = require("../models/comment");
 const Comment = db.comments;
 
 // logique métier : lire tous les commentaires
 exports.findAllComments = (req, res, next) => {
-  Comment.findAll()
+  Comment.findAll({where: {articleId: req.params.id}})
   .then(comments => {
       console.log(comments);
       res.status(200).json({data: comments});
@@ -13,7 +14,7 @@ exports.findAllComments = (req, res, next) => {
 
 // logique métier : lire un commentaire par son id
 exports.findOneComment = (req, res, next) => {
-  Comment.findOne({ where: {id: req.params.id} })
+  Comment.findOne({ where: {id: req.params.id}})
   .then(comment => {
     console.log(comment);
     res.status(200).json(comment)
@@ -24,9 +25,6 @@ exports.findOneComment = (req, res, next) => {
 // logique métier : créer un commentaire
 exports.createComment = (req, res, next) => {
   const commentObject = req.body;
-
-  
-
   // Création d'un nouvel objet commentaire
   const comment = new Comment({
     ...commentObject
