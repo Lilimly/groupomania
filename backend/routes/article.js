@@ -7,11 +7,11 @@ const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
 // Routes
-router.get('/', articleCtrl.findAllArticles);
-router.get('/:id/comments', commentCtrl.findAllComments)
-router.get('/:id', articleCtrl.findOneArticle);
-router.post('/', multer, articleCtrl.createArticle);
-router.put('/:id', multer, articleCtrl.modifyArticle);
-router.delete('/:id', articleCtrl.deleteArticle);
+router.get('/', auth, articleCtrl.findAllArticles);
+router.get('/:id/comments', auth, commentCtrl.findAllComments)
+router.get('/:id',auth, articleCtrl.findOneArticle);
+router.post('/',auth, multer, articleCtrl.createArticle);
+router.put('/:id',auth, multer, articleCtrl.modifyArticle);
+router.delete('/:id',auth, articleCtrl.deleteArticle);
 
 module.exports = router;

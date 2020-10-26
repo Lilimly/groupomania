@@ -76,17 +76,17 @@ const ArticlePage = ({ match }) => {
                     <div className= "show-article">
                         <p>{article.content}</p>
 
-                        {article.articleUrl
-                        ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <p></p>}
+                        {article.articleUrl || article.articleUrl !== undefined
+                        ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
 
                         {article.imageUrl
-                        ? <img src={ article.imageUrl } alt="article" /> : <p></p>}
+                        ? <img src={ article.imageUrl } alt="article" /> : <></>}
                     </div>
                     {userAuth}
                 </div>
                 <div className="comment-div">
                     <h2>Commentaires</h2> 
-                            <Comments />
+                        <Comments />
                         {comments.map((comment) => (
                             <React.Fragment key={"fragment" + comment.id}>
                                 <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
