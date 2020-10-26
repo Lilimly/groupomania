@@ -28,10 +28,10 @@ const Routes = () => {
             <ProtectedLogin path="/" exact component={Home} />
             <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
-            <Route path="/user/:id" auth={Auth.auth} component={User} />
+            <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
             <Route path="/userupdate/:id" auth={Auth.auth} component={UpdateAccount} />
             <Route path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
-            <Route path="/articles" auth={Auth.auth} component={Articles} />
+            <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
             <Route path="/createarticle" auth={Auth.auth} component={CreateArticle} />
             <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
             <Route path="/articleupdate/:id" auth={Auth.auth} component={UpdateArticle} />
@@ -60,9 +60,7 @@ const ProtectedLogin = ({auth, component: Component, ...rest}) => {
     )
 }
 
-export default Routes;
-
-/* const ProtectedRoute = ({auth, component: Component, ...rest}) => {
+const ProtectedRoute = ({auth, component: Component, ...rest}) => {
     return(
         <Route 
         {...rest}
@@ -77,4 +75,7 @@ export default Routes;
             }
         />
     )
-}*/
+}
+
+export default Routes;
+

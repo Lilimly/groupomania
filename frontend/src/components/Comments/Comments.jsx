@@ -68,12 +68,10 @@ class Comments extends React.Component {
     }
 
     render() {
-        const articlePage = JSON.parse(localStorage.getItem('articlePage'));
-        const articleId = articlePage.id;
 
         const { redirection } = this.state;
         if (redirection) {
-            return <Redirect to={'/article/' + articleId} />;
+            return <Redirect to={'/articles/'} />;
         }
         return (<div className="post-comment">
                 <InputGroup>

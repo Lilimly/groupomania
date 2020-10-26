@@ -73,10 +73,3 @@ const User = () => {
 };
 
 export default User;
-
-/*     let imgUser;
-    else if (!user.imageUrl) {
-        imgUser = <img src={img} alt="img" />
-    } else {
-        imgUser = <img src={ user.imageUrl } alt="user" />;
-    }  */

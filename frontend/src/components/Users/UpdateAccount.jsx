@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import Field from '../Form/Field';
-import InputFile from '../Form/InputFile';
 
 class UpdateAccount extends React.Component {
 
@@ -32,6 +31,13 @@ class UpdateAccount extends React.Component {
     handleSubmit (e) {
         e.preventDefault()
 
+        const formData = new FormData();
+        for (let name in this.state) {
+            formData.append(name, this.state[name]);
+        }
+        const imagedata = document.querySelector('input[type="file"]').files[0];
+        formData.append('image', imagedata);
+
         const storage = JSON.parse(localStorage.getItem('userConnect'));
         const userId = storage.userId
         let token = "Bearer " +  storage.token;
@@ -39,10 +45,9 @@ class UpdateAccount extends React.Component {
         const requestOptions = {
             method: 'put',
             headers: { 
-                'Content-Type': 'application/json',
                 'Authorization': token 
             },
-            body: JSON.stringify(this.state)
+            body: formData
         };
 
         fetch(('http://localhost:8080/api/users/' + userId), requestOptions)
@@ -71,7 +76,10 @@ class UpdateAccount extends React.Component {
                     <Field name="firstname" value={this.state.firstname} onChange={this.handleChange}>Prénom</Field>
                     <Field name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
                     <Field name="bio" value={this.state.bio} onChange={this.handleChange}>Rédigez une bio</Field>
-                    <InputFile></InputFile>
+                    <label>
+                        Selectionnez une photo
+                        <input className="form-control" type="file" name="imageUrl" onChange={this.handleChange}/>
+                    </label>
                     <div className="form-submit">
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Enregistrer les modifications</button>
                         <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>

@@ -62,17 +62,21 @@ function Login () {
         .then(
             (result) => {
                 localStorage.setItem('userConnect', JSON.stringify(result));
-                Auth.setAuth(true)
-                Cookies.set("user", "loginTrue")
                 let storage = JSON.parse(localStorage.getItem('userConnect'));
-                alert("La communauté de Groupomania est contente de vous revoir !")
                 if (storage.token === undefined) {
                     Auth.setAuth(false)
                     alert("Utilisateur non identifié. Tentez de vous connecter à nouveau !")
+                } else {
+                    Auth.setAuth(true)
+                    Cookies.set("user", "loginTrue")
+                    alert("La communauté de Groupomania est contente de vous revoir !")
                 }
             },
             (error) => {
-                setError(error);
+                if(error) {
+                    setError(error);
+                    Auth.setAuth(false)
+                }
             }
         )
     }, [Auth])

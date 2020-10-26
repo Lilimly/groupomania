@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import Field from '../Form/Field';
-import InputFile from '../Form/InputFile';
 
 class UpdateArticle extends React.Component {
 
@@ -14,8 +13,7 @@ class UpdateArticle extends React.Component {
         this.state = {
             title: articlePage.title,
             content: articlePage.content,
-            articleUrl: articlePage.articleUrl,
-            imageUrl: articlePage.imageUrl
+            articleUrl: articlePage.articleUrl
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,7 +70,6 @@ class UpdateArticle extends React.Component {
                     <Field name="title" value={this.state.title} onChange={this.handleChange}>Titre</Field>
                     <Field name="content" value={this.state.content} onChange={this.handleChange}>Contenu de l'article</Field>
                     <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>Partagez un lien d'article</Field>
-                    <InputFile></InputFile>
                     <div className="form-submit">
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Enregistrer les modifications</button>
                         <Link to='/articles/' className="btn btn-outline-info btn-sm">Retour aux articles</Link>

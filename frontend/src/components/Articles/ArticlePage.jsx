@@ -78,9 +78,6 @@ const ArticlePage = ({ match }) => {
 
                         {article.articleUrl || article.articleUrl !== undefined
                         ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
-
-                        {article.imageUrl
-                        ? <img src={ article.imageUrl } alt="article" /> : <></>}
                     </div>
                     {userAuth}
                 </div>

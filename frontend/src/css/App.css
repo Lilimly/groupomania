@@ -239,6 +239,13 @@
   font-weight: 0.8em;
 }
 
+.article-page .show-article img {
+  width: 80%;
+  height: 80%;
+  border-radius: 0%;
+  border: none;
+}
+
 .article-page .article-button {
   display: -webkit-box;
   display: -ms-flexbox;
