@@ -48,6 +48,15 @@
       @include text_link;
     }
   }
+  .post-option {
+    margin: 2em;
+    display: flex;
+    justify-content: center;
+    button {
+      border: none;
+      margin: 1em;
+    }
+  }
   .comment-div {
     h2 {
       font-size: 1em;
@@ -72,14 +81,10 @@
         width: 40%;
       }
     }
-    .post-option {
-      margin-bottom: 2em;
-      button {
-        border: none;
-      }
-    }
   }
 }
+
+
 
 // paramètres photo utilisateur
 .article-card {
@@ -175,12 +180,6 @@
     }
   }
 }
-
-.comment-div {
-  
-
-}
-
 
 // responsive
 // écrans moins de 360px

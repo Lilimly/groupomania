@@ -11,7 +11,6 @@ class UpdateArticle extends React.Component {
         super(props)
         const articlePage = JSON.parse(localStorage.getItem('articlePage'));
 
-
         this.state = {
             title: articlePage.title,
             content: articlePage.content,

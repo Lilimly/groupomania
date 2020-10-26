@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Redirect} from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
@@ -8,13 +8,13 @@ class UpdateComment extends React.Component {
 
     constructor (props) {
         super(props)
-        const comment = JSON.parse(localStorage.getItem('comments'));
-        console.log(comment)
+
+        const commentPage = JSON.parse(localStorage.getItem('commentPage'))
 
         this.state = {
-            articleId: comment.articleId,
-            userId: comment.userId,
-            content: comment.content,
+            articleId: commentPage.articleId,
+            userId: commentPage.userId,
+            content: commentPage.content,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,10 +23,11 @@ class UpdateComment extends React.Component {
     handleChange (e) {
         const name = e.target.name;
         const value =  e.target.value;
-        const comment = JSON.parse(localStorage.getItem('comments'));
+        const commentPage = JSON.parse(localStorage.getItem('commentPage'))
+
         this.setState({
-            articleId: comment.articleId,
-            userId: comment.userId,
+            articleId: commentPage.articleId,
+            userId: commentPage.userId,
             [name]: value
         })
     }
@@ -36,6 +37,9 @@ class UpdateComment extends React.Component {
 
         const userConnect = JSON.parse(localStorage.getItem('userConnect'));
         let token = "Bearer " +  userConnect.token;
+
+        const commentPage = JSON.parse(localStorage.getItem('commentPage'));
+        const commentId = commentPage.id;
       
         const requestOptions = {
             method: 'put',
@@ -45,9 +49,6 @@ class UpdateComment extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
-
-        const comment = JSON.parse(localStorage.getItem('comments'));
-        const commentId = comment.commentId;
 
         fetch(('http://localhost:8080/api/comments/' + commentId), requestOptions)
                 .then(response => response.json())

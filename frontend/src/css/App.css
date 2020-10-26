@@ -74,6 +74,21 @@
   color: #6e1313;
 }
 
+.container .post-option {
+  margin: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .post-option button {
+  border: none;
+  margin: 1em;
+}
+
 .container .comment-div h2 {
   font-size: 1em;
   font-weight: bold;
@@ -107,14 +122,6 @@
 .container .comment-div .post-comment .input-group {
   margin: auto;
   width: 40%;
-}
-
-.container .comment-div .post-option {
-  margin-bottom: 2em;
-}
-
-.container .comment-div .post-option button {
-  border: none;
 }
 
 .article-card {

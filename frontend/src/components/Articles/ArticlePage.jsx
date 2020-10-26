@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import Button from 'react-bootstrap/Button'
-import Comments from "./Comments"
+import { Link, useHistory } from 'react-router-dom';
+import Comments from "../Comments/Comments"
 
 const ArticlePage = ({ match }) => {
     const [error, setError] = useState(null);
@@ -86,29 +85,14 @@ const ArticlePage = ({ match }) => {
                     {userAuth}
                 </div>
                 <div className="comment-div">
-                    {comments
-                    ? <>
                     <h2>Commentaires</h2> 
-                        <Comments />
+                            <Comments />
                         {comments.map((comment) => (
                             <React.Fragment key={"fragment" + comment.id}>
                                 <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
-                                <p key={"commentp" + comment.id}>{comment.content}</p>
-                                {comment.userId === storage.userId 
-                                ? <div className="post-option">
-                                    <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + comment.id)}}>
-                                        Modifier
-                                    </Button>
-                                    <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + comment.id)}}>
-                                        Supprimer
-                                    </Button>
-                                </div>
-                                : <p></p>
-                                }
+                                <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
                             </React.Fragment>
                         ))}
-                    </> : <p>Cet article ne posséde pas encore de commentaires ...</p>
-                    }
                 </div>
             </div>
         </>
