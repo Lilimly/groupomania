@@ -71,7 +71,7 @@ const ArticlePage = ({ match }) => {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                <p id="created-at">Publié par {article.userId} le : {article.createdAt}</p>
+                <p id="created-at">Publié par {article.userId}, le : {article.createdAt}</p>
                 <div className="article-page">
                     <div className= "show-article">
                         <p>{article.content}</p>

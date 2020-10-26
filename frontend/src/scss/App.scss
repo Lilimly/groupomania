@@ -50,8 +50,7 @@
   }
   .post-option {
     margin: 2em;
-    display: flex;
-    justify-content: center;
+    @include flex-center;
     button {
       border: none;
       margin: 1em;
@@ -72,9 +71,7 @@
       text-align: left;
     }
     .post-comment {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex_column;
       margin-bottom: 2em;
       .input-group {
         margin: auto;

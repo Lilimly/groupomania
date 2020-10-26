@@ -40,18 +40,20 @@ const CommentPage = ({ match }) => {
     }
 
     return (<div className="container">
-        <h1>{comment.content} </h1>
-        {comment.userId === storage.userId 
-        ? <div className="post-option">
-            <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + commentId)}}>
-                Modifier
-            </Button>
-            <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
-                Supprimer
-            </Button>
-        </div>
-        : <p></p>
-        }
+        <h1>Commentaire :</h1>
+        <h2>{comment.content} </h2>
+        <p id="created-at">Publié par {comment.userId}, le : {comment.createdAt}</p>
+            {comment.userId === storage.userId 
+            ? <div className="post-option">
+                <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + commentId)}}>
+                    Modifier
+                </Button>
+                <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
+                    Supprimer
+                </Button>
+            </div>
+            : <p></p>
+            }
         </div>
     );
 }
