@@ -81,8 +81,6 @@
   }
 }
 
-
-
 // paramètres photo utilisateur
 .article-card {
   display: flex;
@@ -114,7 +112,8 @@
     }
     .nav-link{
       color: $primary_color;
-      padding: 0em;;
+      font-weight: bold;
+      padding: 0em;
       &:hover {
         color: $text_link_color;
       }
@@ -134,7 +133,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 3em;
-  
   .user-button {
     display: flex;
     flex-direction: column;
@@ -142,6 +140,27 @@
       .btn {
         margin: 0.5em;
     }
+  }
+}
+
+.user-article {
+  h2 {
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    color: $primary_color;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  p {
+    font-size: 0.9em;
+    text-align: left;
+    color: $second_color;
+  }
+  a {
+    font-size: 1em;
+    @include text_link;
+    color: $primary_color;
   }
 }
 

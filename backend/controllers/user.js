@@ -14,6 +14,16 @@ exports.findAllUsers = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 };
 
+// User by  article Id
+exports.findUserByArticle = (req, res, next) => {
+  
+  User.findOne({ where: {id: req.params.id} })
+  .then(user => {
+    res.status(200).json(user)
+  })
+  .catch(error => res.status(404).json({ error }));
+};
+
 // logique métier : lire un utilisateur par son id
 exports.findOneUser = (req, res, next) => {
   

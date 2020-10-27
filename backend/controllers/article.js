@@ -1,13 +1,24 @@
 //imports
 const models = require("../models");
 const Article = models.articles;
-const User = models.users
 
 // logique métier : lire tous articles
 exports.findAllArticles = (req, res, next) => {
   Article.findAll({order: [
     ['createdAt', 'DESC'],
 ]})
+  .then(articles => {
+      console.log(articles);
+      res.status(200).json({data: articles});
+  })
+  .catch(error => res.status(400).json({ error }));
+};
+
+// Find all articles where userId
+exports.findArticlesByUserId = (req, res, next) => {
+  Article.findAll({
+    where: {userId: req.params.id,
+    }})
   .then(articles => {
       console.log(articles);
       res.status(200).json({data: articles});

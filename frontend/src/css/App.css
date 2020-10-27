@@ -165,6 +165,7 @@
 
 .article-card .show-article .nav-link {
   color: indianred;
+  font-weight: bold;
   padding: 0em;
 }
 
@@ -210,6 +211,31 @@
 
 .user-page .user-button .btn {
   margin: 0.5em;
+}
+
+.user-article h2 {
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+  color: indianred;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.user-article p {
+  font-size: 0.9em;
+  text-align: left;
+  color: #454545;
+}
+
+.user-article a {
+  font-size: 1em;
+  font-weight: bold;
+  color: indianred;
+}
+
+.user-article a:hover {
+  color: #6e1313;
 }
 
 .article-page {

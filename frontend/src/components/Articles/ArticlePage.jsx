@@ -9,6 +9,7 @@ const ArticlePage = ({ match }) => {
     const [article, setArticle] = useState([]);
     const [comments, setComment] = useState([]);
     const [like, setLike] = useState([]);
+    const [user, setUser] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -76,6 +77,29 @@ const ArticlePage = ({ match }) => {
                 )
             }, [articleId, token])
 
+            const articlePage = JSON.parse(localStorage.getItem('articlePage'));
+            const articleUserId = articlePage.userId
+
+            useEffect(() => {
+                fetch("http://localhost:8080/api/articles/" + articleId + "/user/" + articleUserId,
+                    {headers: 
+                        {"Authorization" : token},
+                    })
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            setIsLoaded(true);
+                            setUser(result);
+                            localStorage.setItem('user', JSON.stringify(result));
+                            console.log(JSON.parse(localStorage.getItem('user')));
+                        },
+                        (error) => {
+                            setIsLoaded(true);
+                            setError(error);
+                        }
+                    )
+                }, [articleId, articleUserId, token])
+
     let userAuth;
 
     if (error) {
@@ -93,7 +117,8 @@ const ArticlePage = ({ match }) => {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                <p id="created-at">Publié par {article.userId}, le : {article.createdAt}</p>
+                <Link to={"/user/" + user.id} key={"user" + user.id} className="nav-link">Publié par {user.firstname} {user.lastname}</Link>
+                <p>le : {article.createdAt}</p>
                 <div className="article-page">
                     <div className= "show-article">
                         <p>{article.content}</p>
