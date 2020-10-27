@@ -134,12 +134,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 3em;
-  img {
-    width: 7%;
-    height: 7%;
-    border-radius: 50%;
-    border: 1px solid $main_color;
-  }
+  
   .user-button {
     display: flex;
     flex-direction: column;
@@ -166,12 +161,6 @@
         font-weight: 0.8em; 
       }
     }
-    img {
-      width: 80%;
-      height: 80%;
-      border-radius: 0%;
-      border: none;
-      }
   }
   .article-button {
     display: flex;

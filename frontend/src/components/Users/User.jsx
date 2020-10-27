@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthApi from '../AuthApi';
 import Cookies from 'js-cookie';
+import Image from 'react-bootstrap/Image'
+import Col from 'react-bootstrap/Col'
 import img from '../../images/icon.png';
 
 const User = () => {
@@ -60,7 +62,15 @@ const User = () => {
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
                 <div className="user-page">
-                    <img src={img} alt="user" key={"userImage" + user.id} />
+                <img
+                    width={64}
+                    height={64}
+                    className="mr-3"
+                    src={"http://localhost:8080/images/sauce2.jpeg1600363389643.jpg1603728725520.jpg"}
+                    alt="user"
+                    key={"userImage" + user.id}
+                />
+                    
                     <div className= "show-article">
                         <h2>{user.firstname} {user.lastname}</h2>
                         <p>{user.bio}</p>

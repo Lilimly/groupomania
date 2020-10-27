@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Comments from "../Comments/Comments"
+import Comments from "../Comments/Comments";
+import Likes from "../Likes/Likes"
 
 const ArticlePage = ({ match }) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const [comments, setComment] = useState([]);
+    const [like, setLike] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -54,6 +56,26 @@ const ArticlePage = ({ match }) => {
             )
         }, [articleId, token])
 
+        useEffect(() => {
+            fetch("http://localhost:8080/api/articles/" + articleId + "/likes/" ,
+                {headers: 
+                    {"Authorization" : token},
+                })
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setLike(result.data);
+                        localStorage.setItem('likes', JSON.stringify(result.data));
+                        console.log(JSON.parse(localStorage.getItem('likes')))
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                )
+            }, [articleId, token])
+
     let userAuth;
 
     if (error) {
@@ -75,15 +97,16 @@ const ArticlePage = ({ match }) => {
                 <div className="article-page">
                     <div className= "show-article">
                         <p>{article.content}</p>
-
                         {article.articleUrl || article.articleUrl !== undefined
                         ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
+                        <Likes />{'   '}{like.length}
                     </div>
                     {userAuth}
                 </div>
                 <div className="comment-div">
-                    <h2>Commentaires</h2> 
+                    <h2>Laissez un commentaire ici  :</h2> 
                         <Comments />
+                        <h2>Article commenté {comments.length} fois.</h2>
                         {comments.map((comment) => (
                             <React.Fragment key={"fragment" + comment.id}>
                                 <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>

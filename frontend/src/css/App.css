@@ -195,13 +195,6 @@
   margin-top: 3em;
 }
 
-.user-page img {
-  width: 7%;
-  height: 7%;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
 .user-page .user-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,13 +230,6 @@
 
 .article-page .show-article a .nav-link {
   font-weight: 0.8em;
-}
-
-.article-page .show-article img {
-  width: 80%;
-  height: 80%;
-  border-radius: 0%;
-  border: none;
 }
 
 .article-page .article-button {
