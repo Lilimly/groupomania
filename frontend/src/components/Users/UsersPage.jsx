@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import AuthApi from '../AuthApi';
-import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 
-const User = () => {
+const UsersPage = ({match}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const [articles, setArticle] = useState([]);
-    const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
-    const userId = storage.userId;
+    const userId = match.params.id;
     let token = "Bearer " +  storage.token;
 
     useEffect(() => {
@@ -54,25 +51,10 @@ const User = () => {
             )
         }, [userId, token])
 
-    const Auth = React.useContext(AuthApi);
-
-    const handleOnclick = () => {
-        Auth.setAuth(false);
-        Cookies.remove("user");
-        localStorage.clear();
-    }
-
-    let idUser;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (user.id === userId) {
-        idUser = <div className="user-button">
-            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-            <button className="btn btn-outline-dark btn-sm" onClick={handleOnclick}>Me déconnecter</button>  
-        </div>
     }
 
     return (
@@ -93,7 +75,6 @@ const User = () => {
                         <h2>{user.firstname} {user.lastname}</h2>
                         <p>{user.bio}</p>
                     </div>
-                    {idUser}
                 </div>
                 <div className="user-article">
                     <h2>Articles publiés par {user.firstname}</h2>
@@ -110,4 +91,4 @@ const User = () => {
     );
 };
 
-export default User;
+export default UsersPage;

@@ -8,6 +8,7 @@ import Home from './Home';
 import Signup from './Auth/Signup';
 import Login from './Auth/Login';
 import User from './Users/User';
+import UsersPage from './Users/UsersPage';
 import UpdateAccount from './Users/UpdateAccount';
 import DeleteAccount from './Users/DeleteAccount';
 import Articles from './Articles/Articles';
@@ -29,9 +30,10 @@ const Routes = () => {
             <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
+            <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
             <Route path="/userupdate/:id" auth={Auth.auth} component={UpdateAccount} />
             <Route path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
-            <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
+            <Route path="/users/:id" auth={Auth.auth} component={UsersPage} />
             <Route path="/createarticle" auth={Auth.auth} component={CreateArticle} />
             <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
             <Route path="/articleupdate/:id" auth={Auth.auth} component={UpdateArticle} />

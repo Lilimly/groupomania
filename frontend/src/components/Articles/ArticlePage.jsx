@@ -117,7 +117,7 @@ const ArticlePage = ({ match }) => {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                <Link to={"/user/" + user.id} key={"user" + user.id} className="nav-link">Publié par {user.firstname} {user.lastname}</Link>
+                <Link to={"/users/" + user.id} key={"user" + user.id} className="nav-link">Publié par {user.firstname} {user.lastname}</Link>
                 <p>le : {article.createdAt}</p>
                 <div className="article-page">
                     <div className= "show-article">
