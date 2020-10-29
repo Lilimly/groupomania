@@ -64,7 +64,13 @@ const Articles = () => {
                     </div>
                     {articles.map((article) => (
                         <div  className="article-card" key={"articleCard" + article.id}>
-                            <img src={img} alt="user" key={"userImage" + article.id} />
+                            {users.map((user) => {
+                                    if (user.id === article.userId && user.imageUrl) {
+                                    return <img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + article.id} />
+                                    } else if (user.id === article.userId && !user.imageUrl) {
+                                        return <img src={img} alt="user" key={"userImage" + article.id} />
+                                    }
+                                })}
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
                                     if(user.id === article.userId)

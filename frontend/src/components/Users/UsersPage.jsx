@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import img from '../../images/icon.png';
 
 const UsersPage = ({match}) => {
     const [error, setError] = useState(null);
@@ -62,14 +63,24 @@ const UsersPage = ({match}) => {
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
                 <div className="user-page">
+                {user.imageUrl ?
                     <img
                         width={64}
                         height={64}
                         className="mr-3"
-                        src={"http://localhost:8080/images/sauce2.jpeg1600363389643.jpg1603728725520.jpg"}
+                        src={"http://localhost:8080/images/" + user.imageUrl}
+                        alt="user"
+                        key={"userImage" + user.id}
+                    /> : 
+                    <img
+                        width={64}
+                        height={64}
+                        className="mr-3"
+                        src={img}
                         alt="user"
                         key={"userImage" + user.id}
                     />
+                    }
                         
                     <div className= "show-article">
                         <h2>{user.firstname} {user.lastname}</h2>

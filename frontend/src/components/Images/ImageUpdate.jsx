@@ -23,21 +23,21 @@ class ImageUpdate extends React.Component {
         })
         .then(function (res) { 
             if (res.ok) { 
-            
-            alert("Perfect! "); 
-        } else if (res.status === 401) { 
-            alert("Oops! "); 
+            alert("Votre image à bien été modifiée !"); 
+            } else if (res.status === 401) { 
+                alert("Oops! "); 
+            } 
+            }, function (e) { 
+                alert("Une erreur s'est produite : " + e); 
+            }); 
         } 
-        }, function (e) { 
-            alert("Error submitting form!"); 
-        }); 
-    } 
 
     render() {
         const storage = JSON.parse(localStorage.getItem('userConnect'));
-        const userId = storage.userId
+        const userId = storage.userId;
+
         return <>
-            <form className="addPhotoForm" onSubmit={this.handleSubmit.bind(this)}>
+            <form className="addPhotoForm" onSubmit={this.handleSubmit}>
                 <input className="form-control" type="file" name="imageUrl" />
                 <Button color="success" type="Submit">Add</Button>
             </form>

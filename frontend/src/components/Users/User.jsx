@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import img from '../../images/icon.png';
 import AuthApi from '../AuthApi';
 import Cookies from 'js-cookie';
 
@@ -8,7 +9,6 @@ const User = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const [articles, setArticle] = useState([]);
-    const [image, setImage] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -55,29 +55,6 @@ const User = () => {
             )
         }, [userId, token])
 
-        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
-        const userImage = userAccount.imageUrl;
-        console.log(userImage)
-        
-        useEffect(() => {
-            fetch("http://localhost:8080/images/" + userImage ,
-                {headers: 
-                    {"Authorization" : token},
-                })
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setImage(result);
-                        console.log(result)
-                    },
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                )
-            }, [userImage, token])
-
     const Auth = React.useContext(AuthApi);
 
     const handleOnclick = () => {
@@ -105,14 +82,24 @@ const User = () => {
                 <h1>Bienvenue {user.firstname} !</h1>
                 <div className="user-page">
                     <div className="images">
-                        <img
-                            width={64}
-                            height={64}
-                            className="mr-3"
-                            src={image}
-                            alt="user"
-                            key={"userImage" + user.id}
-                        />
+                    {user.imageUrl ?
+                    <img
+                        width={64}
+                        height={64}
+                        className="mr-3"
+                        src={"http://localhost:8080/images/" + user.imageUrl}
+                        alt="user"
+                        key={"userImage" + user.id}
+                    /> : 
+                    <img
+                        width={64}
+                        height={64}
+                        className="mr-3"
+                        src={img}
+                        alt="user"
+                        key={"userImage" + user.id}
+                    />
+                    }
                         <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/imageupdate/" + userId)}}>Modifier ma photo</button>
                     </div>
                     <div className= "show-article">
@@ -137,3 +124,15 @@ const User = () => {
 };
 
 export default User;
+
+/*
+images
+<img
+    width={64}
+    height={64}
+    className="mr-3"
+    src={image}
+    alt="user"
+    key={"userImage" + user.id}
+/>
+ */
