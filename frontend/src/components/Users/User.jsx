@@ -70,9 +70,10 @@ const User = () => {
         return <div>Chargement...</div>;
     } else if (user.id === userId) {
         idUser = <div className="user-button">
-            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier mon compte</button>
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer mon compte</button>
-            <button className="btn btn-outline-dark btn-sm" onClick={handleOnclick}>Me déconnecter</button>  
+            <p>Gérer mon compte</p>
+            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier</button>
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer</button>
+            <button className="btn btn-outline-dark btn-sm" onClick={handleOnclick}>Déconnecter</button>  
         </div>
     }
 
@@ -84,23 +85,17 @@ const User = () => {
                     <div className="images">
                     {user.imageUrl ?
                     <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
                         src={"http://localhost:8080/images/" + user.imageUrl}
                         alt="user"
                         key={"userImage" + user.id}
                     /> : 
                     <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
                         src={img}
                         alt="user"
                         key={"userImage" + user.id}
                     />
                     }
-                        <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/imageupdate/" + userId)}}>Modifier ma photo</button>
+                        <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/imageupdate/" + userId)}}>Modifier</button>
                     </div>
                     <div className= "show-article">
                         <h2>{user.firstname} {user.lastname}</h2>
@@ -111,11 +106,11 @@ const User = () => {
                 <div className="user-article">
                     <h2>Vos articles</h2>
                     {articles.map((article) => (
-                        <React.Fragment key={"user" + article.id}>
+                        <div className="user-articles" key={"user" + article.id}>
                             <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                             <p key={"articlep" + article.id}>{article.content}</p>
                             <p key={"date" + article.id}>Publié le {article.createdAt} </p>
-                        </React.Fragment>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -125,14 +120,3 @@ const User = () => {
 
 export default User;
 
-/*
-images
-<img
-    width={64}
-    height={64}
-    className="mr-3"
-    src={image}
-    alt="user"
-    key={"userImage" + user.id}
-/>
- */

@@ -61,40 +61,34 @@ const UsersPage = ({match}) => {
     return (
         <>
             <div className="container">
-                <h1>Bienvenue {user.firstname} !</h1>
+            <h1>{user.firstname} {user.lastname}</h1>
                 <div className="user-page">
-                {user.imageUrl ?
-                    <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={"http://localhost:8080/images/" + user.imageUrl}
-                        alt="user"
-                        key={"userImage" + user.id}
-                    /> : 
-                    <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={img}
-                        alt="user"
-                        key={"userImage" + user.id}
-                    />
-                    }
-                        
+                    <div className="images">
+                        {user.imageUrl ?
+                            <img
+                                src={"http://localhost:8080/images/" + user.imageUrl}
+                                alt="user"
+                                key={"userImage" + user.id}
+                            /> : 
+                            <img
+                                src={img}
+                                alt="user"
+                                key={"userImage" + user.id}
+                            />
+                        }
+                    </div>
                     <div className= "show-article">
-                        <h2>{user.firstname} {user.lastname}</h2>
                         <p>{user.bio}</p>
                     </div>
                 </div>
                 <div className="user-article">
                     <h2>Articles publiés par {user.firstname}</h2>
                     {articles.map((article) => (
-                        <React.Fragment key={"user" + article.id}>
+                        <div className="user-articles" key={"user" + article.id}>
                             <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                             <p key={"articlep" + article.id}>{article.content}</p>
                             <p key={"date" + article.id}>Publié le {article.createdAt} </p>
-                        </React.Fragment>
+                        </div>
                     ))}
                 </div>
             </div>
