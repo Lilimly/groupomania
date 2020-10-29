@@ -27,10 +27,10 @@ exports.findOneUser = (req, res, next) => {
 // logique métier : modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
   // gestion d'ajout/modification image de profil
-  const userObject = req.body.imageUrl ?
+  const userObject = req.file ?
     {
       ...req.body.user,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.body.imageUrl}`
+      imageUrl: req.file.filename
     } : { ... req.body};
 
   User.update({ ...userObject, id:  req.params.id}, { where: {id: req.params.id} })

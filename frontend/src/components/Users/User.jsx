@@ -8,6 +8,7 @@ const User = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const [articles, setArticle] = useState([]);
+    const [image, setImage] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -54,8 +55,12 @@ const User = () => {
             )
         }, [userId, token])
 
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        const userImage = userAccount.imageUrl;
+        console.log(userImage)
+        
         useEffect(() => {
-            fetch("http://localhost:8080/images/" ,
+            fetch("http://localhost:8080/images/" + userImage ,
                 {headers: 
                     {"Authorization" : token},
                 })
@@ -63,16 +68,15 @@ const User = () => {
                 .then(
                     (result) => {
                         setIsLoaded(true);
-                        setArticle(result.data);
-                        localStorage.setItem('userArticles', JSON.stringify(result.data));
-                        console.log(JSON.parse(localStorage.getItem('userArticles')))
+                        setImage(result);
+                        console.log(result)
                     },
                     (error) => {
                         setIsLoaded(true);
                         setError(error);
                     }
                 )
-            }, [userId, token])
+            }, [userImage, token])
 
     const Auth = React.useContext(AuthApi);
 
@@ -105,7 +109,7 @@ const User = () => {
                             width={64}
                             height={64}
                             className="mr-3"
-                            src={"http://localhost:8080/images/sauce2.jpeg1600363389643.jpg1603728725520.jpg"}
+                            src={image}
                             alt="user"
                             key={"userImage" + user.id}
                         />
@@ -133,17 +137,3 @@ const User = () => {
 };
 
 export default User;
-
-/*  images:
-
-        const formData = new FormData();
-        for (let name in this.state) {
-            formData.append(name, this.state[name]);
-        }
-        const imagedata = document.querySelector('input[type="file"]').files[0];
-        formData.append('image', imagedata);
-
-       <label>
-            Selectionnez une photo
-            <input className="form-control" type="file" name="imageUrl" onChange={this.handleChange}/>
-        </label> */
