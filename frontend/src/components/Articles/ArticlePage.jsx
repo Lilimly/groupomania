@@ -104,8 +104,8 @@ const ArticlePage = ({ match }) => {
         return <div>Chargement...</div>;
     } else if (article.userId === storage.userId) {
         userAuth = <div className="article-button">
-            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier l'article</button>
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer l'article</button>
+            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier</button>
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer</button>
         </div>
     }       
 
@@ -113,30 +113,34 @@ const ArticlePage = ({ match }) => {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                {users.map((user) => {
-                    if(article.userId === user.id)
-                    return <Link to={"/users/" + user.id} key={user.id + article.id}>Publié par : {user.firstname} {user.lastname}</Link>
-                })}
-                <p>le : {article.createdAt}</p>
-                <div className="article-page">
-                    <div className= "show-article">
-                        <p>{article.content}</p>
-                        {article.articleUrl || article.articleUrl !== undefined
-                        ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
-                        <Likes />  {likes.length}
+                <div className="article-content">
+                    {users.map((user) => {
+                        if(article.userId === user.id)
+                        return <h2>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                    })}
+                    <p>le : {article.createdAt}</p>
+                    <div className="article-page">
+                        <div className= "show-article">
+                            <p>{article.content}</p>
+                            {article.articleUrl || article.articleUrl !== undefined
+                            ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
+                        </div>
+                        {userAuth}
                     </div>
-                    {userAuth}
+                    <div className="likes">
+                        <Likes />{likes.length}
+                    </div>
                 </div>
                 <div className="comment-div">
                     <h2>Laissez un commentaire ici  :</h2> 
-                        <Comments />
-                        <h2>Article commenté {comments.length} fois.</h2>
-                        {comments.map((comment) => (
-                            <React.Fragment key={"fragment" + comment.id}>
-                                <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
-                                <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
-                            </React.Fragment>
-                        ))}
+                    <Comments />
+                    <h2>Article commenté {comments.length} fois.</h2>
+                    {comments.map((comment) => (
+                        <div className="comment-card" key={"fragment" + comment.id}>
+                            <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
+                            <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

@@ -60,11 +60,11 @@ class Likes extends Component {
     
     render() {
         return (
-            <button onClick={(this.increment)}>
-                <Badge  pill variant="danger">
-                    Likes
-                </Badge>
-            </button>
+                <button onClick={(this.increment)}>
+                    <Badge  pill variant="danger">
+                        Likes
+                    </Badge>
+                </button>
         )
     }
 }
