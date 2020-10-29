@@ -23,6 +23,7 @@ class DeleteComment extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
+        console.log(this.state)
 
         const commentPage = JSON.parse(localStorage.getItem('commentPage'))
         let commentId = commentPage.id

@@ -27,13 +27,21 @@ exports.createLike = (req, res, next) => {
           });
           // Enregistrement de l'objet like dans la base de données
           like.save()
-            .then(() => res.status(201).json({ message: 'Like ajouté !'}))
+            .then(() => res.status(201).json(
+              { 
+                message: 'Like ajouté !',
+                like: 1
+              }))
             .catch(error => res.status(400).json({ error }));
         } else {
           Like.destroy({ where: {
             articleId: req.body.articleId,
             userId: req.body.userId }})
-              .then(() => res.status(200).json({ message: 'Like supprimé !'}))
+              .then(() => res.status(200).json(
+                { 
+                  message: 'Like supprimé !',
+                  like: 0
+                }))
               .catch(error => res.status(400).json({ error }));
         }
       }

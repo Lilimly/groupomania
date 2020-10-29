@@ -39,15 +39,25 @@ class Likes extends Component {
 
         fetch(('http://localhost:8080/api/likes/'), requestOptions)
                 .then(response => response.json())
-                .then(() => 
-                    this.setState(),
-                    )
+                .then((result) => {
+                    console.log(result.like)
+                    if (result.like === 0) {
+                        this.setState({
+                            likedOn: false,
+                        })
+                    } else if (result.like === 1) {
+                        this.setState({
+                            likedOn: true
+                        })
+                    }
+                })
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);
-            });
-    }
+            });        
+        }
 
+    
     render() {
         return (
             <button onClick={(this.increment)}>

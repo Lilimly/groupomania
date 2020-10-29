@@ -6,6 +6,7 @@ const Articles = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [articles, setArticles] = useState([]);
+    const [users, setUsers] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -30,6 +31,25 @@ const Articles = () => {
         )
     }, [token])
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/users/", 
+            {headers: 
+                {"Authorization" : token}
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setUsers(result.data);
+                    console.log(result.data)
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [token])
+
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -46,10 +66,14 @@ const Articles = () => {
                         <div  className="article-card" key={"articleCard" + article.id}>
                             <img src={img} alt="user" key={"userImage" + article.id} />
                             <div className= "show-article" key={"show" + article.id}>
-                            <h2 key={"userName" + article.id}>{article.userId}</h2>
+                                {users.map((user) => {
+                                    if(user.id === article.userId)
+                                    return <Link to={"/users/" + user.id} key={user.id + article.id}>Publié par : {user.firstname} {user.lastname}</Link>
+                                })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
                                 <p key={article.createdAt} id="created-at">Publié le : {article.createdAt}</p>
+
                             </div>
                         </div>
                     ))}

@@ -74,7 +74,6 @@ class UpdateArticle extends React.Component {
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Enregistrer les modifications</button>
                         <Link to='/articles/' className="btn btn-outline-info btn-sm">Retour aux articles</Link>
                     </div>
-                    {JSON.stringify(this.state)}
                 </form>
             </div>
         </>

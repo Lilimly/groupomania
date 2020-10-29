@@ -50,7 +50,6 @@ exports.login = (req, res, next) => {
                 return res.status(401).json({ error: 'Mot de passe incorrect !'})
             }
             res.status(200).json({
-                message: 'Utilisateur connecté !',
                 userId: user.id,
                 // Création d'un token pour sécuriser le compte de l'utilisateur
                 token: jwt.sign(

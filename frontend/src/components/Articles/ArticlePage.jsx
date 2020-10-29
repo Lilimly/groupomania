@@ -8,8 +8,8 @@ const ArticlePage = ({ match }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const [comments, setComment] = useState([]);
-    const [like, setLike] = useState([]);
-    const [user, setUser] = useState([]);
+    const [likes, setLike] = useState([]);
+    const [users, setUsers] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -48,7 +48,6 @@ const ArticlePage = ({ match }) => {
                     setIsLoaded(true);
                     setComment(result.data);
                     localStorage.setItem('comments', JSON.stringify(result.data));
-                    console.log(JSON.parse(localStorage.getItem('comments')))
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -77,28 +76,25 @@ const ArticlePage = ({ match }) => {
                 )
             }, [articleId, token])
 
-            const articlePage = JSON.parse(localStorage.getItem('articlePage'));
-            const articleUserId = articlePage.userId
-
-            useEffect(() => {
-                fetch("http://localhost:8080/api/articles/" + articleId + "/user/" + articleUserId,
-                    {headers: 
-                        {"Authorization" : token},
-                    })
-                    .then(res => res.json())
-                    .then(
-                        (result) => {
-                            setIsLoaded(true);
-                            setUser(result);
-                            localStorage.setItem('user', JSON.stringify(result));
-                            console.log(JSON.parse(localStorage.getItem('user')));
-                        },
-                        (error) => {
-                            setIsLoaded(true);
-                            setError(error);
-                        }
-                    )
-                }, [articleId, articleUserId, token])
+        useEffect(() => {
+            fetch("http://localhost:8080/api/users/", 
+                {headers: 
+                    {"Authorization" : token}
+                })
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setUsers(result.data);
+                        console.log(result.data)
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                )
+            }, [token])
+          
 
     let userAuth;
 
@@ -117,14 +113,17 @@ const ArticlePage = ({ match }) => {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                <Link to={"/users/" + user.id} key={"user" + user.id} className="nav-link">Publié par {user.firstname} {user.lastname}</Link>
+                {users.map((user) => {
+                    if(article.userId === user.id)
+                    return <Link to={"/users/" + user.id} key={user.id + article.id}>Publié par : {user.firstname} {user.lastname}</Link>
+                })}
                 <p>le : {article.createdAt}</p>
                 <div className="article-page">
                     <div className= "show-article">
                         <p>{article.content}</p>
                         {article.articleUrl || article.articleUrl !== undefined
                         ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : <></>}
-                        <Likes />{'   '}{like.length}
+                        <Likes />  {likes.length}
                     </div>
                     {userAuth}
                 </div>

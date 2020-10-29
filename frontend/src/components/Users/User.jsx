@@ -54,6 +54,26 @@ const User = () => {
             )
         }, [userId, token])
 
+        useEffect(() => {
+            fetch("http://localhost:8080/images/" ,
+                {headers: 
+                    {"Authorization" : token},
+                })
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setIsLoaded(true);
+                        setArticle(result.data);
+                        localStorage.setItem('userArticles', JSON.stringify(result.data));
+                        console.log(JSON.parse(localStorage.getItem('userArticles')))
+                    },
+                    (error) => {
+                        setIsLoaded(true);
+                        setError(error);
+                    }
+                )
+            }, [userId, token])
+
     const Auth = React.useContext(AuthApi);
 
     const handleOnclick = () => {
@@ -80,15 +100,17 @@ const User = () => {
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
                 <div className="user-page">
-                    <img
-                        width={64}
-                        height={64}
-                        className="mr-3"
-                        src={"http://localhost:8080/images/sauce2.jpeg1600363389643.jpg1603728725520.jpg"}
-                        alt="user"
-                        key={"userImage" + user.id}
-                    />
-                        
+                    <div className="images">
+                        <img
+                            width={64}
+                            height={64}
+                            className="mr-3"
+                            src={"http://localhost:8080/images/sauce2.jpeg1600363389643.jpg1603728725520.jpg"}
+                            alt="user"
+                            key={"userImage" + user.id}
+                        />
+                        <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/imageupdate/" + userId)}}>Modifier ma photo</button>
+                    </div>
                     <div className= "show-article">
                         <h2>{user.firstname} {user.lastname}</h2>
                         <p>{user.bio}</p>
@@ -96,7 +118,7 @@ const User = () => {
                     {idUser}
                 </div>
                 <div className="user-article">
-                    <h2>Articles publiés par {user.firstname}</h2>
+                    <h2>Vos articles</h2>
                     {articles.map((article) => (
                         <React.Fragment key={"user" + article.id}>
                             <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
@@ -111,3 +133,17 @@ const User = () => {
 };
 
 export default User;
+
+/*  images:
+
+        const formData = new FormData();
+        for (let name in this.state) {
+            formData.append(name, this.state[name]);
+        }
+        const imagedata = document.querySelector('input[type="file"]').files[0];
+        formData.append('image', imagedata);
+
+       <label>
+            Selectionnez une photo
+            <input className="form-control" type="file" name="imageUrl" onChange={this.handleChange}/>
+        </label> */

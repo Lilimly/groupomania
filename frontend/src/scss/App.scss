@@ -133,6 +133,14 @@
   display: flex;
   justify-content: space-between;
   margin-top: 3em;
+  .images {
+    display: flex;
+    flex-direction: column;
+    img{
+      width: auto;
+      margin: auto;
+    }
+  }
   .user-button {
     display: flex;
     flex-direction: column;

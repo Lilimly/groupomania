@@ -19,6 +19,7 @@ import DeleteArticle from './Articles/DeleteArticle';
 import Commentpage from './Comments/Commentpage';
 import UpdateComment from './Comments/UpdateComment';
 import DeleteComment from './Comments/DeleteComment';
+import ImageUpdate from './Images/ImageUpdate';
 
 const Routes = () => {
     
@@ -29,8 +30,9 @@ const Routes = () => {
             <ProtectedLogin path="/" exact component={Home} />
             <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
-            <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
             <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
+            <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
+            <ProtectedRoute path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
             <Route path="/userupdate/:id" auth={Auth.auth} component={UpdateAccount} />
             <Route path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <Route path="/users/:id" auth={Auth.auth} component={UsersPage} />
@@ -40,7 +42,8 @@ const Routes = () => {
             <Route path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
             <Route path="/commentpage/:id" auth={Auth.auth} component={Commentpage} />
             <Route path="/updatecomment/:id" auth={Auth.auth} component={UpdateComment} />
-            <Route path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
+            <Route path="/imageupdate/:id" auth={Auth.auth} component={ImageUpdate} />
+            
         </Switch>
     )
 }
