@@ -78,7 +78,8 @@ const UsersPage = ({match}) => {
                         }
                     </div>
                     <div className= "show-article">
-                        <p>{user.bio}</p>
+                        <p>Bio de {user.firstname} :<br /> 
+                        {user.bio}</p>
                     </div>
                 </div>
                 <div className="user-article">

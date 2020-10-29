@@ -128,12 +128,13 @@
   display: flex;
   -webkit-box-shadow: 0 0 20px #bababa;
           box-shadow: 0 0 20px #bababa;
-  margin: 0.7em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .article-card img {
-  width: 7%;
-  height: 7%;
+  width: 10%;
+  height: 10%;
   margin: 1em;
   border-radius: 50%;
   border: 1px solid black;
@@ -144,8 +145,22 @@
 }
 
 .article-card .show-article h2 {
-  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1em;
   color: black;
+}
+
+.article-card .show-article h2 a {
+  font-weight: bold;
+  padding: 0em;
+  margin-left: 0.5em;
+  color: indianred;
+}
+
+.article-card .show-article h2 a:hover {
+  color: #6e1313;
 }
 
 .article-card .show-article h3 {
@@ -164,17 +179,18 @@
   color: #454545;
 }
 
-.article-card .show-article .nav-link {
+.article-card .show-article a {
   color: indianred;
-  font-weight: bold;
-  padding: 0em;
+  padding-left: 0em;
+  text-align: left;
 }
 
-.article-card .show-article .nav-link:hover {
+.article-card .show-article a:hover {
   color: #6e1313;
 }
 
 .form-submit {
+  margin: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,7 +212,7 @@
           justify-content: space-between;
   background-color: whitesmoke;
   padding: 1.3em;
-  margin-top: 3em;
+  margin-top: 1.5em;
 }
 
 .user-page .images {
@@ -302,8 +318,22 @@
   -webkit-box-shadow: 0 0 20px #bababa;
           box-shadow: 0 0 20px #bababa;
   background-color: whitesmoke;
-  margin: 0.7em;
-  padding: 1em;
+  margin: 1em;
+  padding: 1.2em;
+}
+
+.user-article .user-articles a {
+  font-weight: bold;
+  padding: 0em 0em 0.9em 0em;
+  color: indianred;
+}
+
+.user-article .user-articles a:hover {
+  color: #6e1313;
+}
+
+.user-article .user-articles p {
+  margin-bottom: 0.6em;
 }
 
 .article-page {

@@ -80,14 +80,15 @@
   }
 }
 
-// paramètres photo utilisateur
+// paramètres de la page des articles
 .article-card {
   display: flex;
   box-shadow: $box_shadow;
-  margin: 0.7em;
+  margin: 1em;
+  padding: 1em;
   img {
-    width: 7%;
-    height: 7%;
+    width: 10%;
+    height: 10%;
     margin: 1em;
     border-radius: 50%;
     border: 1px solid $main_color;
@@ -95,8 +96,18 @@
   .show-article {
     margin: 0.5em;
     h2 {
-      text-align: left;
+      display: flex;
+      font-size: 1em;
       color: $main_color;
+      a {
+        font-weight: bold;
+        padding: 0em;
+        margin-left: 0.5em;
+        color: $primary_color;
+        &:hover {
+          color: $text_link_color;
+        }
+      }
     }
     h3 {
       font-size: 0.9em;
@@ -111,10 +122,10 @@
       font-size: 0.8em;
       color: $second_color;
     }
-    .nav-link{
+    a {
       color: $primary_color;
-      font-weight: bold;
-      padding: 0em;
+      padding-left: 0em;
+      text-align: left;
       &:hover {
         color: $text_link_color;
       }
@@ -124,18 +135,20 @@
 
 // paramètres boutons et formulaire
 .form-submit{
+  margin: 1em;
   @include flex_center;
   .btn {
     margin: 0.5em;
   }
 }
 
+// affichage page utilisateur
 .user-page{
   display: flex;
   justify-content: space-between;
   background-color: $body_color;
   padding: 1.3em;
-  margin-top: 3em;
+  margin-top: 1.5em;
   .images {
     display: flex;
     flex-direction: column;
@@ -182,6 +195,8 @@
     }
   }
 }
+
+// affichage des articles sur les pages utilisateur
 .user-article {
   background-color: $primary_color;
   margin-top: Oem;
@@ -206,8 +221,19 @@
   .user-articles {
     box-shadow: $box_shadow;
     background-color: $body_color;
-    margin: 0.7em;
-    padding: 1em;
+    margin: 1em;
+    padding: 1.2em;
+    a {
+      font-weight: bold;
+      padding: 0em 0em 0.9em 0em;
+      color: $primary_color;
+      &:hover {
+        color: $text_link_color;
+      }
+    }
+    p {
+      margin-bottom: 0.6em;
+    }
   }
 }
 

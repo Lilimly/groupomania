@@ -58,7 +58,7 @@ const Articles = () => {
         return (
             <>   
                 <div className="container">
-                    <h1>Voici tous les articles !</h1>
+                    <h1>Tous les articles publiés</h1>
                     <div className="form-submit">
                         <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
                     </div>
@@ -74,7 +74,7 @@ const Articles = () => {
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
                                     if(user.id === article.userId)
-                                    return <Link to={"/users/" + user.id} key={user.id + article.id}>Publié par : {user.firstname} {user.lastname}</Link>
+                                return <h2>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
                                 })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
