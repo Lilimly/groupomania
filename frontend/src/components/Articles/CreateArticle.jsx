@@ -79,7 +79,6 @@ class CreateArticle extends React.Component {
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Publiez l'article</button>
                         <Link to='/articles' className="btn btn-outline-info btn-sm">Retour aux articles</Link>
                     </div>
-                    {JSON.stringify(this.state)}
                 </form>
             </div>
         </>

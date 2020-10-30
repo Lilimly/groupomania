@@ -75,8 +75,7 @@ const CommentPage = ({ match }) => {
                     <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
                         Supprimer
                     </Button>
-                </div>
-                : <></>
+                </div> : <></>
                 }
             </div>
         </div>
