@@ -445,14 +445,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 2em 4em 2em 4em;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2em 3em 2em 3em;
   padding: 1em;
 }
 

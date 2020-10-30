@@ -312,8 +312,9 @@
   .post-comment {
     box-shadow: $box_shadow;
     background-color: $body_color;
-    @include flex_column;
-    margin: 2em 4em 2em 4em;
+    display: flex;
+    flex-direction: row;
+    margin: 2em 3em 2em 3em;
     padding: 1em;
     .input-group {
       margin: auto;

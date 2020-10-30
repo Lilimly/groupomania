@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Comments from "../Comments/Comments";
-import Likes from "../Likes/Likes"
+import Badge from 'react-bootstrap/Badge'
 
-const ArticlePage = ({ match }) => {
+
+function ArticlePage ({ match }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
     const [comments, setComment] = useState([]);
-    const [likes, setLike] = useState([]);
+    const [likes, setLikes] = useState([]);
     const [users, setUsers] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     let token = "Bearer " +  storage.token;
+    let userId = storage.userId;
     
     let articleId = match.params.id;
 
@@ -56,45 +58,67 @@ const ArticlePage = ({ match }) => {
             )
         }, [articleId, token])
 
-        useEffect(() => {
-            fetch("http://localhost:8080/api/articles/" + articleId + "/likes/" ,
-                {headers: 
-                    {"Authorization" : token},
-                })
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setLike(result.data);
-                        localStorage.setItem('likes', JSON.stringify(result.data));
-                        console.log(JSON.parse(localStorage.getItem('likes')))
-                    },
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                )
-            }, [articleId, token])
+    useEffect(() => {
+        fetch("http://localhost:8080/api/users/", 
+            {headers: 
+                {"Authorization" : token}
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setUsers(result.data);
+                    console.log(result.data)
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [token])
 
-        useEffect(() => {
-            fetch("http://localhost:8080/api/users/", 
-                {headers: 
-                    {"Authorization" : token}
-                })
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setIsLoaded(true);
-                        setUsers(result.data);
-                        console.log(result.data)
-                    },
-                    (error) => {
-                        setIsLoaded(true);
-                        setError(error);
-                    }
-                )
-            }, [token])
-          
+    useEffect(() => {
+        fetch("http://localhost:8080/api/articles/" + articleId + "/likes/" ,
+            {headers: 
+                {"Authorization" : token},
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setLikes(result.data);
+                    localStorage.setItem('likes', JSON.stringify(result.data));
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [articleId, token])
+
+    function LikeSubmit () {
+        fetch('http://localhost:8080/api/likes/', {
+            method: 'post',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify({
+                articleId: articleId,
+                userId: userId,
+                like: 1
+            })
+        })
+        .then(res => res.json())
+        .then(
+            () => {
+            setIsLoaded(true);
+        }, (error) => {
+            if(error) {
+                setError(error);
+            }
+        })
+    }    
 
     let userAuth;
 
@@ -116,7 +140,7 @@ const ArticlePage = ({ match }) => {
                 <div className="article-content">
                     {users.map((user) => {
                         if(article.userId === user.id)
-                        return <h2>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                        return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
                     })}
                     <p>le : {article.createdAt}</p>
                     <div className="article-page">
@@ -128,7 +152,13 @@ const ArticlePage = ({ match }) => {
                         {userAuth}
                     </div>
                     <div className="likes">
-                        <Likes />{likes.length}
+                    <button onClick={LikeSubmit}>
+                        
+                        <Badge  pill variant="danger">
+                            Likes : {likes.length}
+                        </Badge>
+                    </button>
+
                     </div>
                 </div>
                 <div className="comment-div">
@@ -139,9 +169,9 @@ const ArticlePage = ({ match }) => {
                         <div className="comment-card" key={"fragment" + comment.id}>
                             {users.map((user) => {
                                 if(comment.userId === user.id)
-                                return <h3>Publié par : <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname},</Link></h3>
+                                return <h3 key={"h3" +user.id}>Publié par : <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
                             })}
-                            <p key={"commentp" + comment.id}>le {comment.createdAt} </p>
+                            <p key={"commenth3" + comment.id}>le {comment.createdAt} </p>
                             <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
                         </div>
                     ))}
@@ -152,3 +182,16 @@ const ArticlePage = ({ match }) => {
 };
 
 export default ArticlePage;
+
+/*
+                    console.log(result.like)
+                    if (result.like === 0) {
+                        this.setState({
+                            likedOn: false,
+                        })
+                    } else if (result.like === 1) {
+                        this.setState({
+                            likedOn: true
+                        })
+                    }
+                     */

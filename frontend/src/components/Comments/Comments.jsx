@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {Redirect} from 'react-router-dom';
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 
 class Comments extends React.Component {
     state = { redirection: false };
@@ -74,19 +72,10 @@ class Comments extends React.Component {
             return <Redirect to={'/articles/'} />;
         }
         return (<div className="post-comment">
-                <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="btnGroupAddon">Comment </InputGroup.Text>
-                        </InputGroup.Prepend>
-                    <FormControl
-                    type="text"
-                    name="content"
-                    value={this.state.content}
-                    aria-label="comment"
-                    aria-describedby="btnGroupAddon"
-                    onChange={this.handleChange}
-                    />
-                </InputGroup>
+                <form>
+                    <label>Commentez :</label>
+                    <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
+                </form>
                 <div className="form-submit">
                         <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
                 </div>

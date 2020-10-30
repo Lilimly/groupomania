@@ -6,9 +6,7 @@ class Likes extends Component {
         super(props)
 
         this.state = {
-            articleId: '',
-            userId: '',
-            like: 0,
+            likeArray: ''
         }
         this.increment = this.increment.bind(this);
     }
@@ -17,12 +15,11 @@ class Likes extends Component {
         event.preventDefault();
 
         const storage = JSON.parse(localStorage.getItem('userConnect'));
+        let token = "Bearer " + storage.token;
         let userId = storage.userId;
 
         const articlePage = JSON.parse(localStorage.getItem('articlePage'));
         const articleId = articlePage.id;
-
-        let token = "Bearer " +  storage.token;
 
         const requestOptions = {
             method: 'post',
@@ -54,17 +51,18 @@ class Likes extends Component {
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);
-            });        
+            });     
         }
 
-    
     render() {
-        return (
-                <button onClick={(this.increment)}>
-                    <Badge  pill variant="danger">
-                        Likes
-                    </Badge>
-                </button>
+        return (<>
+            
+            <button onClick={(this.increment)}>
+                <Badge  pill variant="danger">
+                    Likes : {this.state.likeArray}
+                </Badge>
+            </button>
+            </>
         )
     }
 }

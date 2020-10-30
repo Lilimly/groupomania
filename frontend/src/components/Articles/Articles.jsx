@@ -74,7 +74,7 @@ const Articles = () => {
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
                                     if(user.id === article.userId)
-                                return <h2>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                                return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
                                 })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
