@@ -70,7 +70,6 @@ const User = () => {
         return <div>Chargement...</div>;
     } else if (user.id === userId) {
         idUser = <div className="user-button">
-            <p>Gérer mon compte</p>
             <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier</button>
             <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer</button>
             <button className="btn btn-outline-dark btn-sm" onClick={handleOnclick}>Déconnecter</button>  

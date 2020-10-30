@@ -24,7 +24,7 @@
 /*Paramètres du contenu de la page*/
 .container {
   width: 90%;
-  margin: 2em auto;
+  margin: 1em auto;
   padding: 2em;
   @include flex_column;
   h1 {
@@ -371,48 +371,247 @@
     margin: 1em;
     width: 30%;
   }
-  
 }
-
-
 
 // responsive
 // écrans moins de 360px
 @media #{$x_small_screen}
 {
-  nav {
-    height: auto;
+  .container {
+    width: 100%;
+    padding: 1.5em;
+  }
+
+  //nav bar
+  #root {
+    .mr-auto {
+      a {
+        font-size: 0.8em;
+        margin-left: 0.7em;
+      }
+    }
+  }
+  // user page
+  .user-page{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    .images {
+      margin: auto;
+      width: 60%;
+      img{
+        margin: 0.5em auto 0.5em auto;
+      }
+      button {
+        width: auto;
+        padding: 0.2em;
+      }
+    }
+    .show-article {
+      margin: 2em auto 2em auto;
+      width: 90%;
+    }
+    .user-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      box-shadow: none;
+      margin: auto;
+      width: 80%;
+    }
+  }
+
+  .update-image {
+    .addPhotoForm {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: auto;
+        margin: 1em;
+      }
+      button {
+        width: 40%;
+        margin: auto;
+      }
+    }
+    a {
+      margin: auto;
+      width: 50%;
+    }
+  }
+
+  // tous les articles page
+  .article-card {
+    padding: 0em;
+    margin: 0.5em auto 0.5em auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 15%;
+      height: 15%;
+      margin: 1em auto 1em auto;
+    }
+  }
+
+  // page un article
+  .comment-div {
+    .post-comment {
+      display: flex;
+      flex-direction: column;
+      margin: 2em;
+      form {
+        input {
+          width: 90%;
+        }
+      }
+      .input-group {
+        margin: auto;
+        width: 40%;
+      }
+    }
+    .comment-card {
+      margin: 1em;
+    }
+  }
+
+  .comment-card {
+    h3 {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5em;
+      a {
+        margin: 0.5em;
+      }
+    }
+    p {
+      margin-top : 1em;
+    }
   }
 }
 
-// écrans plus de 360px et moins de 760 px 
+// écrans plus de 360px et moins de 780 px 
 @media #{$small_screen}
 {
-  nav {
-    height: auto;
+  .container {
+    width: 100%;
+    padding: 1.5em;
+  }
+
+  #root {
+    .mr-auto {
+      a {
+        font-size: 1em;
+
+      }
+    }
+  }
+
+  // user page
+  .user-page{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    .images {
+      margin: auto;
+      width: 60%;
+      img{
+        margin: 0.5em auto 0.5em auto;
+      }
+      button {
+        width: auto;
+        padding: 0.2em;
+      }
+    }
+    .show-article {
+      margin: 2em auto 2em auto;
+      width: 90%;
+    }
+    .user-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      box-shadow: none;
+      margin: auto;
+      width: 80%;
+    }
+  }
+
+  .update-image {
+    .addPhotoForm {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: auto;
+        margin: 1em;
+      }
+      button {
+        width: 40%;
+        margin: auto;
+      }
+    }
+    a {
+      margin: auto;
+      width: 50%;
+    }
+  }
+
+  // tous les articles page
+  .article-card {
+    padding: 0em;
+    margin: 0.5em auto 0.5em auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 15%;
+      height: 15%;
+      margin: 1em auto 1em auto;
+    }
+  }
+
+  // page un article
+  .comment-div {
+    .post-comment {
+      display: flex;
+      flex-direction: column;
+      margin: 2em;
+      .input-group {
+        margin: auto;
+        width: 40%;
+      }
+    }
+    .comment-card {
+      margin: 1em;
+    }
+  }
+
+  .comment-card {
+    h3 {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.5em;
+      a {
+        margin: 0.5em;
+      }
+    }
+    p {
+      margin-top : 1em;
+    }
   }
 }
 
-// écrans de plus de 760 px et moins de 1024px
+// écrans de plus de 780 px et moins de 1024px
 @media #{$medium_screen}
 {
-  nav {
-    height: auto;
-    display: flex;
-    flex-direction: column;
+  .comment-div {
+    .post-comment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .form-submit {
+        margin: 0em;
+      }
   }
 }
-
-// format landscape
-@media #{$landscape}
-{
-  nav {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-  }
 }

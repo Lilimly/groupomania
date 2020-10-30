@@ -30,7 +30,7 @@
 /*Paramètres du contenu de la page*/
 .container {
   width: 90%;
-  margin: 2em auto;
+  margin: 1em auto;
   padding: 2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -530,8 +530,58 @@
 }
 
 @media only screen and (max-width: 360px) {
-  nav {
-    height: auto;
+  .container {
+    width: 100%;
+    padding: 1.5em;
+  }
+  #root .mr-auto a {
+    font-size: 0.8em;
+    margin-left: 0.7em;
+  }
+  .user-page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .user-page .images {
+    margin: auto;
+    width: 60%;
+  }
+  .user-page .images img {
+    margin: 0.5em auto 0.5em auto;
+  }
+  .user-page .images button {
+    width: auto;
+    padding: 0.2em;
+  }
+  .user-page .show-article {
+    margin: 2em auto 2em auto;
+    width: 90%;
+  }
+  .user-page .user-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    margin: auto;
+    width: 80%;
+  }
+  .update-image .addPhotoForm {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -540,11 +590,22 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-}
-
-@media only screen and (max-width: 760px) and (min-width: 360px) {
-  nav {
-    height: auto;
+  .update-image .addPhotoForm input {
+    width: auto;
+    margin: 1em;
+  }
+  .update-image .addPhotoForm button {
+    width: 40%;
+    margin: auto;
+  }
+  .update-image a {
+    margin: auto;
+    width: 50%;
+  }
+  .article-card {
+    padding: 0em;
+    margin: 0.5em auto 0.5em auto;
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -553,11 +614,101 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .article-card img {
+    width: 15%;
+    height: 15%;
+    margin: 1em auto 1em auto;
+  }
+  .comment-div .post-comment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 2em;
+  }
+  .comment-div .post-comment form input {
+    width: 90%;
+  }
+  .comment-div .post-comment .input-group {
+    margin: auto;
+    width: 40%;
+  }
+  .comment-div .comment-card {
+    margin: 1em;
+  }
+  .comment-card h3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 0.5em;
+  }
+  .comment-card h3 a {
+    margin: 0.5em;
+  }
+  .comment-card p {
+    margin-top: 1em;
+  }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 760px) {
-  nav {
-    height: auto;
+@media only screen and (max-width: 780px) and (min-width: 360px) {
+  .container {
+    width: 100%;
+    padding: 1.5em;
+  }
+  #root .mr-auto a {
+    font-size: 1em;
+  }
+  .user-page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .user-page .images {
+    margin: auto;
+    width: 60%;
+  }
+  .user-page .images img {
+    margin: 0.5em auto 0.5em auto;
+  }
+  .user-page .images button {
+    width: auto;
+    padding: 0.2em;
+  }
+  .user-page .show-article {
+    margin: 2em auto 2em auto;
+    width: 90%;
+  }
+  .user-page .user-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    margin: auto;
+    width: 80%;
+  }
+  .update-image .addPhotoForm {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -566,11 +717,22 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-}
-
-@media (orientation: landscape) {
-  nav {
-    height: auto;
+  .update-image .addPhotoForm input {
+    width: auto;
+    margin: 1em;
+  }
+  .update-image .addPhotoForm button {
+    width: 40%;
+    margin: auto;
+  }
+  .update-image a {
+    margin: auto;
+    width: 50%;
+  }
+  .article-card {
+    padding: 0em;
+    margin: 0.5em auto 0.5em auto;
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -578,6 +740,62 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .article-card img {
+    width: 15%;
+    height: 15%;
+    margin: 1em auto 1em auto;
+  }
+  .comment-div .post-comment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 2em;
+  }
+  .comment-div .post-comment .input-group {
+    margin: auto;
+    width: 40%;
+  }
+  .comment-div .comment-card {
+    margin: 1em;
+  }
+  .comment-card h3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 0.5em;
+  }
+  .comment-card h3 a {
+    margin: 0.5em;
+  }
+  .comment-card p {
+    margin-top: 1em;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 780px) {
+  .comment-div .post-comment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .comment-div .post-comment .form-submit {
+    margin: 0em;
   }
 }
 /*# sourceMappingURL=App.css.map */
