@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Redirect, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class Comments extends React.Component {
     state = { redirection: false };

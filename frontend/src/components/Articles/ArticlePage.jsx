@@ -30,7 +30,6 @@ function ArticlePage ({ match }) {
                 setIsLoaded(true);
                 setArticle(result);
                 localStorage.setItem('articlePage', JSON.stringify(result));
-                console.log(JSON.parse(localStorage.getItem('articlePage')))
             },
             (error) => {
                 setIsLoaded(true);
@@ -49,7 +48,6 @@ function ArticlePage ({ match }) {
                 (result) => {
                     setIsLoaded(true);
                     setComment(result.data);
-                    localStorage.setItem('comments', JSON.stringify(result.data));
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -68,7 +66,6 @@ function ArticlePage ({ match }) {
                 (result) => {
                     setIsLoaded(true);
                     setUsers(result.data);
-                    console.log(result.data)
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -129,7 +126,7 @@ function ArticlePage ({ match }) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (article.userId === storage.userId) {
+    } else if (article.userId === storage.userId || storage.userAdmin === true) {
         userAuth = <div className="article-button">
             <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier</button>
             <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer</button>

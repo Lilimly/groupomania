@@ -67,7 +67,7 @@ const CommentPage = ({ match }) => {
                 return <h3>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}, </Link> le {comment.createdAt}</h3>
             })}
             <p>{comment.content} </p>
-                {comment.userId === storage.userId 
+                {comment.userId === storage.userId || storage.isAdmin === true
                 ? <div className="post-option">
                     <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + commentId)}}>
                         Modifier

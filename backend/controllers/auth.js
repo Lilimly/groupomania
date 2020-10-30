@@ -51,6 +51,7 @@ exports.login = (req, res, next) => {
             }
             res.status(200).json({
                 userId: user.id,
+                userAdmin: user.isAdmin,
                 // Création d'un token pour sécuriser le compte de l'utilisateur
                 token: jwt.sign(
                     { userId: user.id },

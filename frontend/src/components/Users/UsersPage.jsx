@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import img from '../../images/icon.png';
 
 const UsersPage = ({match}) => {
@@ -7,6 +7,7 @@ const UsersPage = ({match}) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState([]);
     const [articles, setArticle] = useState([]);
+    const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     const userId = match.params.id;
@@ -52,10 +53,16 @@ const UsersPage = ({match}) => {
             )
         }, [userId, token])
 
+    
+    let idUser;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
+    } else if (user.isAdmin === 1) {
+        idUser = <div className="user-button">
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer</button>
+        </div>
     }
 
     return (
@@ -81,6 +88,7 @@ const UsersPage = ({match}) => {
                         <p>Bio de {user.firstname} :<br /> 
                         {user.bio}</p>
                     </div>
+                    {idUser}
                 </div>
                 <div className="user-article">
                     <h2>Articles publiés par {user.firstname}</h2>

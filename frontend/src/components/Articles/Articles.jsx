@@ -79,7 +79,6 @@ const Articles = () => {
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
                                 <p key={article.createdAt} id="created-at">Publié le : {article.createdAt}</p>
-
                             </div>
                         </div>
                     ))}
