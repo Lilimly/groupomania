@@ -43,7 +43,7 @@
     text-align: center;
     color: $second_color;
     a {
-      font-size: 0.8em;
+      font-size: 0.9em;
       @include text_link;
     }
   }
@@ -289,6 +289,10 @@
     display: flex;
     justify-content: center;
     margin: 1.5em;
+    button {
+      border: none;
+      background-color: white;
+    }
   }
 }
 

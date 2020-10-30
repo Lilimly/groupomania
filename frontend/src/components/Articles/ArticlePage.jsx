@@ -153,7 +153,6 @@ function ArticlePage ({ match }) {
                     </div>
                     <div className="likes">
                     <button onClick={LikeSubmit}>
-                        
                         <Badge  pill variant="danger">
                             Likes : {likes.length}
                         </Badge>
@@ -184,14 +183,14 @@ function ArticlePage ({ match }) {
 export default ArticlePage;
 
 /*
-                    console.log(result.like)
-                    if (result.like === 0) {
-                        this.setState({
-                            likedOn: false,
-                        })
-                    } else if (result.like === 1) {
-                        this.setState({
-                            likedOn: true
-                        })
-                    }
-                     */
+    {likes.map((like) => {
+        if(like.userId === userId  && like.like === 1) {
+            return <Badge key={"badge" + like.id} pill variant="danger">
+                    Likes : {likes.length}
+                </Badge> 
+        } else if(like.userId === userId  && like.like !== 1) {
+            return <Badge key={"badgelight" + like.id}  pill variant="light">
+                    Likes : {likes.length}
+                </Badge> 
+    }
+*/

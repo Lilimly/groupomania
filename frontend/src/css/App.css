@@ -64,8 +64,9 @@
 }
 
 .container p a {
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: bold;
+  color: indianred;
 }
 
 .container p a:hover {
@@ -301,6 +302,7 @@
   font-size: 1em;
   font-weight: bold;
   color: indianred;
+  color: indianred;
 }
 
 .user-article a:hover {
@@ -414,6 +416,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 1.5em;
+}
+
+.article-content .likes button {
+  border: none;
+  background-color: white;
 }
 
 .comment-div {

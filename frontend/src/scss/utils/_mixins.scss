@@ -46,6 +46,7 @@
 
 @mixin text_link {
     font-weight: bold;
+    color: $primary_color;
     &:hover {
       color: $text_link_color;
     }
