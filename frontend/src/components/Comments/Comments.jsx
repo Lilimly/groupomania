@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 class Comments extends React.Component {
     state = { redirection: false };
@@ -49,8 +49,8 @@ class Comments extends React.Component {
 
         fetch(('http://localhost:8080/api/comments/'), requestOptions)
                 .then(response => response.json())
-                .then(() => 
-                this.setState({ redirection: true }),
+                .then((result) => 
+                this.setState(result.data),
                 alert("Votre commentaire à bien été publié !")
                 )
                 .catch(error => {
@@ -66,21 +66,16 @@ class Comments extends React.Component {
     }
 
     render() {
-
-        const { redirection } = this.state;
-        if (redirection) {
-            return <Redirect to={'/articles/'} />;
-        }
         return (<div className="post-comment">
                 <form>
                     <label>Commentez :</label>
                     <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
                 </form>
                 <div className="form-submit">
-                        <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
+                    <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
                 </div>
             </div>)
     };
 };
 
-export default Comments;
+export default withRouter(Comments);

@@ -86,7 +86,8 @@ function ArticlePage ({ match }) {
             .then(
                 (result) => {
                     setIsLoaded(true);
-                    setLikes(result.data);
+                    setLikes(result.data.length);
+                    console.log(result.data.length)
                     localStorage.setItem('likes', JSON.stringify(result.data));
                 },
                 (error) => {
@@ -111,7 +112,9 @@ function ArticlePage ({ match }) {
         })
         .then(res => res.json())
         .then(
-            () => {
+            (result) => {
+            setLikes(result.like)
+            console.log("like=" + result.like)
             setIsLoaded(true);
         }, (error) => {
             if(error) {
@@ -154,7 +157,7 @@ function ArticlePage ({ match }) {
                     <div className="likes">
                     <button onClick={LikeSubmit}>
                         <Badge  pill variant="danger">
-                            Likes : {likes.length}
+                            Likes : {likes}
                         </Badge>
                     </button>
 

@@ -31,7 +31,10 @@ exports.createComment = (req, res, next) => {
   });
   // Enregistrement de l'objet commentaire dans la base de données
   comment.save()
-    .then(() => res.status(201).json({ message: 'Commentaire ajouté !'}))
+    .then(() => res.status(201).json({ 
+      message: 'Commentaire ajouté !',
+      data: commentObject
+    }))
     .catch(error => res.status(400).json({ error }));
 }
 

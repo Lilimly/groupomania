@@ -43,10 +43,6 @@ function App() {
                   <Link to="/articles" className="nav-link">Tous les articles</Link>
                   <Link to={"/user/" + userId } className="nav-link">Mon compte</Link>
               </Nav>
-              <Form inline>
-                  <FormControl type="text" placeholder="Recherche" className="mr-sm-2 btn-sm" />
-                  <Button variant="outline-info btn-sm">Rechercher</Button>
-              </Form>
           </>
   } else {
       navLink = <Nav className="mr-auto">

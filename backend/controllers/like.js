@@ -30,7 +30,7 @@ exports.createLike = (req, res, next) => {
             .then(() => res.status(201).json(
               { 
                 message: 'Like ajouté !',
-                like: 1
+                like: likes.length
               }))
             .catch(error => res.status(400).json({ error }));
         } else {
@@ -40,7 +40,7 @@ exports.createLike = (req, res, next) => {
               .then(() => res.status(200).json(
                 { 
                   message: 'Like supprimé !',
-                  like: 0
+                  like: likes.length
                 }))
               .catch(error => res.status(400).json({ error }));
         }
