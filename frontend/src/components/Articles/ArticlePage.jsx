@@ -137,7 +137,11 @@ const ArticlePage = ({ match }) => {
                     <h2>Article commenté {comments.length} fois.</h2>
                     {comments.map((comment) => (
                         <div className="comment-card" key={"fragment" + comment.id}>
-                            <h3 key={"commenth3" + comment.id}>Publié par {comment.userId}, le {comment.createdAt} </h3>
+                            {users.map((user) => {
+                                if(comment.userId === user.id)
+                                return <h3>Publié par : <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname},</Link></h3>
+                            })}
+                            <p key={"commentp" + comment.id}>le {comment.createdAt} </p>
                             <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
                         </div>
                     ))}

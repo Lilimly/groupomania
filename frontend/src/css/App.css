@@ -87,6 +87,34 @@
   margin: 1em;
 }
 
+.container .comment-card {
+  margin-top: 1.5em;
+  -webkit-box-shadow: 0 0 20px #bababa;
+          box-shadow: 0 0 20px #bababa;
+  padding: 1.5em;
+}
+
+.container .comment-card h2 {
+  font-size: 1.2em;
+}
+
+.container .comment-card h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.9em;
+}
+
+.container .comment-card h3 a {
+  padding: 0em;
+  margin-left: 0.5em;
+  color: indianred;
+}
+
+.container .comment-card h3 a:hover {
+  color: #6e1313;
+}
+
 .article-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -365,6 +393,19 @@
   color: #6e1313;
 }
 
+.article-content .article-page .article-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.article-content .article-page .article-button button {
+  margin: 0.7em;
+}
+
 .article-content .likes {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -428,6 +469,19 @@
 
 .comment-div .comment-card h3 {
   color: #454545;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.9em;
+}
+
+.comment-div .comment-card h3 a {
+  padding: 0em;
+  margin-left: 0.5em;
+}
+
+.comment-div .comment-card p {
+  font-size: 0.8em;
 }
 
 .comment-div .comment-card a {
@@ -438,6 +492,37 @@
 
 .comment-div .comment-card a:hover {
   color: #6e1313;
+}
+
+.update-image {
+  -webkit-box-shadow: 0 0 20px #bababa;
+          box-shadow: 0 0 20px #bababa;
+  margin-top: 1.5em;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.update-image .addPhotoForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1em;
+}
+
+.update-image .addPhotoForm input {
+  width: 50%;
+  margin-right: 1em;
+}
+
+.update-image a {
+  margin: 1em;
+  width: 30%;
 }
 
 @media only screen and (max-width: 360px) {

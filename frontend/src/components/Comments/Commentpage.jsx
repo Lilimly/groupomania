@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button'
 
 const CommentPage = ({ match }) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [comment, setComment] = useState([]);
+    const [users, setUsers] = useState([]);
     const history = useHistory();
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
@@ -33,6 +34,25 @@ const CommentPage = ({ match }) => {
         )
     }, [commentId, token])
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/users/", 
+            {headers: 
+                {"Authorization" : token}
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setUsers(result.data);
+                    console.log(result.data)
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [token])
+
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -41,19 +61,24 @@ const CommentPage = ({ match }) => {
 
     return (<div className="container">
         <h1>Commentaire :</h1>
-        <h2>{comment.content} </h2>
-        <p id="created-at">Publié par {comment.userId}, le : {comment.createdAt}</p>
-            {comment.userId === storage.userId 
-            ? <div className="post-option">
-                <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + commentId)}}>
-                    Modifier
-                </Button>
-                <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
-                    Supprimer
-                </Button>
+        <div className="comment-card">
+            {users.map((user) => {
+                if(comment.userId === user.id)
+                return <h3>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}, </Link> le {comment.createdAt}</h3>
+            })}
+            <p>{comment.content} </p>
+                {comment.userId === storage.userId 
+                ? <div className="post-option">
+                    <Button variant="outline-info" size="sm" onClick={() => {history.push("/updatecomment/" + commentId)}}>
+                        Modifier
+                    </Button>
+                    <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
+                        Supprimer
+                    </Button>
+                </div>
+                : <></>
+                }
             </div>
-            : <p></p>
-            }
         </div>
     );
 }

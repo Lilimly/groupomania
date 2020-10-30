@@ -36,28 +36,17 @@ class ImageUpdate extends React.Component {
         const storage = JSON.parse(localStorage.getItem('userConnect'));
         const userId = storage.userId;
 
-        return <>
-            <form className="addPhotoForm" onSubmit={this.handleSubmit}>
-                <input className="form-control" type="file" name="imageUrl" />
-                <Button color="success" type="Submit">Add</Button>
-            </form>
-            <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>
-        </>
+        return <div className="container">
+                    <h1>Modifiez votre photo de profil</h1>
+                    <div className="update-image">
+                        <form className="addPhotoForm" onSubmit={this.handleSubmit}>
+                            <input className="form-control" type="file" name="imageUrl" />
+                            <Button color="success" type="Submit">Add</Button>
+                        </form>
+                        <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>
+                    </div>
+            </div>
     }
 }
 
 export default ImageUpdate;
-
-/*  images:
-
-        const formData = new FormData();
-        for (let name in this.state) {
-            formData.append(name, this.state[name]);
-        }
-        const imagedata = document.querySelector('input[type="file"]').files[0];
-        formData.append('image', imagedata);
-
-       <label>
-            Selectionnez une photo
-            <input className="form-control" type="file" name="imageUrl" onChange={this.handleChange}/>
-        </label> */
