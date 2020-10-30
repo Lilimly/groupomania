@@ -68,7 +68,7 @@ const User = () => {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (user.id === userId || user.isAdmin === 1) {
+    } else if (user.id === userId || user.isAdmin === true) {
         idUser = <div className="user-button">
             <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/userupdate/" + userId)}}>Modifier</button>
             <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/userdelete/" + userId)}}>Supprimer</button>
@@ -80,6 +80,8 @@ const User = () => {
         <>
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
+                {storage.userAdmin === true ?
+                <p>Compteur Administrateur</p> : <></>}
                 <div className="user-page">
                     <div className="images">
                     {user.imageUrl ?
