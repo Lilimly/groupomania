@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Moment from 'react-moment';
 import img from '../../images/icon.png';
 
 const Articles = () => {
@@ -76,14 +77,14 @@ const Articles = () => {
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
                                     if(user.id === article.userId){
-                                        return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                                        return <h2 key={"h2" +user.id}>Publié par <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
                                     } else {
                                         return null
                                     }
                                 })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
-                                <p key={article.createdAt} id="created-at">Publié le : {article.createdAt}</p>
+                                <p key={article.createdAt} id="created-at">Publié le <Moment key={"date" + article.id} format="DD MMM YYYY" date={article.createdAt} /></p>
                             </div>
                         </div>
                     ))}

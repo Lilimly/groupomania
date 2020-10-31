@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Moment from 'react-moment';
 import img from '../../images/icon.png';
 
 const UsersPage = ({match}) => {
@@ -96,7 +97,7 @@ const UsersPage = ({match}) => {
                         <div className="user-articles" key={"user" + article.id}>
                             <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                             <p key={"articlep" + article.id}>{article.content}</p>
-                            <p key={"date" + article.id}>Publié le {article.createdAt} </p>
+                            <h3 key={"date" + article.id}>Publié le <Moment key={"date" + article.id} format="DD MMM YYYY" date={article.createdAt} /></h3>
                         </div>
                     ))}
                 </div>

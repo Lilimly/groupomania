@@ -319,7 +319,7 @@
 
 .user-article .user-articles a {
   font-weight: bold;
-  padding: 0em 0em 0.9em 0em;
+  padding: 0em 0em 0.5em 0em;
   color: indianred;
 }
 
@@ -328,7 +328,12 @@
 }
 
 .user-article .user-articles p {
+  font-size: 1em;
   margin-bottom: 0.6em;
+}
+
+.user-article .user-articles h3 {
+  font-size: 0.8em;
 }
 
 .article-content {
@@ -534,6 +539,27 @@
     width: 100%;
     padding: 1.5em;
   }
+  .container .comment-card h3 {
+    font-size: 0.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 0.5em;
+  }
+  .container .comment-card h3 a {
+    margin: 0em;
+  }
+  .container .comment-card p {
+    font-size: 1em;
+    margin-top: 2em;
+  }
+  .container .comment-card .post-option {
+    margin: 0.5em auto auto auto;
+  }
   #root .mr-auto a {
     font-size: 0.8em;
     margin-left: 0.7em;
@@ -639,7 +665,25 @@
   .comment-div .comment-card {
     margin: 1em;
   }
-  .comment-card h3 {
+  .comment-div .comment-card h3 {
+    font-size: 0.8em;
+  }
+  .comment-div .comment-card p {
+    font-size: 0.8em;
+    margin: 0.2em 0em 0.2em 0em;
+  }
+  .comment-div .comment-card a {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 780px) and (min-width: 360px) {
+  .container {
+    width: 100%;
+    padding: 1.5em;
+  }
+  .container .comment-card h3 {
+    font-size: 0.8em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -649,18 +693,15 @@
             flex-direction: column;
     margin-bottom: 0.5em;
   }
-  .comment-card h3 a {
-    margin: 0.5em;
+  .container .comment-card h3 a {
+    margin: 0em;
   }
-  .comment-card p {
-    margin-top: 1em;
+  .container .comment-card p {
+    font-size: 1em;
+    margin-top: 2em;
   }
-}
-
-@media only screen and (max-width: 780px) and (min-width: 360px) {
-  .container {
-    width: 100%;
-    padding: 1.5em;
+  .container .comment-card .post-option {
+    margin: 0.5em auto auto auto;
   }
   #root .mr-auto a {
     font-size: 1em;
@@ -763,21 +804,15 @@
   .comment-div .comment-card {
     margin: 1em;
   }
-  .comment-card h3 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-bottom: 0.5em;
+  .comment-div .comment-card h3 {
+    font-size: 0.8em;
   }
-  .comment-card h3 a {
-    margin: 0.5em;
+  .comment-div .comment-card p {
+    font-size: 0.8em;
+    margin: 0.2em 0em 0.2em 0em;
   }
-  .comment-card p {
-    margin-top: 1em;
+  .comment-div .comment-card a {
+    font-size: 1em;
   }
 }
 

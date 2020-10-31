@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import Button from 'react-bootstrap/Button'
 
 const CommentPage = ({ match }) => {
@@ -60,12 +61,14 @@ const CommentPage = ({ match }) => {
     }
 
     return (<div className="container">
-        <h1>Commentaire :</h1>
+        <h1>Commentaire</h1>
         <div className="comment-card">
             {users.map((user) => {
                 if(comment.userId === user.id){
-                return <h3 key={"h3" + comment.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}, </Link> le {comment.createdAt}</h3>
-                } else {
+                return <React.Fragment key={"fragment" + comment.id}>
+                    <h3 key={"h3" + comment.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname} </Link></h3>
+                    <h3 key={"date" + comment.createdAt}><Moment key={"date" + comment.id} format="DD MMM YYYY" date={comment.createdAt} /></h3>
+                </React.Fragment>} else {
                     return null
                 }
             })}
@@ -78,7 +81,7 @@ const CommentPage = ({ match }) => {
                     <Button variant="outline-danger" size="sm" onClick={() => {history.push("/deletecomment/" + commentId)}}>
                         Supprimer
                     </Button>
-                </div> : <></>
+                </div> : null
                 }
             </div>
         </div>

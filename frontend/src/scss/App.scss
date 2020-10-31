@@ -222,14 +222,18 @@
     padding: 1.2em;
     a {
       font-weight: bold;
-      padding: 0em 0em 0.9em 0em;
+      padding: 0em 0em 0.5em 0em;
       color: $primary_color;
       &:hover {
         color: $text_link_color;
       }
     }
     p {
+      font-size: 1em;
       margin-bottom: 0.6em;
+    }
+    h3 {
+      font-size: 0.8em;
     }
   }
 }
@@ -380,6 +384,24 @@
   .container {
     width: 100%;
     padding: 1.5em;
+    .comment-card {
+      h3 {
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5em;
+        a {
+          margin: 0em;
+        }
+      }
+      p {
+        font-size: 1em;
+        margin-top : 2em;
+      }
+      .post-option {
+        margin: 0.5em auto auto auto;
+      }
+    }
   }
 
   //nav bar
@@ -472,20 +494,16 @@
     }
     .comment-card {
       margin: 1em;
-    }
-  }
-
-  .comment-card {
-    h3 {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.5em;
-      a {
-        margin: 0.5em;
+      h3 {
+        font-size: 0.8em;
       }
-    }
-    p {
-      margin-top : 1em;
+      p {
+        font-size: 0.8em;
+        margin: 0.2em 0em 0.2em 0em;
+      }
+      a {
+        font-size: 1em;
+      }
     }
   }
 }
@@ -496,6 +514,24 @@
   .container {
     width: 100%;
     padding: 1.5em;
+    .comment-card {
+      h3 {
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5em;
+        a {
+          margin: 0em;
+        }
+      }
+      p {
+        font-size: 1em;
+        margin-top : 2em;
+      }
+      .post-option {
+        margin: 0.5em auto auto auto;
+      }
+    }
   }
 
   #root {
@@ -582,20 +618,16 @@
     }
     .comment-card {
       margin: 1em;
-    }
-  }
-
-  .comment-card {
-    h3 {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.5em;
-      a {
-        margin: 0.5em;
+      h3 {
+        font-size: 0.8em;
       }
-    }
-    p {
-      margin-top : 1em;
+      p {
+        font-size: 0.8em;
+        margin: 0.2em 0em 0.2em 0em;
+      }
+      a {
+        font-size: 1em;
+      }
     }
   }
 }

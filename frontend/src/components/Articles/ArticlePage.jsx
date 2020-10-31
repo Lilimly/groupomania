@@ -121,8 +121,6 @@ function ArticlePage ({ match }) {
         })
     }    
 
-
-
     let userAuth;
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -142,16 +140,16 @@ function ArticlePage ({ match }) {
                 <div className="article-content">
                     {users.map((user) => {
                         if(article.userId === user.id){
-                        return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                        return <h2 key={"h2" +user.id}>Publié par <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
                         } else {
                             return null
                         }
                     })}
-                    <p>le : <Moment format="DD MMM YYYY" date={article.createdAt} /></p>
+                    <p>le <Moment format="DD MMM YYYY" date={article.createdAt} /></p>
                     <div className="article-page">
                         <div className= "show-article">
                             <p>{article.content}</p>
-                            {article.articleUrl || article.articleUrl !== undefined
+                            {article.articleUrl
                             ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : null}
                         </div>
                         {userAuth}
@@ -173,12 +171,12 @@ function ArticlePage ({ match }) {
                         <div className="comment-card" key={"fragment" + comment.id}>
                             {users.map((user) => {
                                 if(comment.userId === user.id){
-                                return <h3 key={"h3" +user.id}>Publié par : <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
+                                return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
                                 } else {
                                     return null
                                 }
                             })}
-                            <p key={"commenth3" + comment.id}>le {comment.createdAt} </p>
+                            <p key={"commenth3" + comment.id}>le <Moment format="DD MMM YYYY" date={comment.createdAt} /></p>
                             <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
                         </div>
                     ))}
@@ -189,16 +187,3 @@ function ArticlePage ({ match }) {
 };
 
 export default ArticlePage;
-
-/*
-    {likes.map((like) => {
-        if(like.userId === userId  && like.like === 1) {
-            return <Badge key={"badge" + like.id} pill variant="danger">
-                    Likes : {likes.length}
-                </Badge> 
-        } else if(like.userId === userId  && like.like !== 1) {
-            return <Badge key={"badgelight" + like.id}  pill variant="light">
-                    Likes : {likes.length}
-                </Badge> 
-    }
-*/
