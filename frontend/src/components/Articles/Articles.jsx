@@ -69,12 +69,17 @@ const Articles = () => {
                                     return <img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + article.id} />
                                     } else if (user.id === article.userId && !user.imageUrl) {
                                         return <img src={img} alt="user" key={"userImage" + article.id} />
+                                    } else {
+                                        return null
                                     }
                                 })}
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
-                                    if(user.id === article.userId)
-                                return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                                    if(user.id === article.userId){
+                                        return <h2 key={"h2" +user.id}>Publié par : <Link to={"/users/" + user.id} key={user.id + article.id}className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                                    } else {
+                                        return null
+                                    }
                                 })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
