@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Moment from 'react-moment';
 import Comments from "../Comments/Comments";
 import Badge from 'react-bootstrap/Badge'
 
@@ -30,6 +31,7 @@ function ArticlePage ({ match }) {
                 setIsLoaded(true);
                 setArticle(result);
                 localStorage.setItem('articlePage', JSON.stringify(result));
+                console.log(JSON.parse(localStorage.getItem('articlePage')))
             },
             (error) => {
                 setIsLoaded(true);
@@ -111,7 +113,6 @@ function ArticlePage ({ match }) {
         .then(
             (result) => {
                 setLikes(result.like)
-                    console.log("like=" + result.like)
                     setIsLoaded(true);
         }, (error) => {
             if(error) {
@@ -120,8 +121,9 @@ function ArticlePage ({ match }) {
         })
     }    
 
-    let userAuth;
 
+
+    let userAuth;
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -145,7 +147,7 @@ function ArticlePage ({ match }) {
                             return null
                         }
                     })}
-                    <p>le : {article.createdAt}</p>
+                    <p>le : <Moment format="DD MMM YYYY" date={article.createdAt} /></p>
                     <div className="article-page">
                         <div className= "show-article">
                             <p>{article.content}</p>
