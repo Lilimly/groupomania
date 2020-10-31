@@ -45,6 +45,7 @@ function PrimaryButton ({children}) {
 }
 
 function Login () {
+    localStorage.clear();
     const [error, setError] = useState(null);
     const Auth = React.useContext(AuthApi);
 

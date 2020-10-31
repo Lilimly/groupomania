@@ -31,8 +31,8 @@ class DeleteComment extends React.Component {
         fetch(('http://localhost:8080/api/comments/' + commentId), requestOptions)
                 .then(response => response.json())
                 .then(() => 
-                this.setState({ redirection: true }),
-                alert("Votre commentaire à bien été supprimé !"))
+                    this.setState({ redirection: true }),
+                    alert("Votre commentaire à bien été supprimé !"))
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);

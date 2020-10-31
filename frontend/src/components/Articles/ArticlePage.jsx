@@ -110,9 +110,9 @@ function ArticlePage ({ match }) {
         .then(res => res.json())
         .then(
             (result) => {
-            setLikes(result.like)
-            console.log("like=" + result.like)
-            setIsLoaded(true);
+                setLikes(result.like)
+                    console.log("like=" + result.like)
+                    setIsLoaded(true);
         }, (error) => {
             if(error) {
                 setError(error);

@@ -46,7 +46,6 @@ const User = () => {
                     setIsLoaded(true);
                     setArticle(result.data);
                     localStorage.setItem('userArticles', JSON.stringify(result.data));
-                    console.log(JSON.parse(localStorage.getItem('userArticles')))
                 },
                 (error) => {
                     setIsLoaded(true);

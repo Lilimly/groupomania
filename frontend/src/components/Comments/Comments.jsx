@@ -50,8 +50,8 @@ class Comments extends React.Component {
         fetch(('http://localhost:8080/api/comments/'), requestOptions)
                 .then(response => response.json())
                 .then((result) => 
-                this.setState(result.data),
-                alert("Votre commentaire à bien été publié !")
+                    this.setState(result.data),
+                    alert("Commentaire publié !")
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });

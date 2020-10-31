@@ -47,9 +47,14 @@ class UpdateArticle extends React.Component {
 
         fetch(('http://localhost:8080/api/articles/' + articleId), requestOptions)
                 .then(response => response.json())
-                .then(() => 
-                this.setState({ redirection: true }),
-                alert("Votre article à bien été modifié !")
+                .then((response) => {
+                    if (response.error) { 
+                        alert("Votre article n'a pas pu être modifié."); 
+                    } else { 
+                        this.setState({ redirection: true })
+                        alert("Votre article à bien été modifié !")
+                    }
+                }
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });

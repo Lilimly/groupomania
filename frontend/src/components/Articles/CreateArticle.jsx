@@ -52,9 +52,14 @@ class CreateArticle extends React.Component {
 
         fetch(('http://localhost:8080/api/articles/'), requestOptions)
                 .then(response => response.json())
-                .then(() => 
-                this.setState({ redirection: true }),
-                alert("Votre article à bien été publié !")
+                .then((response) => {
+                    if (response.error) { 
+                        alert("Votre article n'a pas pu être publié."); 
+                    } else { 
+                        this.setState({ redirection: true })
+                        alert("Votre article à bien été publié !")
+                    }
+                }
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });

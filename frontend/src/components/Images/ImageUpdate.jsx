@@ -35,7 +35,7 @@ class ImageUpdate extends React.Component {
             if (res.ok) { 
             alert("Votre image à bien été modifiée !"); 
             } else if (res.status === 401) { 
-                alert("Oops! "); 
+                alert("Une erreur s'est produite, rententez ! "); 
             } 
             }, function (e) { 
                 alert("Une erreur s'est produite : " + e); 

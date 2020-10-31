@@ -32,9 +32,8 @@ const Routes = () => {
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/articles" auth={Auth.auth} component={Articles} />
             <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
-            <ProtectedRoute path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
+            <ProtectedRoute path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <Route path="/userupdate/:id" auth={Auth.auth} component={UpdateAccount} />
-            <Route path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <Route path="/users/:id" auth={Auth.auth} component={UsersPage} />
             <Route path="/createarticle" auth={Auth.auth} component={CreateArticle} />
             <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
@@ -42,6 +41,7 @@ const Routes = () => {
             <Route path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
             <Route path="/commentpage/:id" auth={Auth.auth} component={Commentpage} />
             <Route path="/updatecomment/:id" auth={Auth.auth} component={UpdateComment} />
+            <Route path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
             <Route path="/imageupdate/:id" auth={Auth.auth} component={ImageUpdate} />
             
         </Switch>

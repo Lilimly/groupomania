@@ -64,7 +64,7 @@ const CommentPage = ({ match }) => {
         <div className="comment-card">
             {users.map((user) => {
                 if(comment.userId === user.id){
-                return <h3>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}, </Link> le {comment.createdAt}</h3>
+                return <h3 key={"h3" + comment.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}, </Link> le {comment.createdAt}</h3>
                 } else {
                     return null
                 }

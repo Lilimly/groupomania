@@ -45,7 +45,13 @@ class UpdateAccount extends React.Component {
 
         fetch(('http://localhost:8080/api/users/' + userId), requestOptions)
                 .then(response => response.json())
-                .then(() => this.setState({ redirection: true }))
+                .then((response) => {
+                    if (response.error) { 
+                        alert("Votre compte n'a pas pu être modifié.")
+                    } else { 
+                        this.setState({ redirection: true })
+                    }
+                })
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);

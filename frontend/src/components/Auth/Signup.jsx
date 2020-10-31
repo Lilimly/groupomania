@@ -101,7 +101,7 @@ class Signup extends React.Component {
                         console.error('Il y a eu une errreur, veuillez réessayer.', error);
                 });
 
-          }else{
+          }else {
             alert('Formulaire non valide ! Veuillez ressaisir vos données.')
           }
 
