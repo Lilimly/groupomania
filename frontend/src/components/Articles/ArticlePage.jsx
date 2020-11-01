@@ -95,7 +95,7 @@ function ArticlePage ({ match }) {
         .then(
             (result) => {
                 setLikes(result.like)
-                    setIsLoaded(true);
+                setIsLoaded(true);
         }, (error) => {
             if(error) {
                 setError(error);
@@ -152,44 +152,3 @@ function ArticlePage ({ match }) {
 };
 
 export default ArticlePage;
-
-/*
-
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" ,
-            {headers: 
-                {"Authorization" : token},
-            })
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setComment(result.data);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-        }, [articleId, token])
-
-                <div className="comment-div">
-                    <h2>Laissez un commentaire ici  :</h2> 
-                    <Comments />
-                    <h2>Article commenté {comments.length} fois.</h2>
-                    {comments.map((comment) => (
-                        <div className="comment-card" key={"fragment" + comment.id}>
-                            {users.map((user) => {
-                                if(comment.userId === user.id){
-                                return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
-                                } else {
-                                    return null
-                                }
-                            })}
-                            <p key={"commenth3" + comment.id}>le <Moment format="DD MMM YYYY" date={comment.createdAt} /></p>
-                            <Link to={"/commentpage/" + comment.id} key={"comment" + comment.id} className="nav-link">{comment.content}</Link>
-                        </div>
-                    ))}
-                </div>
-*/

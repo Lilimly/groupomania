@@ -41,15 +41,6 @@ exports.createComment = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 }
 
-// logique métier : modifier un article
-exports.modifyComment = (req, res, next) => {
-    const commentObject = req.body;
-  
-    Comment.update({ ...commentObject }, { where: {id: req.params.id} })
-    .then(() => res.status(200).json({ message: 'Commentaire modifié !'}))
-    .catch(error => res.status(400).json({ error }));
-  };
-
 // Logique métier : supprimer un commentaire
 exports.deleteComment = (req, res, next) => {
   Comment.destroy({ where: {id: req.params.id} })

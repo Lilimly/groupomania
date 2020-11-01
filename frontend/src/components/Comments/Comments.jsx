@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
-//import Button from 'react-bootstrap/Button'
 
 class Comments extends React.Component {
 
@@ -111,37 +110,38 @@ class Comments extends React.Component {
         const {users} = this.state;
         const userConnect = JSON.parse(localStorage.getItem('userConnect'));
 
-        return ( <div className="comment-div">
-                    <h2>Laissez un commentaire ici  :</h2> 
-                    <div className="post-comment">
-                        <form>
-                            <label>Commentez :</label>
-                            <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
-                        </form>
-                        <div className="form-submit">
-                            <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
-                        </div>
+        return ( 
+            <div className="comment-div">
+                <h2>Laissez un commentaire ici  :</h2> 
+                <div className="post-comment">
+                    <form>
+                        <label>Commentez :</label>
+                        <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
+                    </form>
+                    <div className="form-submit">
+                        <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
                     </div>
-                    <h2>Article commenté {comments.length} fois.</h2>
-                    {comments.map((comment) => (
-                        <div className="comment-card" key={"fragment" + comment.id}>
-                            {users.map((user) => {
-                                if(comment.userId === user.id){
-                                return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
-                                } else {
-                                    return null
-                                }
-                            })}
-                            <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
-                            <h3 key={"comment" + comment.id}>{comment.content}</h3>
-                            {comment.userId === userConnect.userId || userConnect.userAdmin === true
-                                ? <div className="post-option">
-                                    <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
-                                </div> : null
-                            }
-                        </div>
-                    ))}
                 </div>
+                <h2>Article commenté {comments.length} fois.</h2>
+                {comments.map((comment) => (
+                    <div className="comment-card" key={"fragment" + comment.id}>
+                        {users.map((user) => {
+                            if(comment.userId === user.id){
+                            return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
+                            } else {
+                                return null
+                            }
+                        })}
+                        <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
+                        <h3 key={"comment" + comment.id}>{comment.content}</h3>
+                        {comment.userId === userConnect.userId || userConnect.userAdmin === true
+                            ? <div className="post-option">
+                                <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
+                            </div> : null
+                        }
+                    </div>
+                ))}
+            </div>
         )
     };
 };

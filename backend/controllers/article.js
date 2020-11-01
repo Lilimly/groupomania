@@ -17,8 +17,10 @@ exports.findAllArticles = (req, res, next) => {
 // Find all articles where userId
 exports.findArticlesByUserId = (req, res, next) => {
   Article.findAll({
-    where: {userId: req.params.id,
-    }})
+    where: {userId: req.params.id},
+    order: [
+      ['createdAt', 'DESC'],
+  ]})
   .then(articles => {
       console.log(articles);
       res.status(200).json({data: articles});
