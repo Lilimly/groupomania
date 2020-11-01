@@ -25,8 +25,7 @@ class DeleteComment extends React.Component {
         };
         console.log(this.state)
 
-        const commentPage = JSON.parse(localStorage.getItem('commentPage'))
-        let commentId = commentPage.id
+        const commentId = this.props.match.params.id;
 
         fetch(('http://localhost:8080/api/comments/' + commentId), requestOptions)
                 .then(response => response.json())
@@ -40,9 +39,12 @@ class DeleteComment extends React.Component {
     }
 
     render () {
+        const articlePage = JSON.parse(localStorage.getItem('articlePage'));
+        const articleId = articlePage.id;
+        
         const { redirection } = this.state;
         if (redirection) {
-            return <Redirect to='/articles' />;
+            return <Redirect to={'/article/' + articleId}/>;
         }
 
         return <>

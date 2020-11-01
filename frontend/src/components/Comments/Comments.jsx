@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import Moment from 'react-moment';
+//import Button from 'react-bootstrap/Button'
 
 class Comments extends React.Component {
-    state = { redirection: false };
 
     constructor (props) {
         super(props)
@@ -11,9 +12,48 @@ class Comments extends React.Component {
             articleId: '',
             userId: '',
             content: '',
+            comments: [],
+            users: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
+        let token = "Bearer " +  userConnect.token;
+
+        const articleId = this.props.match.params.id;
+        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" ,
+            {headers: 
+                {"Authorization" : token},
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({comments: result.data});
+                })
+            .catch(error => {
+                this.setState({ Erreur: error.toString() });
+                console.error('There was an error!', error);
+            }
+        )
+
+        fetch("http://localhost:8080/api/users/", 
+            {headers: 
+                {"Authorization" : token}
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({users: result.data});
+                }
+            )
+            .catch(error => {
+                this.setState({ Erreur: error.toString() });
+                console.error('There was an error!', error);
+            }
+        )
     }
 
     handleChange (e) {
@@ -67,15 +107,42 @@ class Comments extends React.Component {
     }
 
     render() {
-        return (<div className="post-comment">
-                <form>
-                    <label>Commentez :</label>
-                    <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
-                </form>
-                <div className="form-submit">
-                    <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
+        const {comments} = this.state;
+        const {users} = this.state;
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
+
+        return ( <div className="comment-div">
+                    <h2>Laissez un commentaire ici  :</h2> 
+                    <div className="post-comment">
+                        <form>
+                            <label>Commentez :</label>
+                            <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
+                        </form>
+                        <div className="form-submit">
+                            <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
+                        </div>
+                    </div>
+                    <h2>Article commenté {comments.length} fois.</h2>
+                    {comments.map((comment) => (
+                        <div className="comment-card" key={"fragment" + comment.id}>
+                            {users.map((user) => {
+                                if(comment.userId === user.id){
+                                return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
+                                } else {
+                                    return null
+                                }
+                            })}
+                            <p key={"commenth3" + comment.id}>le <Moment format="DD MMM YYYY" date={comment.createdAt} /></p>
+                            <h3 key={"comment" + comment.id}>{comment.content}</h3>
+                            {comment.userId === userConnect.userId || userConnect.userAdmin === true
+                                ? <div className="post-option">
+                                    <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
+                                </div> : null
+                            }
+                        </div>
+                    ))}
                 </div>
-            </div>)
+        )
     };
 };
 

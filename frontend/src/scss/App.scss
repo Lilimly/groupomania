@@ -262,11 +262,12 @@
     text-align: left;
   }
   .article-page {
-    margin: 2em 0em 0em 0em;
+    margin: 1em 0em 0em 0em;
     .show-article {
       display: flex;
       flex-direction: column;
       justify-content: left;
+      margin-bottom: 0.5em;
       width: 70%;
       p {
         text-align: left;
@@ -292,7 +293,7 @@
   .likes {
     display: flex;
     justify-content: center;
-    margin: 1.5em;
+    margin: 1em;
     button {
       border: none;
       background-color: white;
@@ -322,11 +323,19 @@
     background-color: $body_color;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin: 2em 3em 2em 3em;
     padding: 1em;
-    .input-group {
-      margin: auto;
-      width: 40%;
+    form {
+      input {
+        margin-left: 0.4em;
+      }
+    }
+    .form-submit {
+      margin: 0em 1em 0em 1em;
+      button {
+        margin: 0em;
+      }
     }
   }
   .comment-card {
@@ -345,12 +354,15 @@
     p {
       font-size: 0.8em;
     }
-    a {
-      padding: 0.5em 0em 0.6em 0em;
-      color: $primary_color;
-      font-size: 0.9em;
-      &:hover {
-        color: $text_link_color;
+    .post-option {
+      margin: 0em;
+      a {
+        font-size: 0.8em;
+        padding: 0.5em;
+        color: $primary_color;
+        &:hover {
+          color: $text_link_color;
+        }
       }
     }
   }
@@ -487,9 +499,9 @@
           width: 90%;
         }
       }
-      .input-group {
-        margin: auto;
-        width: 40%;
+      .form-submit {
+        margin: 1em;
+        justify-content: center;
       }
     }
     .comment-card {
@@ -500,9 +512,6 @@
       p {
         font-size: 0.8em;
         margin: 0.2em 0em 0.2em 0em;
-      }
-      a {
-        font-size: 1em;
       }
     }
   }
@@ -611,10 +620,11 @@
       display: flex;
       flex-direction: column;
       margin: 2em;
-      .input-group {
-        margin: auto;
-        width: 40%;
+      .form-submit {
+        margin: 1em;
+        justify-content: center;
       }
+
     }
     .comment-card {
       margin: 1em;
@@ -625,9 +635,6 @@
         font-size: 0.8em;
         margin: 0.2em 0em 0.2em 0em;
       }
-      a {
-        font-size: 1em;
-      }
     }
   }
 }
@@ -637,11 +644,13 @@
 {
   .comment-div {
     .post-comment {
+      margin: auto;
+      width: 60%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       .form-submit {
-        margin: 0em;
+        margin: 1em;
+        justify-content: left;
       }
     }
   }

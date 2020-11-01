@@ -16,8 +16,6 @@ import ArticlePage from './Articles/ArticlePage';
 import CreateArticle from './Articles/CreateArticle';
 import UpdateArticle from './Articles/UpdateArticle';
 import DeleteArticle from './Articles/DeleteArticle';
-import Commentpage from './Comments/Commentpage';
-import UpdateComment from './Comments/UpdateComment';
 import DeleteComment from './Comments/DeleteComment';
 import ImageUpdate from './Images/ImageUpdate';
 
@@ -39,8 +37,6 @@ const Routes = () => {
             <Route path="/article/:id" auth={Auth.auth} component={ArticlePage} />
             <Route path="/articleupdate/:id" auth={Auth.auth} component={UpdateArticle} />
             <Route path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
-            <Route path="/commentpage/:id" auth={Auth.auth} component={Commentpage} />
-            <Route path="/updatecomment/:id" auth={Auth.auth} component={UpdateComment} />
             <Route path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
             <Route path="/imageupdate/:id" auth={Auth.auth} component={ImageUpdate} />
             

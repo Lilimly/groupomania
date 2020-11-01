@@ -9,7 +9,7 @@ function ArticlePage ({ match }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [article, setArticle] = useState([]);
-    const [comments, setComment] = useState([]);
+
     const [likes, setLikes] = useState([]);
     const [users, setUsers] = useState([]);
     const history = useHistory();
@@ -39,24 +39,6 @@ function ArticlePage ({ match }) {
             }
         )
     }, [articleId, token])
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" ,
-            {headers: 
-                {"Authorization" : token},
-            })
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setComment(result.data);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-        }, [articleId, token])
 
     useEffect(() => {
         fetch("http://localhost:8080/api/users/", 
@@ -163,6 +145,35 @@ function ArticlePage ({ match }) {
 
                     </div>
                 </div>
+                <Comments />
+            </div>
+        </>
+    );
+};
+
+export default ArticlePage;
+
+/*
+
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/articles/" + articleId + "/comments/" ,
+            {headers: 
+                {"Authorization" : token},
+            })
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setComment(result.data);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+        }, [articleId, token])
+
                 <div className="comment-div">
                     <h2>Laissez un commentaire ici  :</h2> 
                     <Comments />
@@ -181,9 +192,4 @@ function ArticlePage ({ match }) {
                         </div>
                     ))}
                 </div>
-            </div>
-        </>
-    );
-};
-
-export default ArticlePage;
+*/

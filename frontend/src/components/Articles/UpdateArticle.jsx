@@ -64,8 +64,9 @@ class UpdateArticle extends React.Component {
 
     render() {
         const { redirection } = this.state;
+        const articleId = this.props.match.params.id;
         if (redirection) {
-            return <Redirect to='/articles/'/>;
+            return <Redirect to={'/article/' + articleId}/>;
         }
 
         return <>

@@ -32,6 +32,7 @@ class DeleteArticle extends React.Component {
                 .then(
                     (response) => {
                         if (response.error) { 
+                            this.setState({ redirection: true })
                             alert("Votre article n'a pas pu être supprimé."); 
                         } else { 
                             this.setState({ redirection: true })
