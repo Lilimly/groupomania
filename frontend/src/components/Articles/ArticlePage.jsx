@@ -127,7 +127,7 @@ function ArticlePage ({ match }) {
                             return null
                         }
                     })}
-                    <p>le <Moment format="DD MMM YYYY" date={article.createdAt} /></p>
+                    <p><Moment fromNow key={"date" + article.id}>{article.createdAt}</Moment></p>
                     <div className="article-page">
                         <div className= "show-article">
                             <p>{article.content}</p>

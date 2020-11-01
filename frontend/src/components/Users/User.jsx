@@ -81,7 +81,7 @@ const User = () => {
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
                 {storage.userAdmin === true ?
-                <p>Compteur Administrateur</p> : <></>}
+                <p>Compte Administrateur</p> : <></>}
                 <div className="user-page">
                     <div className="images">
                     {user.imageUrl ?

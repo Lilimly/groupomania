@@ -132,7 +132,7 @@ class Comments extends React.Component {
                                     return null
                                 }
                             })}
-                            <p key={"commenth3" + comment.id}>le <Moment format="DD MMM YYYY" date={comment.createdAt} /></p>
+                            <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
                             <h3 key={"comment" + comment.id}>{comment.content}</h3>
                             {comment.userId === userConnect.userId || userConnect.userAdmin === true
                                 ? <div className="post-option">

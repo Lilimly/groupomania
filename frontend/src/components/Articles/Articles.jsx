@@ -84,7 +84,7 @@ const Articles = () => {
                                 })}
                                 <Link to={"/article/" + article.id} key={"article" + article.id} className="nav-link">{article.title}</Link>
                                 <p key={"content" + article.id}>{article.content}</p>
-                                <p key={article.createdAt} id="created-at">Publié le <Moment key={"date" + article.id} format="DD MMM YYYY" date={article.createdAt} /></p>
+                                <p key={article.createdAt} id="created-at"><Moment fromNow key={"date" + article.id}>{article.createdAt}</Moment></p>
                             </div>
                         </div>
                     ))}
