@@ -1,7 +1,8 @@
-import React, { useCallback} from 'react';
+import React, { useState, useCallback} from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
 function DeleteUserAccount ({ match }) {
+    const [redirect, setRedirect] = useState(false);
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     let token = "Bearer " +  storage.token;
     let userId = match.params.id;
@@ -24,8 +25,8 @@ function DeleteUserAccount ({ match }) {
                 if (res.error) { 
                     alert("Ce compte n'a pas pu être supprimé."); 
                 } else { 
-                    alert("Compte supprimé !")
-                    return <Redirect to='/articles' />
+                    alert("Compte supprimé !"); 
+                    setRedirect(true);
                 }
             }
         )
@@ -37,13 +38,16 @@ function DeleteUserAccount ({ match }) {
     }, [userId, token])
 
     return (
-        <div className="container">
-            <h1>Souhaitez vous vraiment supprimer ce compte ?</h1>
-            <div className="form-submit">
-                <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">Retour au compte utilisateur</Link>
-                <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer ce compte</button>
+        <>
+            {redirect ? <Redirect to="/articles/" /> : null}
+            <div className="container">
+                <h1>Souhaitez vous vraiment supprimer ce compte ?</h1>
+                <div className="form-submit">
+                    <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">Retour au compte utilisateur</Link>
+                    <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer ce compte</button>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
