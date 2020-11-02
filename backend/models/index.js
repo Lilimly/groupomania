@@ -12,7 +12,6 @@ let sequelize;
     dialect: process.env.DB_DIALECT
   });
 
-
 fs
   .readdirSync(__dirname)
   .filter(file => {

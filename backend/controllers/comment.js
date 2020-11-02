@@ -1,5 +1,4 @@
 const db = require("../models");
-const comment = require("../models/comment");
 const Comment = db.comments;
 
 // logique métier : lire tous les commentaires

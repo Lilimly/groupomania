@@ -60,8 +60,14 @@ exports.deleteUser = (req, res, next) => {
           }
         )
         .then(() =>
-        User.destroy({ where: {id: req.params.id} })
-        .then(() => res.status(200).json({ message: 'Utilisateur supprimé !'}))
+        User.findOne({ where: {id: req.params.id} })
+          .then(user => {
+            const filename = user.imageUrl;
+            fs.unlink(`images/${filename}`, () => {
+              User.destroy({ where: {id: req.params.id} })
+              .then(() => res.status(200).json({ message: 'Utilisateur supprimé !'}))
+            })
+          })
         )
       )
     )

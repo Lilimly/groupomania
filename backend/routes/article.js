@@ -7,12 +7,12 @@ const likeCtrl = require('../controllers/like');
 const auth = require('../middleware/auth');
 
 // Routes
-router.get('/', auth, articleCtrl.findAllArticles);
-router.get('/:id/comments', auth, commentCtrl.findAllComments);
-router.get('/:id/likes', auth, likeCtrl.findAllLikes);
-router.get('/:id',auth, articleCtrl.findOneArticle);
-router.post('/',auth, articleCtrl.createArticle);
-router.put('/:id',auth, articleCtrl.modifyArticle);
-router.delete('/:id',auth, articleCtrl.deleteArticle);
+router.get('/', articleCtrl.findAllArticles);
+router.get('/:id/comments', commentCtrl.findAllComments);
+router.get('/:id/likes', likeCtrl.findAllLikes);
+router.get('/:id', articleCtrl.findOneArticle);
+router.post('/', articleCtrl.createArticle);
+router.put('/:id', articleCtrl.modifyArticle);
+router.delete('/:id', articleCtrl.deleteArticle);
 
 module.exports = router;
