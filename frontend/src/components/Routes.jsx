@@ -11,6 +11,7 @@ import User from './Users/User';
 import UsersPage from './Users/UsersPage';
 import UpdateAccount from './Users/UpdateAccount';
 import DeleteAccount from './Users/DeleteAccount';
+import DeleteUserAccount from './Users/DeleteUserAccount';
 import Articles from './Articles/Articles';
 import ArticlePage from './Articles/ArticlePage';
 import CreateArticle from './Articles/CreateArticle';
@@ -39,7 +40,7 @@ const Routes = () => {
             <Route path="/articledelete/:id" auth={Auth.auth} component={DeleteArticle} />
             <Route path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
             <Route path="/imageupdate/:id" auth={Auth.auth} component={ImageUpdate} />
-            
+            <Route path="/adminuserdelete/:id" auth={Auth.auth} component={DeleteUserAccount} />
         </Switch>
     )
 }

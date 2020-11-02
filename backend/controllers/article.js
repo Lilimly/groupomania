@@ -1,6 +1,8 @@
 //imports
 const models = require("../models");
 const Article = models.articles;
+const Comment = models.comments;
+const Like = models.likes;
 
 // logique métier : lire tous articles
 exports.findAllArticles = (req, res, next) => {
@@ -63,7 +65,13 @@ exports.modifyArticle = (req, res, next) => {
 
 // Logique métier : supprimer un article
 exports.deleteArticle = (req, res, next) => {
-  Article.destroy({ where: {id: req.params.id} })
-        .then(() => res.status(200).json({ message: 'Article supprimé !'}))
-        .catch(error => res.status(400).json({ error }));
+  Like.destroy({where: {articleId: req.params.id}})
+  .then(() => 
+    Comment.destroy({where: {articleId: req.params.id}})
+    .then(() => 
+      Article.destroy({ where: {id: req.params.id} })
+      .then(() => res.status(200).json({ message: 'Article supprimé !'}))
+    )
+    )
+  .catch(error => res.status(400).json({ error }));
 };

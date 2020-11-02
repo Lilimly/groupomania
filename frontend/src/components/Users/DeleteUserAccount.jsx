@@ -1,17 +1,12 @@
-import React, {useCallback} from 'react';
-import { Link } from 'react-router-dom';
-import AuthApi from '../AuthApi';
-import Cookies from 'js-cookie';
+import React, { useCallback} from 'react';
+import { Redirect, Link } from 'react-router-dom';
 
-function DeleteAccount () {
-    const Auth = React.useContext(AuthApi);
-
+function DeleteUserAccount ({ match }) {
     const storage = JSON.parse(localStorage.getItem('userConnect'));
-    const userId = storage.userId;
     let token = "Bearer " +  storage.token;
+    let userId = match.params.id;
 
     const handleSubmit = useCallback(function (value) {
-
 
         fetch(('http://localhost:8080/api/users/' + userId), {
             method: "delete",
@@ -27,31 +22,29 @@ function DeleteAccount () {
         .then(
             (res) => {
                 if (res.error) { 
-                    alert("Votre compte n'a pas pu être supprimé."); 
+                    alert("Ce compte n'a pas pu être supprimé."); 
                 } else { 
                     alert("Compte supprimé !")
-                    Auth.setAuth(false);
-                    Cookies.remove("user");
-                    localStorage.clear();
+                    return <Redirect to='/articles' />
                 }
             }
         )
         .catch(error => {
             this.setState({ Erreur: error.toString() });
-            alert("Votre compte n'a pas pu être supprimé !");
+            alert("Ce compte n'a pas pu être supprimé !");
             console.error('There was an error!', error);
         })
-    }, [Auth, userId, token])
+    }, [userId, token])
 
     return (
         <div className="container">
-            <h1>Souhaitez vous vraiment supprimer votre compte ?</h1>
+            <h1>Souhaitez vous vraiment supprimer ce compte ?</h1>
             <div className="form-submit">
-                <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">Retour à mon compte</Link>
-                <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer mon compte</button>
+                <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">Retour au compte utilisateur</Link>
+                <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer ce compte</button>
             </div>
         </div>
     );
 }
 
-export default DeleteAccount;
+export default DeleteUserAccount;

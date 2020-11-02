@@ -20,7 +20,6 @@ exports.createLike = (req, res, next) => {
       userId: req.body.userId
       }})
       .then(likes => {
-        console.log(likes.length)
         if(likes.length === 0) {
           const like = new Like({
             ...likeObject

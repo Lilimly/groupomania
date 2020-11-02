@@ -1,6 +1,9 @@
 // imports
-const db = require("../models");
-const User = db.users;
+const models = require("../models");
+const User = models.users;
+const Article = models.articles;
+const Comment = models.comments;
+const Like = models.likes;
 
 const fs = require('fs');
 
@@ -40,7 +43,27 @@ exports.modifyUser = (req, res, next) => {
 
 // logique métier : supprimer un utilisateur
 exports.deleteUser = (req, res, next) => {
-  User.destroy({ where: {id: req.params.id} })
+  Like.destroy({where: {userId: req.params.id}})
+  .then(() => 
+    Comment.destroy({where: {userId: req.params.id}})
+    .then(() => 
+      Article.findAll({where: {userId: req.params.id}})
+        .then(
+          (articles) => {
+            articles.forEach(
+              (article) => {
+                Comment.destroy({where: {articleId: article.id}})
+                Like.destroy({where: {articleId: article.id}})
+                Article.destroy({where: {id: article.id}})
+              }
+            )
+          }
+        )
+        .then(() =>
+        User.destroy({ where: {id: req.params.id} })
         .then(() => res.status(200).json({ message: 'Utilisateur supprimé !'}))
-        .catch(error => res.status(400).json({ error }));
+        )
+      )
+    )
+  .catch(error => res.status(400).json({ error }));
 };
