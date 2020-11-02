@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Moment from 'react-moment';
 import img from '../../images/icon.png';
+import Form from "react-bootstrap/Form"; 
+import FormControl from "react-bootstrap/FormControl"; 
+import Button from "react-bootstrap/Button"; 
 
 const Articles = () => {
     const [error, setError] = useState(null);
@@ -62,6 +65,10 @@ const Articles = () => {
                     <h1>Tous les articles publiés</h1>
                     <div className="form-submit">
                         <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/createarticle/")}}>Publier un article</button>
+                        <Form inline>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2 btn-sm" name="name" />
+                            <Button variant="outline-info btn-sm">Search</Button>
+                        </Form>
                     </div>
                     {articles.map((article) => (
                         <div  className="article-card" key={"articleCard" + article.id}>

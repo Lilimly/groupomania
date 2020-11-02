@@ -27,6 +27,16 @@ exports.findOneUser = (req, res, next) => {
   .catch(error => res.status(404).json({ error }));
 };
 
+// logique métier : lire un utilisateur par son id
+exports.findAllUserByName = (req, res, next) => {
+  
+  User.findAll({ where: {firstname: req.params.name}})
+  .then(users => {
+    res.status(200).json(users)
+  })
+  .catch(error => res.status(404).json({ error }));
+};
+
 // logique métier : modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
   // gestion d'ajout/modification image de profil

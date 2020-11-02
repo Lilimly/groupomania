@@ -40,7 +40,7 @@ function App() {
                   <Link to="/articles" className="nav-link">Tous les articles</Link>
                   <Link to={"/user/" + userId } className="nav-link">Mon compte</Link>
               </Nav>
-          </>
+            </>
   } else {
       navLink = <Nav className="mr-auto">
               <Link to="/signup" className="nav-link">S'inscrire</Link>
