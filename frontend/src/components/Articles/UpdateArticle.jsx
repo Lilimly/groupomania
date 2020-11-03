@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import Field from '../Form/Field';
+import Form from 'react-bootstrap/Form'
 
 class UpdateArticle extends React.Component {
 
@@ -74,7 +75,10 @@ class UpdateArticle extends React.Component {
                 <h1>Modifiez cet article</h1>
                 <form>
                     <Field name="title" value={this.state.title} onChange={this.handleChange}>Titre</Field>
-                    <Field name="content" value={this.state.content} onChange={this.handleChange}>Contenu de l'article</Field>
+                    <Form.Group controlId="exampleForm.ControlTextarea1" >
+                        <Form.Label>Contenu de l'article</Form.Label>
+                        <Form.Control as="textarea" rows={8} name="content" value={this.state.content} onChange={this.handleChange} />
+                    </Form.Group>
                     <Field name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>Partagez un lien d'article</Field>
                     <div className="form-submit">
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Enregistrer les modifications</button>

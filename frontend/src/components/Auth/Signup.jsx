@@ -127,25 +127,25 @@ class Signup extends React.Component {
                 <form>
                     <div className="form-group">
                         <label htmlFor="firstname">Prénom</label>
-                        <input type="text" value={this.state.firstname} onChange={this.handleChange} name="firstname" className="form-control" noValidate/>
+                        <input type="text" value={this.state.firstname} onChange={this.handleChange} name="firstname" className="form-control" required noValidate/>
                         {errors.firstname.length > 0 && 
                             <span className='error'>{errors.firstname}</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastname">Nom</label>
-                        <input type="text" value={this.state.lastname} onChange={this.handleChange} name="lastname" className="form-control" noValidate/>
+                        <input type="text" value={this.state.lastname} onChange={this.handleChange} name="lastname" className="form-control" required noValidate/>
                         {errors.lastname.length > 0 && 
                             <span className='error'>{errors.lastname}</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="text" value={this.state.email} onChange={this.handleChange} name="email" className="form-control" noValidate/>
+                        <input type="text" value={this.state.email} onChange={this.handleChange} name="email" className="form-control" required noValidate/>
                         {errors.email.length > 0 && 
                             <span className='error'>{errors.email}</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Mot de passe</label>
-                        <input type="password" value={this.state.password} onChange={this.handleChange} name="password" className="form-control" noValidate/>
+                        <input type="password" value={this.state.password} onChange={this.handleChange} name="password" className="form-control" required noValidate/>
                         {errors.password.length > 0 && 
                             <span className='error'>{errors.password}</span>}
                     </div>
