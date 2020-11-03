@@ -90,8 +90,6 @@
 
 .container .comment-card {
   margin-top: 1.5em;
-  -webkit-box-shadow: 0 0 20px #bababa;
-          box-shadow: 0 0 20px #bababa;
   padding: 1.5em;
 }
 
@@ -336,14 +334,29 @@
   font-size: 0.8em;
 }
 
-.article-content {
-  margin-top: 1.5em;
+.article-present {
   -webkit-box-shadow: 0 0 20px #bababa;
           box-shadow: 0 0 20px #bababa;
-  padding: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.article-content h2 {
+.article-present img {
+  width: 10%;
+  height: 10%;
+  margin: 1em;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.article-present .article-content {
+  margin-top: 1.5em;
+  padding: 1.5em;
+  width: 80%;
+}
+
+.article-present .article-content h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -352,26 +365,26 @@
   margin-bottom: 0.8em;
 }
 
-.article-content h2 a {
+.article-present .article-content h2 a {
   font-weight: bold;
   padding: 0em;
   margin-left: 0.5em;
   color: indianred;
 }
 
-.article-content h2 a:hover {
+.article-present .article-content h2 a:hover {
   color: #6e1313;
 }
 
-.article-content p {
+.article-present .article-content p {
   text-align: left;
 }
 
-.article-content .article-page {
+.article-present .article-content .article-page {
   margin: 1em 0em 0em 0em;
 }
 
-.article-content .article-page .show-article {
+.article-present .article-content .article-page .show-article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,22 +399,22 @@
   width: 70%;
 }
 
-.article-content .article-page .show-article p {
+.article-present .article-content .article-page .show-article p {
   text-align: left;
   margin-bottom: 0.2em;
 }
 
-.article-content .article-page .show-article a {
+.article-present .article-content .article-page .show-article a {
   padding: 0.5em 0em 0.6em 0em;
   color: indianred;
   font-size: 0.9em;
 }
 
-.article-content .article-page .show-article a:hover {
+.article-present .article-content .article-page .show-article a:hover {
   color: #6e1313;
 }
 
-.article-content .article-page .article-button {
+.article-present .article-content .article-page .article-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -410,11 +423,11 @@
           justify-content: center;
 }
 
-.article-content .article-page .article-button button {
+.article-present .article-content .article-page .article-button button {
   margin: 0.7em;
 }
 
-.article-content .likes {
+.article-present .article-content .likes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -424,7 +437,7 @@
   margin: 1em;
 }
 
-.article-content .likes button {
+.article-present .article-content .likes button {
   border: none;
   background-color: white;
 }
@@ -481,13 +494,31 @@
   margin: 0em;
 }
 
-.comment-div .comment-card {
+.comment-div .form-comment {
   margin: 1em 4em 1em 4em;
   background-color: whitesmoke;
   padding: 1em;
+  -webkit-box-shadow: 0 0 20px #bababa;
+          box-shadow: 0 0 20px #bababa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.comment-div .comment-card h3 {
+.comment-div .form-comment img {
+  width: 6%;
+  height: 6%;
+  margin: 1em;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.comment-div .form-comment .comment-card {
+  width: 80%;
+  margin: 0em;
+}
+
+.comment-div .form-comment .comment-card h3 {
   color: #454545;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -495,26 +526,26 @@
   font-size: 0.9em;
 }
 
-.comment-div .comment-card h3 a {
+.comment-div .form-comment .comment-card h3 a {
   padding: 0em;
   margin-left: 0.5em;
 }
 
-.comment-div .comment-card p {
+.comment-div .form-comment .comment-card p {
   font-size: 0.8em;
 }
 
-.comment-div .comment-card .post-option {
+.comment-div .form-comment .comment-card .post-option {
   margin: 0em;
 }
 
-.comment-div .comment-card .post-option a {
+.comment-div .form-comment .comment-card .post-option a {
   font-size: 0.8em;
   padding: 0.5em;
   color: indianred;
 }
 
-.comment-div .comment-card .post-option a:hover {
+.comment-div .form-comment .comment-card .post-option a:hover {
   color: #6e1313;
 }
 
@@ -660,6 +691,26 @@
     height: 15%;
     margin: 1em auto 1em auto;
   }
+  .article-present {
+    -webkit-box-shadow: 0 0 20px #bababa;
+            box-shadow: 0 0 20px #bababa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .article-present img {
+    margin: 1em auto auto auto;
+    width: 15%;
+    height: 15%;
+  }
+  .article-present .article-content {
+    margin: 0.5em auto auto auto;
+    width: 100%;
+  }
   .comment-div .post-comment {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -679,15 +730,37 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .comment-div .comment-card {
-    margin: 1em;
+  .comment-div .form-comment {
+    margin: 0.5em;
+    padding: 0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  .comment-div .comment-card h3 {
-    font-size: 0.8em;
+  .comment-div .form-comment img {
+    margin: 1em auto 0.5em auto;
+    width: 15%;
+    height: 15%;
   }
-  .comment-div .comment-card p {
+  .comment-div .form-comment .comment-card {
+    margin: 0em;
+    padding: 0.5em;
+    width: 100%;
+  }
+  .comment-div .form-comment .comment-card h3 {
     font-size: 0.8em;
-    margin: 0.2em 0em 0.2em 0em;
+    margin-bottom: 0.7em;
+  }
+  .comment-div .form-comment .comment-card h3 .nav-link {
+    margin: 0em;
+  }
+  .comment-div .form-comment .comment-card p {
+    font-size: 0.8em;
+    margin: 0.5em 0em 0.5em 0em;
   }
 }
 
@@ -801,6 +874,26 @@
     height: 15%;
     margin: 1em auto 1em auto;
   }
+  .article-present {
+    -webkit-box-shadow: 0 0 20px #bababa;
+            box-shadow: 0 0 20px #bababa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .article-present img {
+    margin: 1em auto auto auto;
+    width: 15%;
+    height: 15%;
+  }
+  .article-present .article-content {
+    margin: 0.5em auto auto auto;
+    width: 100%;
+  }
   .comment-div .post-comment {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -817,15 +910,36 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .comment-div .comment-card {
-    margin: 1em;
+  .comment-div .form-comment {
+    margin: 0.5em;
+    padding: 0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  .comment-div .comment-card h3 {
+  .comment-div .form-comment img {
+    margin: 1em auto 0.5em auto;
+    width: 15%;
+    height: 15%;
+  }
+  .comment-div .form-comment .comment-card {
+    margin: auto;
+    width: 100%;
+    padding: 0.5em;
+  }
+  .comment-div .form-comment .comment-card h3 {
     font-size: 0.8em;
   }
-  .comment-div .comment-card p {
+  .comment-div .form-comment .comment-card h3 a {
+    margin: 0em;
+  }
+  .comment-div .form-comment .comment-card p {
     font-size: 0.8em;
-    margin: 0.2em 0em 0.2em 0em;
+    margin: 0.5em 0em 1em 0em;
   }
 }
 

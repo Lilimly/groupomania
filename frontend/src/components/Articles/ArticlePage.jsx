@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Moment from 'react-moment';
 import Comments from "../Comments/Comments";
 import Badge from 'react-bootstrap/Badge'
+import img from '../../images/icon.png';
 
 
 function ArticlePage ({ match }) {
@@ -119,30 +120,42 @@ function ArticlePage ({ match }) {
         <>
             <div className="container">
                 <h1>{article.title} </h1>
-                <div className="article-content">
+                <div className="article-present">
                     {users.map((user) => {
-                        if(article.userId === user.id){
-                        return <h2 key={"h2" +user.id}>Publié par <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                        if (user.id === article.userId && user.imageUrl) {
+                        return <img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + article.id} />
+                        } else if (user.id === article.userId && !user.imageUrl) {
+                            return <img src={img} alt="user" key={"userImage" + article.id} />
                         } else {
                             return null
                         }
                     })}
-                    <p><Moment fromNow key={"date" + article.id}>{article.createdAt}</Moment></p>
-                    <div className="article-page">
-                        <div className= "show-article">
-                            <p>{article.content}</p>
-                            {article.articleUrl
-                            ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : null}
+                    <div className="article-content">
+                        {users.map((user) =>
+                            {
+                            if(article.userId === user.id){
+                            return <h2 key={"h2" +user.id}>Publié par <Link to={"/users/" + user.id} key={user.id + article.id} className="nav-link">{user.firstname} {user.lastname}</Link></h2>
+                            } else {
+                                return null
+                            }
+                        })}
+                        <p><Moment fromNow key={"date" + article.id}>{article.createdAt}</Moment></p>
+                        <div className="article-page">
+                            <div className= "show-article">
+                                <p>{article.content}</p>
+                                {article.articleUrl
+                                ? <a target="_blank" rel="noopener noreferrer" className="nav-link" href={article.articleUrl} >{article.articleUrl}</a> : null}
+                            </div>
+                            {userAuth}
                         </div>
-                        {userAuth}
-                    </div>
-                    <div className="likes">
-                    <button onClick={LikeSubmit}>
-                        <Badge  pill variant="danger">
-                            Likes : {likes}
-                        </Badge>
-                    </button>
+                        <div className="likes">
+                        <button onClick={LikeSubmit}>
+                            <Badge  pill variant="danger">
+                                Likes : {likes}
+                            </Badge>
+                        </button>
 
+                        </div>
                     </div>
                 </div>
                 <Comments />

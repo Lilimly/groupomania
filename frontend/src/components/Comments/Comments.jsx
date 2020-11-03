@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
+import img from '../../images/icon.png';
 
 class Comments extends React.Component {
 
@@ -123,22 +124,34 @@ class Comments extends React.Component {
                     </div>
                 </div>
                 <h2>Article commenté {comments.length} fois.</h2>
-                {comments.map((comment) => (
-                    <div className="comment-card" key={"fragment" + comment.id}>
-                        {users.map((user) => {
-                            if(comment.userId === user.id){
-                            return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
-                            } else {
-                                return null
+                
+                    {comments.map((comment) => (
+                        <div className="form-comment">
+                            {users.map((user) => {
+                                if (user.id === comment.userId && user.imageUrl) {
+                                return <img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + comment.id} />
+                                } else if (user.id === comment.userId && !user.imageUrl) {
+                                    return <img src={img} alt="user" key={"userImage" + comment.id} />
+                                } else {
+                                    return null
+                                }
+                            })}
+                        <div className="comment-card" key={"fragment" + comment.id}>
+                            {users.map((user) => {
+                                if(comment.userId === user.id){
+                                return <h3 key={"h3" +user.id}>Publié par <Link to={"/users/" + user.id} key={comment.id + user.id} className="nav-link">{user.firstname} {user.lastname}</Link></h3>
+                                } else {
+                                    return null
+                                }
+                            })}
+                            <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
+                            <h3 key={"comment" + comment.id}>{comment.content}</h3>
+                            {comment.userId === userConnect.userId || userConnect.userAdmin === true
+                                ? <div className="post-option">
+                                    <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
+                                </div> : null
                             }
-                        })}
-                        <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
-                        <h3 key={"comment" + comment.id}>{comment.content}</h3>
-                        {comment.userId === userConnect.userId || userConnect.userAdmin === true
-                            ? <div className="post-option">
-                                <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
-                            </div> : null
-                        }
+                        </div>
                     </div>
                 ))}
             </div>
