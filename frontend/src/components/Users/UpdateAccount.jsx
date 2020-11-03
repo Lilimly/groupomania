@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import Field from '../Form/Field';
+import Form from 'react-bootstrap/Form'
 
 class UpdateAccount extends React.Component {
 
@@ -74,7 +75,10 @@ class UpdateAccount extends React.Component {
                 <form>
                     <Field name="firstname" value={this.state.firstname} onChange={this.handleChange}>Prénom</Field>
                     <Field name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</Field>
-                    <Field name="bio" value={this.state.bio} onChange={this.handleChange}>Rédigez une bio</Field>
+                    <Form.Group controlId="exampleForm.ControlTextarea1" >
+                        <Form.Label>Rédigez une bio</Form.Label>
+                        <Form.Control as="textarea" rows={5} name="bio" value={this.state.bio} onChange={this.handleChange} />
+                    </Form.Group>
                     <div className="form-submit">
                         <button className="btn btn-outline-success btn-sm" onClick={this.handleSubmit}>Enregistrer les modifications</button>
                         <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>

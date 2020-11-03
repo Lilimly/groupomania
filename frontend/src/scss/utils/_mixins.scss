@@ -5,6 +5,16 @@
     flex-direction: column;
 }
 
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin row {
+    display: flex;
+    flex-direction: row;
+}
+
 @mixin flex_center {
     display: flex;
     justify-content: center;

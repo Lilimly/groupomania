@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import img from '../../images/icon.png';
+import Form from 'react-bootstrap/Form'
 
 class Comments extends React.Component {
 
@@ -113,12 +114,12 @@ class Comments extends React.Component {
 
         return ( 
             <div className="comment-div">
-                <h2>Laissez un commentaire ici  :</h2> 
+                <h2>Laissez un commentaire !</h2> 
                 <div className="post-comment">
-                    <form>
-                        <label>Commentez :</label>
-                        <input type="text" name="content" value={this.state.content} onChange={this.handleChange}></input>
-                    </form>
+                    <Form.Group controlId="exampleForm.ControlTextarea1" >
+                        <Form.Label>Votre commentaire :</Form.Label>
+                        <Form.Control as="textarea" rows={3} name="content" value={this.state.content} onChange={this.handleChange} />
+                    </Form.Group>
                     <div className="form-submit">
                         <button className="btn btn-outline-info" onClick={this.handleSubmit}>Post</button>
                     </div>
