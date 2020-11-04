@@ -127,7 +127,7 @@ class Comments extends React.Component {
                 <h2>Article commenté {comments.length} fois.</h2>
                 
                     {comments.map((comment) => (
-                        <div className="form-comment">
+                        <div className="form-comment" key={"divimg" + comment.id}>
                             {users.map((user) => {
                                 if (user.id === comment.userId && user.imageUrl) {
                                 return <img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + comment.id} />

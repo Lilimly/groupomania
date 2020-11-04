@@ -1,7 +1,7 @@
 # groupomania
 Bienvenue sur Groupomania Social Network ! 
 
-Pour pouvoir utiliser correctement l'API, veuillez suivre ces instructions :
+Pour utiliser correctement l'API, veuillez suivre ces instructions :
 
  - Clonez ce repository. 
 
