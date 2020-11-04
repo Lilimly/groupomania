@@ -74,7 +74,7 @@ class CreateArticle extends React.Component {
             return <Redirect to='/articles' />;
         }
 
-        return <>
+        return <React.Fragment>
             <div className="container">
                 <h1>Publiez un article</h1>
                 <form>
@@ -90,7 +90,7 @@ class CreateArticle extends React.Component {
                     </div>
                 </form>
             </div>
-        </>
+        </React.Fragment>
     };
 };
 

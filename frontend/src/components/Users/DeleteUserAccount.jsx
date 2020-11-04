@@ -38,7 +38,7 @@ function DeleteUserAccount ({ match }) {
     }, [userId, token])
 
     return (
-        <>
+        <React.Fragment>
             {redirect ? <Redirect to="/articles/" /> : null}
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer ce compte ?</h1>
@@ -47,7 +47,7 @@ function DeleteUserAccount ({ match }) {
                     <button className="btn btn-outline-danger btn-sm" onClick={handleSubmit}>Supprimer ce compte</button>
                 </div>
             </div>
-        </>
+        </React.Fragment>
     );
 }
 

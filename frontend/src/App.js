@@ -49,7 +49,7 @@ function App() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <AuthApi.Provider value={{auth, setAuth}}>
         <Router>
           <Navbar sticky="top" bg="dark" variant="dark">
@@ -59,7 +59,7 @@ function App() {
           <Routes />
         </Router>
       </AuthApi.Provider>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -54,7 +54,7 @@ class DeleteArticle extends React.Component {
             return <Redirect to='/articles' />;
         }
 
-        return <>
+        return <React.Fragment>
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer cet article ?</h1>
                 <div className="form-submit">
@@ -62,7 +62,7 @@ class DeleteArticle extends React.Component {
                     <button className="btn btn-outline-danger btn-sm" onClick={this.handleSubmit}>Supprimer cet article</button>
                 </div>
             </div>
-        </>
+        </React.Fragment>
     };
 };
 

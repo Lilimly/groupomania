@@ -117,7 +117,7 @@ function ArticlePage ({ match }) {
     }       
 
     return (
-        <>
+        <React.Fragment>
             <div className="container">
                 <h1>{article.title} </h1>
                 <div className="article-present">
@@ -160,7 +160,7 @@ function ArticlePage ({ match }) {
                 </div>
                 <Comments />
             </div>
-        </>
+        </React.Fragment>
     );
 };
 

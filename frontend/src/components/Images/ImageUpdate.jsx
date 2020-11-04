@@ -51,16 +51,16 @@ class ImageUpdate extends React.Component {
          return <Redirect to={'/user/' + userId}/>;
       }
 
-        return <div className="container">
-                    <h1>Modifiez votre photo de profil</h1>
-                    <div className="update-image">
-                        <form className="addPhotoForm" onSubmit={this.handleSubmit}>
-                            <input className="form-control" type="file" name="imageUrl" />
-                            <Button color="success" type="Submit">Add</Button>
-                        </form>
-                        <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>
-                    </div>
-            </div>
+    return <div className="container">
+                <h1>Modifiez votre photo de profil</h1>
+                <div className="update-image">
+                    <form className="addPhotoForm" onSubmit={this.handleSubmit}>
+                        <input className="form-control" type="file" name="imageUrl" />
+                        <Button color="success" type="Submit">Add</Button>
+                    </form>
+                    <Link to={'/user/' + userId} className="btn btn-outline-info btn-sm">retour à mon compte</Link>
+                </div>
+        </div>
     }
 }
 

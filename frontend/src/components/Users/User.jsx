@@ -77,7 +77,7 @@ const User = () => {
     }
 
     return (
-        <>
+        <React.Fragment>
             <div className="container">
                 <h1>Bienvenue {user.firstname} !</h1>
                 {storage.userAdmin === true ?
@@ -115,7 +115,7 @@ const User = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </React.Fragment>
     );
 };
 

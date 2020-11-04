@@ -69,7 +69,7 @@ class UpdateAccount extends React.Component {
             return <Redirect to={'/user/' + userId}/>;
         }
 
-        return <>
+        return <React.Fragment>
             <div className="container">
                 <h1>Modifiez votre profil</h1>
                 <form>
@@ -85,7 +85,7 @@ class UpdateAccount extends React.Component {
                     </div>
                 </form>
             </div>
-        </>
+        </React.Fragment>
     };
 };
 

@@ -67,7 +67,7 @@ const UsersPage = ({match}) => {
     }
 
     return (
-        <>
+        <React.Fragment>
             <div className="container">
             <h1>{user.firstname} {user.lastname}</h1>
                 <div className="user-page">
@@ -102,7 +102,7 @@ const UsersPage = ({match}) => {
                     ))}
                 </div>
             </div>
-        </>
+        </React.Fragment>
     );
 };
 

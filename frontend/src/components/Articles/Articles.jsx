@@ -57,7 +57,7 @@ const Articles = () => {
         return <div>Chargement...</div>;
     } else {
         return (
-            <>   
+            <React.Fragment>   
                 <div className="container">
                     <h1>Tous les articles publiés</h1>
                     <div className="form-submit">
@@ -73,7 +73,7 @@ const Articles = () => {
                                     } else {
                                         return null
                                     }
-                                })}
+                            })}
                             <div className= "show-article" key={"show" + article.id}>
                                 {users.map((user) => {
                                     if(user.id === article.userId){
@@ -89,7 +89,7 @@ const Articles = () => {
                         </div>
                     ))}
                 </div>
-            </>
+            </React.Fragment>
         );
     } 
 };

@@ -47,7 +47,7 @@ class DeleteComment extends React.Component {
             return <Redirect to={'/article/' + articleId}/>;
         }
 
-        return <>
+        return <React.Fragment>
             <div className="container">
                 <h1>Souhaitez vous vraiment supprimer ce commentaire ?</h1>
                 <div className="form-submit">
@@ -55,7 +55,7 @@ class DeleteComment extends React.Component {
                     <button className="btn btn-outline-danger btn-sm" onClick={this.handleSubmit}>Supprimer ce commentaire</button>
                 </div>
             </div>
-        </>
+        </React.Fragment>
     };
 };
 
