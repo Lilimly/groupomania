@@ -6,8 +6,12 @@ class ImageUpdate extends React.Component {
 
     state = { redirection: false }
     constructor(props) {
+        const storage = JSON.parse(localStorage.getItem('userConnect'));
+
         super(props)
         this.state = {
+            userId: storage.userId,
+            isAdmin: storage.userAdmin,
             redirect: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);

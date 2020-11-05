@@ -10,8 +10,11 @@ class UpdateAccount extends React.Component {
     constructor (props) {
         super(props)
         const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
 
         this.state = {
+            userId: userConnect.userId,
+            isAdmin: userConnect.userAdmin,
             firstname: userAccount.firstname,
             lastname: userAccount.lastname,
             bio: userAccount.bio,

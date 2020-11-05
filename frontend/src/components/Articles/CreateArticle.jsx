@@ -11,11 +11,10 @@ class CreateArticle extends React.Component {
         super(props)
 
         const userConnect = JSON.parse(localStorage.getItem('userConnect'));
-        const userId = userConnect.userId;
-        console.log(userId);
 
         this.state = {
-            userId: userId,
+            userId: userConnect.userId,
+            isAdmin: userConnect.userAdmin,
             title: "",
             content: "",
             articleUrl: ""
@@ -53,15 +52,16 @@ class CreateArticle extends React.Component {
 
         fetch(('http://localhost:8080/api/articles/'), requestOptions)
                 .then(response => response.json())
-                .then((response) => {
+                .then(
+                    (response) => {
                     if (response.error) { 
+                        this.setState({ redirection: true })
                         alert("Votre article n'a pas pu être publié."); 
                     } else { 
                         this.setState({ redirection: true })
                         alert("Votre article à bien été publié !")
                     }
-                }
-                )
+                })
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);

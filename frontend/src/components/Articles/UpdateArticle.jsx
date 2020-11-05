@@ -10,8 +10,11 @@ class UpdateArticle extends React.Component {
     constructor (props) {
         super(props)
         const articlePage = JSON.parse(localStorage.getItem('articlePage'));
+        const storage = JSON.parse(localStorage.getItem('userConnect'));
 
         this.state = {
+            userId: storage.userId,
+            isAdmin: storage.userAdmin,
             title: articlePage.title,
             content: articlePage.content,
             articleUrl: articlePage.articleUrl
@@ -50,6 +53,7 @@ class UpdateArticle extends React.Component {
                 .then(response => response.json())
                 .then((response) => {
                     if (response.error) { 
+                        this.setState({ redirection: true })
                         alert("Votre article n'a pas pu être modifié."); 
                     } else { 
                         this.setState({ redirection: true })

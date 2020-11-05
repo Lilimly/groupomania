@@ -8,10 +8,12 @@ class Comments extends React.Component {
 
     constructor (props) {
         super(props)
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
 
         this.state = {
+            userId: userConnect.userId,
+            isAdmin: userConnect.userAdmin,
             articleId: '',
-            userId: '',
             content: '',
             comments: [],
             users: []

@@ -6,14 +6,21 @@ class DeleteComment extends React.Component {
 
     constructor (props) {
         super(props)
+
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
+
+        this.state = {
+            userId: userConnect.userId,
+            isAdmin: userConnect.userAdmin
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit (e) {
         e.preventDefault()
 
-        const storage = JSON.parse(localStorage.getItem('userConnect'));
-        let token = "Bearer " +  storage.token;
+        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
+        let token = "Bearer " +  userConnect.token;
       
         const requestOptions = {
             method: 'delete',
@@ -29,9 +36,15 @@ class DeleteComment extends React.Component {
 
         fetch(('http://localhost:8080/api/comments/' + commentId), requestOptions)
                 .then(response => response.json())
-                .then(() => 
-                    this.setState({ redirection: true }),
-                    alert("Votre commentaire à bien été supprimé !"))
+                .then((response) => {
+                    if (response.error) { 
+                        this.setState({ redirection: true })
+                        alert("Ce commentaire n'a pas pu être supprimé."); 
+                    } else { 
+                        this.setState({ redirection: true })
+                        alert("Commentaire publié !")
+                    }
+                })
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
                     console.error('There was an error!', error);

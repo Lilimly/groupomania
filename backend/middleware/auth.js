@@ -5,13 +5,14 @@ module.exports = (req, res, next) => {
 
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+        const decodedToken = jwt.verify(token, 'bWFzdXBlcmNsZXNlY3JldGVwb3VydG9rZW5tYWdpcXVlcXVlcGVyc29ubmVpbHBldXRsYWRldmluZXI=');
         const userId = decodedToken.userId;
         const isAdmin = decodedToken.isAdmin;
         if (req.body.userId && req.body.userId !== userId) {
-            throw 'User ID non valable !';
-        } else {
-            
+            return res.status(401).json({error: "User ID non valable !"})
+        } else if (req.body.isAdmin && req.body.isAmin !== isAdmin) {
+            return res.status(401).json({error: "User role non valable !"})
+        } else{
             console.log(decodedToken)
             next();
         }

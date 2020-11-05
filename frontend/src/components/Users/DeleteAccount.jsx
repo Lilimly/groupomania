@@ -8,6 +8,7 @@ function DeleteAccount () {
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     const userId = storage.userId;
+    const isAdmin = storage.userAdmin;
     let token = "Bearer " +  storage.token;
 
     const handleSubmit = useCallback(function (value) {
@@ -20,7 +21,9 @@ function DeleteAccount () {
                 'Authorization': token
                 },
             body: JSON.stringify({
-                id: value.id
+                id: value.id,
+                userId: userId,
+                isAdmin: isAdmin
             })
         })
         .then(res => res.json())
@@ -41,7 +44,7 @@ function DeleteAccount () {
             alert("Votre compte n'a pas pu être supprimé !");
             console.error('There was an error!', error);
         })
-    }, [Auth, userId, token])
+    }, [Auth, isAdmin, userId, token])
 
     return (
         <div className="container">

@@ -84,8 +84,8 @@ exports.login = (req, res, next) => {
                         userId: user.id, 
                         isAdmin : user.isAdmin 
                     },
-                    'RANDOM_TOKEN_SECRET',
-                    { expiresIn: '24h' }
+                    'bWFzdXBlcmNsZXNlY3JldGVwb3VydG9rZW5tYWdpcXVlcXVlcGVyc29ubmVpbHBldXRsYWRldmluZXI=',
+                    { expiresIn: '1h' }
                 )
             });
         })

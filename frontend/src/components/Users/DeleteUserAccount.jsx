@@ -16,7 +16,9 @@ function DeleteUserAccount ({ match }) {
                 'Authorization': token
                 },
             body: JSON.stringify({
-                id: value.id
+                id: value.id,
+                userId: storage.userId,
+                isAdmin: storage.userAdmin
             })
         })
         .then(res => res.json())
@@ -35,7 +37,7 @@ function DeleteUserAccount ({ match }) {
             alert("Ce compte n'a pas pu être supprimé !");
             console.error('There was an error!', error);
         })
-    }, [userId, token])
+    }, [userId, storage.userAdmin, storage.userId, token])
 
     return (
         <React.Fragment>
