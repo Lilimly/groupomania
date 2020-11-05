@@ -12,7 +12,6 @@ class Comments extends React.Component {
 
         this.state = {
             userId: userConnect.userId,
-            isAdmin: userConnect.userAdmin,
             articleId: '',
             content: '',
             comments: [],
@@ -47,8 +46,7 @@ class Comments extends React.Component {
                 {"Authorization" : token}
             })
             .then(res => res.json())
-            .then(
-                (result) => {
+            .then((result) => {
                     this.setState({users: result.data});
                 }
             )
@@ -99,7 +97,7 @@ class Comments extends React.Component {
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
-                    console.error('There was an error!', error);
+                    console.error("Une erreur s'est produite!", error);
             });
         
             this.setState({
