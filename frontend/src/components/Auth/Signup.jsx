@@ -8,10 +8,6 @@ class Signup extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
-            password: '',
             errors: {
                 firstname: '',
                 lastname: '',
@@ -80,7 +76,7 @@ class Signup extends React.Component {
 
         if(validateForm(this.state.errors)) {
             console.info('Formulaire valide !')
-
+            console.log(this.state)
             const requestOptions = {
                 method: 'POST',
                 headers: { 
@@ -91,17 +87,22 @@ class Signup extends React.Component {
             };
     
             fetch('http://localhost:8080/api/auth/signup/', requestOptions)
-                    .then(response => response.json())
-                    .then(() => 
-                    this.setState({ redirection: true }),
-                    alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")
-                    )
-                    .catch(error => {
-                        this.setState({ Erreur: error.toString() });
-                        console.error('Il y a eu une errreur, veuillez réessayer.', error);
+                .then(response => response.json())
+                .then((response) => {
+                    if (response.error) { 
+                        alert("Utilisateur existant. Veuillez saisir une autre adresse mail."); 
+                    } else { 
+                        this.setState({ redirection: true })
+                        alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")
+                    }
+                })
+                .catch(error => {
+                    this.setState({ Erreur: error.toString() });
+                    alert("Veuillez remplir l'ensemble des champs demandés !")
+                    console.error('Il y a eu une erreur :', error);
                 });
 
-          }else {
+          } else {
             alert('Formulaire non valide ! Veuillez ressaisir vos données.')
           }
 

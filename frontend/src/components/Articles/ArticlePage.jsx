@@ -70,7 +70,6 @@ function ArticlePage ({ match }) {
                     setIsLoaded(true);
                     setLikes(result.data.length);
                     console.log(result.data.length)
-                    localStorage.setItem('likes', JSON.stringify(result.data));
                 },
                 (error) => {
                     setIsLoaded(true);

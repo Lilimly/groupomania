@@ -27,10 +27,10 @@ app.use((req, res, next) => {
   }
 });
 
-// parse requests of content-type - application/json
+// parse requètes de content-type - application/json
 app.use(bodyParser.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+// parse requètes de content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // appel des models dans la DB

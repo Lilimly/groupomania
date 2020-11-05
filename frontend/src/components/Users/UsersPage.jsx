@@ -25,7 +25,6 @@ const UsersPage = ({match}) => {
                 setIsLoaded(true);
                 setUser(result);
                 localStorage.setItem('userAccount', JSON.stringify(result));
-                console.log(JSON.parse(localStorage.getItem('userAccount')));
             },
             (error) => {
                 setIsLoaded(true);
@@ -45,7 +44,6 @@ const UsersPage = ({match}) => {
                     setIsLoaded(true);
                     setArticle(result.data);
                     localStorage.setItem('userArticles', JSON.stringify(result.data));
-                    console.log(JSON.parse(localStorage.getItem('userArticles')))
                 },
                 (error) => {
                     setIsLoaded(true);
