@@ -17,7 +17,7 @@ class UpdateAccount extends React.Component {
             isAdmin: userConnect.userAdmin,
             firstname: userAccount.firstname,
             lastname: userAccount.lastname,
-            bio: userAccount.bio,
+            bio: userAccount.bio || '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -47,7 +47,7 @@ exports.createArticle = (req, res, next) => {
   const content =  req.body.content;
 
   // vérification que tous les champs sont remplis
-  if(title === null || content === null) {
+  if(title === null || title === '' || content === null || content === '') {
       return res.status(400).json({'error': 'Eléments manquants'});
   }
 
