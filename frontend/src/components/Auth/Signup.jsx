@@ -8,11 +8,15 @@ class Signup extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
+            firstname: undefined || '',
+            lastname: undefined || '',
+            email: undefined || '',
+            password: undefined || '',
             errors: {
-                firstname: '',
-                lastname: '',
-                email: '',
-                password: '',
+                firstname: undefined || '',
+                lastname: undefined || '',
+                email: undefined || '',
+                password: undefined || '',
             }
         }
         this.handleChange = this.handleChange.bind(this);
@@ -105,13 +109,6 @@ class Signup extends React.Component {
           } else {
             alert('Formulaire non valide ! Veuillez ressaisir vos données.')
           }
-
-        this.setState({
-            firstname: '',
-            lastname: '',
-            email: '',
-            password: ''
-        })
     }
 
     render() {
