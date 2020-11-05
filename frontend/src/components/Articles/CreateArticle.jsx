@@ -15,8 +15,8 @@ class CreateArticle extends React.Component {
         this.state = {
             userId: userConnect.userId,
             isAdmin: userConnect.userAdmin,
-            title: "",
-            content: "",
+            title: undefined,
+            content: undefined,
             articleUrl: ""
         }
         this.handleChange = this.handleChange.bind(this);

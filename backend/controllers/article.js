@@ -42,6 +42,15 @@ exports.findOneArticle = (req, res, next) => {
 
 // logique métier : créer un article
 exports.createArticle = (req, res, next) => {
+  // éléments de la requète
+  const title = req.body.title;
+  const content =  req.body.content;
+
+  // vérification que tous les champs sont remplis
+  if(title === null || content === null) {
+      return res.status(400).json({'error': 'Eléments manquants'});
+  }
+
   const articleObject = req.body;
 
   // Création d'un nouvel objet article

@@ -13,7 +13,7 @@ class Comments extends React.Component {
         this.state = {
             userId: userConnect.userId,
             articleId: '',
-            content: '',
+            content: undefined,
             comments: [],
             users: []
         }
@@ -125,7 +125,6 @@ class Comments extends React.Component {
                     </div>
                 </div>
                 <h2>Article commenté {comments.length} fois.</h2>
-                
                     {comments.map((comment) => (
                         <div className="form-comment" key={"divimg" + comment.id}>
                             {users.map((user) => {

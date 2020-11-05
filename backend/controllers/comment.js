@@ -23,6 +23,7 @@ exports.findOneComment = (req, res, next) => {
 
 // logique métier : créer un commentaire
 exports.createComment = (req, res, next) => {
+
   const commentObject = req.body;
   // Création d'un nouvel objet commentaire
   const comment = new Comment({
@@ -33,16 +34,17 @@ exports.createComment = (req, res, next) => {
   .then(() => {
     Comment.findAll({
       where: {articleId: req.body.articleId}
-    }).then((comments) => {
+    })
+    .then((comments) => {
       res.status(200).json(comments);
     })
   })
-    .catch(error => res.status(400).json({ error }));
+  .catch(error => res.status(400).json({ error }));
 }
 
 // Logique métier : supprimer un commentaire
 exports.deleteComment = (req, res, next) => {
   Comment.destroy({ where: {id: req.params.id} })
-        .then(() => res.status(200).json({ message: 'Commentaire supprimé !'}))
-        .catch(error => res.status(400).json({ error }));
+    .then(() => res.status(200).json({ message: 'Commentaire supprimé !'}))
+    .catch(error => res.status(400).json({ error }));
 };
