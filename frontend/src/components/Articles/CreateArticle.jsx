@@ -24,13 +24,10 @@ class CreateArticle extends React.Component {
     }
 
     handleChange (e) {
-        const userConnect = JSON.parse(localStorage.getItem('userConnect'));
-        const userId = userConnect.userId;
 
         const name = e.target.name;
         const value =  e.target.value;
         this.setState({
-            userId: userId,
             [name]: value
         })
     }
@@ -55,7 +52,7 @@ class CreateArticle extends React.Component {
                 .then(
                     (response) => {
                     if (response.error) { 
-                        
+                        this.setState({ redirection: true })
                         alert("Votre article n'a pas pu être publié."); 
                     } else { 
                         this.setState({ redirection: true })
