@@ -108,12 +108,16 @@ function ArticlePage ({ match }) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
-    } else if (article.userId === storage.userId || storage.userAdmin === true) {
+    } else if (article.userId === storage.userId) {
         userAuth = <div className="article-button">
             <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/articleupdate/" + articleId)}}>Modifier</button>
             <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer</button>
         </div>
-    }       
+    } else if (storage.userAdmin === true){
+        userAuth = <div className="article-button">
+            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/articledelete/" + articleId)}}>Supprimer</button>
+        </div>
+    }
 
     return (
         <React.Fragment>
