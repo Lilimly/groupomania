@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-// Validation userId en comparaison avec le token
+// Validation userId et isAdmin en comparaison avec le token
 module.exports = (req, res, next) => {
 
     try {
@@ -10,7 +10,8 @@ module.exports = (req, res, next) => {
         const isAdmin = decodedToken.isAdmin;
         if (req.body.userId && req.body.userId !== userId) {
             return res.status(401).json({error: "User ID non valable !"})
-        } else if (req.body.isAdmin && req.body.isAmin !== isAdmin) {
+        } else if (req.body.isAdmin && req.body.isAdmin !== isAdmin) {
+            console.log(isAdmin)
             return res.status(401).json({error: "User role non valable !"})
         } else{
             console.log(decodedToken)

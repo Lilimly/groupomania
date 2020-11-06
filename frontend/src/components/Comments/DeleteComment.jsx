@@ -42,7 +42,7 @@ class DeleteComment extends React.Component {
                         alert("Ce commentaire n'a pas pu être supprimé."); 
                     } else { 
                         this.setState({ redirection: true })
-                        alert("Commentaire publié !")
+                        alert("Commentaire supprimé !")
                     }
                 })
                 .catch(error => {

@@ -15,7 +15,8 @@ exports.signup = (req, res, next) => {
     const password = req.body.password;
 
     // vérification que tous les champs sont remplis
-    if(firstname === null || firstname === '' || lastname === null || lastname === '' || email === null || email === '' || password === null || password === '') {
+    if(firstname === null || firstname === '' || lastname === null || lastname === '' 
+        || email === null || email === '' || password === null || password === '') {
         return res.status(400).json({'error': 'Eléments manquants'});
     }
 
