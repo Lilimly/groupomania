@@ -53,7 +53,6 @@ class UpdateArticle extends React.Component {
                 .then(response => response.json())
                 .then((response) => {
                     if (response.error) { 
-                        this.setState({ redirection: true })
                         alert("Votre article n'a pas pu être modifié."); 
                     } else { 
                         this.setState({ redirection: true })

@@ -39,6 +39,14 @@ exports.findAllUserByName = (req, res, next) => {
 
 // logique métier : modifier un utilisateur
 exports.modifyUser = (req, res, next) => {
+      // éléments de la requète
+      const firstname = req.body.firstname;
+      const lastname =  req.body.lastname;
+    
+      // vérification que tous les champs sont remplis
+      if(firstname === null || firstname === '' || lastname === null ||lastname === '') {
+          return res.status(400).json({'error': 'Eléments manquants'});
+      }
   // gestion d'ajout/modification image de profil
   const userObject = req.file ?
     {

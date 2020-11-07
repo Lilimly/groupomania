@@ -65,6 +65,15 @@ exports.createArticle = (req, res, next) => {
 
 // logique métier : modifier un article
 exports.modifyArticle = (req, res, next) => {
+    // éléments de la requète
+    const title = req.body.title;
+    const content =  req.body.content;
+  
+    // vérification que tous les champs sont remplis
+    if(title === null || title === '' || content === null || content === '') {
+        return res.status(400).json({'error': 'Eléments manquants'});
+    }
+    
   const articleObject = req.body;
     
   Article.update({ ...articleObject, id:  req.params.id}, { where: {id: req.params.id} })
