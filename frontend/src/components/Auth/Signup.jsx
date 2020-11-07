@@ -94,7 +94,7 @@ class Signup extends React.Component {
                 .then(response => response.json())
                 .then((response) => {
                     if (response.error) { 
-                        alert("Utilisateur existant. Veuillez saisir une autre adresse mail."); 
+                        alert("Erreur : " + response.error); 
                     } else { 
                         this.setState({ redirection: true })
                         alert("Votre compte à bien été créé ! Connectez-vous pour accéder aux derniers échanges.")

@@ -51,7 +51,7 @@ class UpdateAccount extends React.Component {
                 .then(response => response.json())
                 .then((response) => {
                     if (response.error) { 
-                        alert("Votre compte n'a pas pu être modifié.")
+                        alert("Votre compte n'a pas pu être modifié : " + response.error)
                     } else { 
                         this.setState({ redirection: true })
                     }
