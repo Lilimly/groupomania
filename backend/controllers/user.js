@@ -45,7 +45,7 @@ exports.modifyUser = (req, res, next) => {
     
       // vérification que tous les champs sont remplis
       if(firstname === null || firstname === '' || lastname === null ||lastname === '') {
-          return res.status(400).json({'error': 'Eléments manquants'});
+          return res.status(400).json({'error': "Les champs 'nom' et 'prénom' doivent être remplis "});
       }
   // gestion d'ajout/modification image de profil
   const userObject = req.file ?

@@ -51,7 +51,7 @@ class CreateArticle extends React.Component {
                 .then(
                     (response) => {
                     if (response.error) { 
-                        alert("Votre article n'a pas pu être publié."); 
+                        alert("Votre article n'a pas pu être publié : " + response.error); 
                     } else { 
                         this.setState({ redirection: true })
                         alert("Votre article à bien été publié !")

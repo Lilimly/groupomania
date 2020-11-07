@@ -48,7 +48,7 @@ exports.createArticle = (req, res, next) => {
 
   // vérification que tous les champs sont remplis
   if(title === null || title === '' || content === null || content === '') {
-      return res.status(400).json({'error': 'Eléments manquants'});
+      return res.status(400).json({'error': "Veuillez remplir les champs 'titre' et 'contenu' pour créer un article"});
   }
 
   const articleObject = req.body;
@@ -71,7 +71,7 @@ exports.modifyArticle = (req, res, next) => {
   
     // vérification que tous les champs sont remplis
     if(title === null || title === '' || content === null || content === '') {
-        return res.status(400).json({'error': 'Eléments manquants'});
+        return res.status(400).json({'error': "Veuillez remplir les champs 'Titre' et 'Contenu' pour créer un article"});
     }
     
   const articleObject = req.body;
