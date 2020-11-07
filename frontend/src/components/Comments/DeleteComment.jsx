@@ -30,7 +30,6 @@ class DeleteComment extends React.Component {
             },
             body: JSON.stringify(this.state)
         };
-        console.log(this.state)
 
         const commentId = this.props.match.params.id;
 

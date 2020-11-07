@@ -92,7 +92,6 @@ class Comments extends React.Component {
                 .then(response => response.json())
                 .then((result) => 
                     this.setState({comments: result}),
-                    console.log(this.state),
                     alert("Commentaire publié !")
                 )
                 .catch(error => {

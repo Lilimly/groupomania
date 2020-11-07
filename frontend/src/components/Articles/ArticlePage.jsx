@@ -32,7 +32,6 @@ function ArticlePage ({ match }) {
                 setIsLoaded(true);
                 setArticle(result);
                 localStorage.setItem('articlePage', JSON.stringify(result));
-                console.log(JSON.parse(localStorage.getItem('articlePage')))
             },
             (error) => {
                 setIsLoaded(true);
@@ -69,7 +68,6 @@ function ArticlePage ({ match }) {
                 (result) => {
                     setIsLoaded(true);
                     setLikes(result.data.length);
-                    console.log(result.data.length)
                 },
                 (error) => {
                     setIsLoaded(true);

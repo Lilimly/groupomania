@@ -23,7 +23,6 @@ const Articles = () => {
             (result) => {
                 setIsLoaded(true);
                 setArticles(result.data);
-                console.log(result.data);
             },
             (error) => {
                 setIsLoaded(true);
@@ -42,7 +41,6 @@ const Articles = () => {
                 (result) => {
                     setIsLoaded(true);
                     setUsers(result.data);
-                    console.log(result.data)
                 },
                 (error) => {
                     setIsLoaded(true);
