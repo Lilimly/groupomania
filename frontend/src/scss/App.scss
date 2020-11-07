@@ -111,6 +111,7 @@
       text-align: left;
     }
     p {
+      white-space: pre-line;
       text-align: left;
       color: $main_color;
     }
@@ -170,6 +171,7 @@
       text-align: left;
     }
     p {
+      white-space: pre-line;
       text-align: left;
     }
   }
@@ -225,6 +227,7 @@
       }
     }
     p {
+      white-space: pre-line;
       font-size: 1em;
       margin-bottom: 0.6em;
     }
@@ -275,6 +278,7 @@
         margin-bottom: 0.5em;
         width: 70%;
         p {
+          white-space: pre-line;
           text-align: left;
           margin-bottom: 0.2em;
         }
@@ -343,7 +347,7 @@
   .form-comment {
     margin: 1em 4em 1em 4em;
     background-color: $body_color;
-    padding: 1em;
+    padding: 0.5em;
     box-shadow: $box_shadow;
     display: flex;
     img {
@@ -367,6 +371,12 @@
       }
       p {
         font-size: 0.8em;
+      }
+      .content-comment {
+        font-size: 0.9em;
+        font-weight: bold;
+        white-space: pre-line;
+        margin-bottom: 0.5em;
       }
       .post-option {
         margin: 0em;

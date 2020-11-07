@@ -157,7 +157,6 @@ function ArticlePage ({ match }) {
                                 Likes : {likes}
                             </Badge>
                         </button>
-
                         </div>
                     </div>
                 </div>

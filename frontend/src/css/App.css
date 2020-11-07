@@ -162,6 +162,7 @@
 }
 
 .article-card .show-article p {
+  white-space: pre-line;
   text-align: left;
   color: black;
 }
@@ -247,6 +248,7 @@
 }
 
 .user-page .show-article p {
+  white-space: pre-line;
   text-align: left;
 }
 
@@ -326,6 +328,7 @@
 }
 
 .user-article .user-articles p {
+  white-space: pre-line;
   font-size: 1em;
   margin-bottom: 0.6em;
 }
@@ -400,6 +403,7 @@
 }
 
 .article-present .article-content .article-page .show-article p {
+  white-space: pre-line;
   text-align: left;
   margin-bottom: 0.2em;
 }
@@ -497,7 +501,7 @@
 .comment-div .form-comment {
   margin: 1em 4em 1em 4em;
   background-color: whitesmoke;
-  padding: 1em;
+  padding: 0.5em;
   -webkit-box-shadow: 0 0 20px #bababa;
           box-shadow: 0 0 20px #bababa;
   display: -webkit-box;
@@ -533,6 +537,13 @@
 
 .comment-div .form-comment .comment-card p {
   font-size: 0.8em;
+}
+
+.comment-div .form-comment .comment-card .content-comment {
+  font-size: 0.9em;
+  font-weight: bold;
+  white-space: pre-line;
+  margin-bottom: 0.5em;
 }
 
 .comment-div .form-comment .comment-card .post-option {

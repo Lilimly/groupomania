@@ -145,7 +145,7 @@ class Comments extends React.Component {
                                 }
                             })}
                             <p key={"commenth3" + comment.id}><Moment fromNow key={"date" + comment.id}>{comment.createdAt}</Moment></p>
-                            <h3 key={"comment" + comment.id}>{comment.content}</h3>
+                            <p key={"comment" + comment.id} className="content-comment">{comment.content}</p>
                             {comment.userId === userConnect.userId || userConnect.userAdmin === true
                                 ? <div className="post-option">
                                     <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className="nav-link">Supprimer</Link>
